@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 40rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.title {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-h2);
+  line-height: 1.12;
+}
+
+.subtitle {
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: rgba(46, 34, 24, 0.72);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

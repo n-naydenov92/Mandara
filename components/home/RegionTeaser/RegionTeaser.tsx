@@ -7,6 +7,7 @@ import { IconArrowRight } from '@tabler/icons-react'
 import { LocaleLink } from '@/components/ui/LocaleLink/LocaleLink'
 import { Icon } from '@/components/ui/Icon/Icon'
 import { Eyebrow } from '@/components/ui/Eyebrow/Eyebrow'
+import { CornerBranches } from '@/components/motion/CornerBranches/CornerBranches'
 import { REGION_KEYS, REGION_DESTINATIONS } from '@/lib/content/home'
 import type { Locale } from '@/lib/i18n/settings'
 import styles from './RegionTeaser.module.css'
@@ -17,8 +18,8 @@ interface RegionTeaserProps {
 
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
 const ICON_SIZE = 16
-// Dwell: всеки сегмент „почива“ върху дестинация през първите 60%, после мек swap.
-const DWELL = 0.6
+// Dwell: всеки сегмент „почива“ върху дестинация през първите 45%, после мек swap.
+const DWELL = 0.45
 const SWAP = 1 - DWELL
 const MIN_COUNT = 2
 // Damping: current лерпва към target всеки кадър → плавно изменение независимо от
@@ -26,6 +27,11 @@ const MIN_COUNT = 2
 const DAMP = 0.16
 const SETTLE = 0.0005
 const OPACITY_PRECISION = 3
+const FR_PRECISION = 3
+// Width-swap: лявата колона започва широка (COL_WIDE), дясната тясна (COL_NARROW);
+// на скрол се разменят. Стойностите са в fr — ~63/37 → 37/63.
+const COL_WIDE = 1.7
+const COL_NARROW = 1
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max)
@@ -55,14 +61,9 @@ function fadeOpacity(smoothIndex: number, index: number): number {
   return clamp(1 - Math.abs(smoothIndex - index), 0, 1)
 }
 
-// Снимки: слоест fade — долната снимка остава плътна (покрива фона),
-// само входящата избледнява отгоре → без премигване на cream-а.
-function layeredOpacity(smoothIndex: number, index: number): number {
-  return clamp(smoothIndex - index + 1, 0, 1)
-}
-
 // Vanilla scroll+RAF engine. Прогресът се чете през getBoundingClientRect (Lenis-safe),
-// не през window.scrollY. Само opacity на кадър — без layout, императивно през cache-нати refs.
+// не през window.scrollY. Текст = opacity crossfade, снимки = hard cut, колони = width-swap.
+// current е damped СУРОВ прогрес (0→1); dwell-ът се прилага само върху crossfade-а.
 function useRegionScroll(sectionRef: RefObject<HTMLElement | null>, count: number): void {
   useEffect(() => {
     const section = sectionRef.current
@@ -73,6 +74,8 @@ function useRegionScroll(sectionRef: RefObject<HTMLElement | null>, count: numbe
     const titles = Array.from(section.querySelectorAll<HTMLElement>(`.${styles.title}`))
     const bodies = Array.from(section.querySelectorAll<HTMLElement>(`.${styles.body}`))
     const images = Array.from(section.querySelectorAll<HTMLElement>(`.${styles.img}`))
+    const imagesRow = section.querySelector<HTMLElement>(`.${styles.imagesRow}`)
+    const pin = section.querySelector<HTMLElement>(`.${styles.pin}`)
     if (titles.length === 0) {
       return
     }
@@ -81,21 +84,42 @@ function useRegionScroll(sectionRef: RefObject<HTMLElement | null>, count: numbe
     let target = 0
     let running = false
     let frameId = 0
+    // Runway = геометрия на елементите, НЕ window.innerHeight. На мобилно innerHeight
+    // осцилира с показването/скриването на адрес-бара → трептене. pin е 100vh (стабилен).
+    let runway = 0
+    const measure = () => {
+      const pinHeight = pin ? pin.offsetHeight : window.innerHeight
+      runway = section.offsetHeight - pinHeight
+    }
 
-    const applyFrame = (smoothIndex: number) => {
+    // Разменя ширините на двете колони според общия прогрес (0 → 1).
+    const applyBalance = (progress: number) => {
+      if (!imagesRow) {
+        return
+      }
+      const span = COL_WIDE - COL_NARROW
+      imagesRow.style.setProperty('--col-left', `${(COL_WIDE - span * progress).toFixed(FR_PRECISION)}fr`)
+      imagesRow.style.setProperty('--col-right', `${(COL_NARROW + span * progress).toFixed(FR_PRECISION)}fr`)
+    }
+
+    const applyFrame = (progress: number) => {
+      const smoothIndex = computeSmoothIndex(progress, count)
       titles.forEach((title, index) => {
         title.style.opacity = fadeOpacity(smoothIndex, index).toFixed(OPACITY_PRECISION)
       })
       bodies.forEach((body, index) => {
         body.style.opacity = fadeOpacity(smoothIndex, index).toFixed(OPACITY_PRECISION)
       })
+      // Снимки: рязка смяна (hard cut) — без opacity, без наслагване.
+      const active = clamp(Math.round(smoothIndex), 0, count - 1)
       images.forEach((image) => {
-        image.style.opacity = layeredOpacity(smoothIndex, Number(image.dataset.i)).toFixed(OPACITY_PRECISION)
+        image.style.visibility = Number(image.dataset.i) === active ? 'visible' : 'hidden'
       })
+      // Width-swap следва суровия прогрес → реагира веднага, без dwell забавяне.
+      applyBalance(progress)
     }
 
-    const readTarget = (): number => {
-      const runway = section.offsetHeight - window.innerHeight
+    const readProgress = (): number => {
       if (!Number.isFinite(runway) || runway <= 0) {
         return target
       }
@@ -103,11 +127,11 @@ function useRegionScroll(sectionRef: RefObject<HTMLElement | null>, count: numbe
       if (!Number.isFinite(progress)) {
         progress = 0
       }
-      return computeSmoothIndex(clamp(progress, 0, 1), count)
+      return clamp(progress, 0, 1)
     }
 
     const tick = () => {
-      target = readTarget()
+      target = readProgress()
       const diff = target - current
       if (Math.abs(diff) < SETTLE) {
         current = target
@@ -128,14 +152,20 @@ function useRegionScroll(sectionRef: RefObject<HTMLElement | null>, count: numbe
       frameId = requestAnimationFrame(tick)
     }
 
-    current = target = readTarget()
+    const onResize = () => {
+      measure()
+      start()
+    }
+
+    measure()
+    current = target = readProgress()
     applyFrame(current)
     window.addEventListener('scroll', start, { passive: true })
-    window.addEventListener('resize', start)
+    window.addEventListener('resize', onResize)
 
     return () => {
       window.removeEventListener('scroll', start)
-      window.removeEventListener('resize', start)
+      window.removeEventListener('resize', onResize)
       cancelAnimationFrame(frameId)
     }
   }, [sectionRef, count])
@@ -157,6 +187,7 @@ export function RegionTeaser({ lng }: RegionTeaserProps) {
       aria-label={t('region.eyebrow')}
     >
       <div className={styles.pin}>
+        <CornerBranches tone="dark" corners={['bl']} />
         <div className={styles.layout}>
           <div className={styles.titleArea}>
             <Eyebrow>{t('region.eyebrow')}</Eyebrow>

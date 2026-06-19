@@ -1,0 +1,32 @@
+{
+  "brand": "MANDARA",
+  "brandFull": "Villa Mandara",
+  "tagline": "Far from everything. Close to yourself.",
+  "location": "Mandara Village · Gorna Kovachitsa",
+  "locationShort": "Gorna Kovachitsa",
+  "cta": {
+    "reserve": "Reserve",
+    "inquire": "Inquire about a stay",
+    "viewAll": "View all",
+    "view": "View"
+  },
+  "menu": {
+    "open": "Menu",
+    "close": "Close",
+    "label": "Navigation"
+  },
+  "scroll": "Scroll for more",
+  "skipToContent": "Skip to content",
+  "comingSoon": "Coming soon.",
+  "language": {
+    "switch": "Language",
+    "bg": "BG",
+    "en": "EN"
+  },
+  "footer": {
+    "about": "A villa among nature and herbs.",
+    "nav": "Navigation",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  }
+}

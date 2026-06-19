@@ -1,0 +1,157 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--night);
+  color: var(--cream);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bg {
+    animation: heroZoom 20s var(--ease) infinite alternate;
+  }
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* По-тъмно вляво (където е текстът), светло вдясно — снимката остава видима. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      to right,
+      rgba(22, 16, 10, 0.62) 0%,
+      rgba(22, 16, 10, 0.3) 44%,
+      rgba(22, 16, 10, 0.06) 78%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(22, 16, 10, 0.22) 0%,
+      rgba(22, 16, 10, 0.04) 40%,
+      rgba(22, 16, 10, 0.4) 100%
+    );
+}
+
+.inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--side-pad);
+}
+
+.content {
+  max-width: 44rem;
+}
+
+.title {
+  margin-top: 0.5rem;
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-hero);
+  line-height: 1.04;
+  color: var(--cream);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.intro {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  max-width: 34rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: rgba(245, 237, 224, 0.86);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+}
+
+.cta {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.5rem, 3vh, 2.25rem);
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.scrollLabel {
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+  text-transform: uppercase;
+  color: rgba(245, 237, 224, 0.8);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.scrollLine {
+  position: relative;
+  width: 1px;
+  height: 52px;
+  overflow: hidden;
+  background: rgba(245, 237, 224, 0.25);
+}
+
+.scrollLine::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 45%;
+  background: var(--cream);
+  animation: scrollSlide 2.2s var(--ease) infinite;
+}
+
+@keyframes scrollSlide {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(230%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollLine::after {
+    animation: none;
+  }
+}
+
+/* Мобилно: по-силно затъмняване отдолу за четимост на текста. */
+@media (max-width: 640px) {
+  .overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(22, 16, 10, 0.34) 0%,
+      rgba(22, 16, 10, 0.14) 34%,
+      rgba(22, 16, 10, 0.58) 100%
+    );
+  }
+}

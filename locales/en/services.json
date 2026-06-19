@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "eyebrow": "5★ services",
+    "title": "Care, tailored to you",
+    "intro": "Everything you need — arranged quietly and entirely around you. From a private chef to transfers and spa, let us make your stay effortless.",
+    "cta": "Enquire",
+    "scroll": "Explore"
+  },
+  "items": {
+    "chef": {
+      "title": "Private chef",
+      "description": "A signature menu born from the season and local produce — cooked before you and served to the rhythm of your evening.",
+      "features": [
+        "A personal menu to your taste",
+        "Local, seasonal produce",
+        "Breakfasts, dinners and special occasions"
+      ]
+    },
+    "transfer": {
+      "title": "Transfer & transport",
+      "description": "From the airport to Mandara's doorstep — a calm journey with a private driver, arranged down to the last detail.",
+      "features": [
+        "Airport welcome",
+        "Private driver, luxury car",
+        "Routes and excursions on request"
+      ]
+    },
+    "spa": {
+      "title": "Spa & wellness",
+      "description": "Massages and rituals with local herbs, in the quiet of the villa — care for body and mind, in private.",
+      "features": [
+        "In-villa massage and therapies",
+        "Herbal rituals",
+        "Yoga and meditation on request"
+      ]
+    },
+    "tasting": {
+      "title": "Tastings",
+      "description": "Evenings of local wines and produce, led by a connoisseur — the taste of the region, served slowly.",
+      "features": [
+        "Local wine tastings",
+        "A selection of regional makers",
+        "Pairings with a signature menu"
+      ]
+    },
+    "concierge": {
+      "title": "Concierge",
+      "description": "One person who arranges everything — reservations, surprises and wishes, fulfilled quietly and on time.",
+      "features": [
+        "Reservations and planning",
+        "Recommendations and hidden places",
+        "Access throughout your stay"
+      ]
+    },
+    "butler": {
+      "title": "Butler & housekeeping",
+      "description": "A discreet presence that keeps your home impeccable — so only the calm remains.",
+      "features": [
+        "Daily housekeeping",
+        "Service and guest care",
+        "Villa upkeep"
+      ]
+    }
+  }
+}

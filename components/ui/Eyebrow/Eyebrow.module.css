@@ -1,0 +1,27 @@
+.eyebrow {
+  display: inline-block;
+  font-family: var(--f-script);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.terra {
+  color: var(--terra);
+}
+
+.ember {
+  color: var(--ember);
+}
+
+.olive {
+  color: var(--olive);
+}
+
+.stone {
+  color: var(--stone);
+}
+
+.cream {
+  color: var(--cream);
+}

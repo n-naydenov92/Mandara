@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "title": "Villa Mandara — Where time flows differently",
+    "description": "A premium villa among nature and herbs near Gorna Kovachitsa. Far from everything, close to yourself."
+  },
+  "hero": {
+    "eyebrow": "welcome",
+    "titleLine1": "Here time",
+    "titleLine2": "flows differently."
+  },
+  "about": {
+    "eyebrow": "about us",
+    "title": "Stay until you feel at home.",
+    "body1": "Here the days smell of herbs and silence. Mandara was made for those who want to stop — to breathe slowly and listen to nature.",
+    "body2": "Far from everything, close to yourself. No rush, no noise — just you and the calm of the mountain.",
+    "closing": "Stay until you feel at home."
+  },
+  "gallery": {
+    "eyebrow": "gallery",
+    "title": "Feel it before you arrive",
+    "captions": {
+      "pool": "Pool",
+      "lounge": "Living room",
+      "interior": "Dining",
+      "exterior": "Architecture",
+      "gardens": "Gardens",
+      "view": "View",
+      "sunset": "Sunset"
+    }
+  },
+  "rooms": {
+    "eyebrow": "accommodation",
+    "title": "Six rooms, six moods of the day",
+    "subtitle": "Each room bears the name of a moment of the day and its own herb.",
+    "cta": "Explore the rooms"
+  },
+  "experience": {
+    "eyebrow": "experience",
+    "lead": "Every experience at Mandara is made to measure — from herb walks and yoga in the silence, to dinners with a seasonal menu and slow afternoons by the pool. All shaped around the rhythm of the day and nature.",
+    "footer": "A private chef, spa rituals with local herbs, wine tastings, and quiet evenings outdoors — every detail arranged calmly and entirely around you.",
+    "cta": "Explore the experiences",
+    "imageAlt": "Experiences at Villa Mandara"
+  },
+  "region": {
+    "eyebrow": "the region",
+    "cta": "Discover the region",
+    "points": {
+      "belasitsa": {
+        "title": "Belasitsa",
+        "meta": "Mountain trails · 20 min",
+        "body": "Belasitsa rises just a step from the doorstep — ancient beech forests, hidden waterfalls and paths made for a slow walk. The air is clean and quiet, and the views open gradually, all the way to the ridge."
+      },
+      "monastery": {
+        "title": "Monastery",
+        "meta": "History and peace · 15 min",
+        "body": "Fifteen minutes away, a monastery waits wrapped in silence and centuries-old walls. A place for a brief bow to history, where time seems to pause and your thoughts settle on their own."
+      },
+      "wine": {
+        "title": "Vineyards & cellars",
+        "meta": "Local wines · nearby",
+        "body": "The sunlit slopes nearby yield wines full of character. Visit the family cellars, taste the vintages straight from the barrel, and let the sunset over the vineyards stretch the evening out."
+      },
+      "trails": {
+        "title": "Walking trails",
+        "meta": "Into nature · from the doorstep",
+        "body": "Dozens of marked trails start right at the villa — across meadows, along rivers and toward quiet clearings. Choose a light morning stroll or a full day in nature, all at your own pace."
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "5★ services",
+    "title": "Care down to the last detail — arranged quietly and entirely around you.",
+    "cta": "Explore the services",
+    "controls": {
+      "prev": "Previous service",
+      "next": "Next service"
+    },
+    "items": {
+      "chef": {
+        "title": "Private chef",
+        "meta": "Signature menu · Seasonal produce"
+      },
+      "transfer": {
+        "title": "Transfer & transport",
+        "meta": "Private driver · Airport"
+      },
+      "spa": {
+        "title": "Spa & wellness",
+        "meta": "Massage · Herbal rituals"
+      },
+      "tasting": {
+        "title": "Tastings",
+        "meta": "Local wines · Pairings"
+      },
+      "concierge": {
+        "title": "Concierge",
+        "meta": "Reservations · Whole stay"
+      },
+      "butler": {
+        "title": "Butler",
+        "meta": "Housekeeping · Discreet"
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready?",
+    "subtitle": "Get in touch and let's plan your stay."
+  }
+}

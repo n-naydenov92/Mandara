@@ -1,0 +1,16 @@
+.branches {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Светъл тон — за тъмен фон (hero). */
+.branches[data-tone='light'] {
+  --branch-color: rgba(245, 237, 224, 0.2);
+}
+
+/* Тъмен тон — за светъл фон (cream/sand секции). Шепот, не акцент. */
+.branches[data-tone='dark'] {
+  --branch-color: rgba(79, 86, 64, 0.08);
+}

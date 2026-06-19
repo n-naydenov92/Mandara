@@ -1,0 +1,32 @@
+.accent {
+  position: absolute;
+  z-index: -1;
+  width: clamp(130px, 18vw, 300px);
+  height: auto;
+  color: var(--olive);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.tl {
+  top: -4%;
+  left: 1%;
+}
+
+.tr {
+  top: -4%;
+  right: 1%;
+  transform: scaleX(-1);
+}
+
+.bl {
+  bottom: -4%;
+  left: 1%;
+  transform: scaleY(-1);
+}
+
+.br {
+  bottom: -4%;
+  right: 1%;
+  transform: scale(-1, -1);
+}

@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "title": "Experiences — Villa Mandara",
+    "description": "Bespoke experiences at Villa Mandara — gastronomy, wellness rituals, nature and moments to remember."
+  },
+  "hero": {
+    "eyebrow": "bespoke",
+    "title": "Experiences shaped entirely around you",
+    "scroll": "Explore"
+  },
+  "controls": {
+    "prev": "Previous image",
+    "next": "Next image"
+  },
+  "themes": {
+    "gastronomy": {
+      "eyebrow": "taste",
+      "title": "Gastronomy",
+      "intro": "Dining becomes a journey — from refined seasonal dinners to slow breakfasts on the pergola and tastings of local wines.",
+      "slides": {
+        "menu": "Seasonal menu",
+        "outdoor": "Dining outdoors",
+        "wine": "Wine tastings"
+      }
+    },
+    "wellness": {
+      "eyebrow": "calm",
+      "title": "Wellness & rituals",
+      "intro": "A private space to restore — herbal spa rituals, yoga in silence and slow afternoons by the pool, guided by an attentive team.",
+      "slides": {
+        "spa": "Herbal spa ritual",
+        "yoga": "Yoga in silence",
+        "pool": "Afternoons by the pool"
+      }
+    },
+    "nature": {
+      "eyebrow": "outdoors",
+      "title": "Nature & adventure",
+      "intro": "The mountain begins at your doorstep — Belasitsa trails, herb walks and quiet detours to the monastery, shaped around your pace.",
+      "slides": {
+        "trails": "Belasitsa trails",
+        "herbs": "Herb walks",
+        "monastery": "The monastery nearby"
+      }
+    },
+    "events": {
+      "eyebrow": "occasions",
+      "title": "Events & celebrations",
+      "intro": "Moments that last. From intimate gatherings to milestone celebrations — orchestrated elegantly and with discreet care.",
+      "slides": {
+        "intimate": "Intimate occasions",
+        "celebrations": "Celebrations",
+        "dinner": "A quiet dinner outdoors"
+      }
+    }
+  }
+}

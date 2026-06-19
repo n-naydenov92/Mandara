@@ -1,0 +1,26 @@
+{
+  "title": "Inquire about a stay",
+  "subtitle": "Fill in the form and we'll get back to you as soon as possible.",
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "dates": "Preferred dates",
+    "guests": "Number of guests",
+    "message": "Message",
+    "submit": "Send inquiry"
+  },
+  "placeholder": {
+    "title": "Online booking — coming soon",
+    "text": "For now we accept inquiries via the form. Direct booking will be available soon."
+  },
+  "states": {
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again or write to us directly.",
+    "success": "Thank you! We've received your inquiry."
+  },
+  "prefill": {
+    "villa": "Hello! I'm interested in renting the whole villa.",
+    "room": "Hello! I'm interested in the \"{{name}}\" room."
+  }
+}

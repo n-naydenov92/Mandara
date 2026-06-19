@@ -1,0 +1,7 @@
+.section {
+  position: relative;
+}
+
+.leaf {
+  width: clamp(120px, 16vw, 260px);
+}

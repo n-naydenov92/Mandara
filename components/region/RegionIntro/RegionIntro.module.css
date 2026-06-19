@@ -1,0 +1,13 @@
+.lead {
+  max-width: 44ch;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lead p {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-h3);
+  line-height: 1.5;
+  color: var(--espresso);
+}

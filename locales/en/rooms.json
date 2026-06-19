@@ -1,0 +1,26 @@
+{
+  "dawn": {
+    "name": "Dawn",
+    "description": "A soft blue morning and the first light over the mountain. A spacious east-facing room with linen sheets and a quiet corner for the first coffee — woken by the scent of mint and dew."
+  },
+  "sunrise": {
+    "name": "Sunrise",
+    "description": "Warm gold and the promise of a new day. A cosy room with a large bed, natural materials and a garden terrace bathed in lemongrass."
+  },
+  "noon": {
+    "name": "Noon",
+    "description": "Sunlit clarity and calm quiet. A bright room with tall windows, cool stone and the shade of old trees, scented with rosemary under the midday sun."
+  },
+  "sunset": {
+    "name": "Sunset",
+    "description": "Terracotta tones and long shadows. A room of warm light, a deep armchair and a view of the setting sun — amid sage and earth warmed by the day."
+  },
+  "dusk": {
+    "name": "Dusk",
+    "description": "Violet dusk and the first stars. A quiet room with soft light and scented candles, made for long sleep under a breath of lavender."
+  },
+  "night": {
+    "name": "Night",
+    "description": "Deep calm beneath a dark sky. An intimate room with heavy drapes and warm textures, wrapped in silence and the scent of night herbs."
+  }
+}

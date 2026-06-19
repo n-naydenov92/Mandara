@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Gallery — Villa Mandara",
+    "description": "Explore Villa Mandara in detail — exterior, interior, garden, pool and rooms."
+  },
+  "eyebrow": "gallery",
+  "title": "Every frame is an invitation",
+  "scroll": "Explore",
+  "categoriesLabel": "Gallery categories",
+  "empty": "No photos in this category.",
+  "categories": {
+    "all": "All",
+    "exterior": "Exterior",
+    "interior": "Interior",
+    "garden": "Garden",
+    "pool": "Pool",
+    "rooms": "Rooms"
+  },
+  "captions": {
+    "facade": "Facade",
+    "terrace": "Terrace",
+    "entrance": "Entrance",
+    "panorama": "Panorama",
+    "courtyard": "Courtyard",
+    "dusk": "Dusk",
+    "living": "Living room",
+    "dining": "Dining",
+    "lounge": "Lounge",
+    "hall": "Hallway",
+    "reading": "Reading nook",
+    "fireplace": "Fireplace",
+    "herbs": "Herbs",
+    "lawn": "Lawn",
+    "flowers": "Flowers",
+    "gardenView": "Garden",
+    "morning": "Morning",
+    "shade": "Shade",
+    "poolside": "Poolside",
+    "sunbeds": "Sunbeds",
+    "water": "Water",
+    "poolView": "Pool view",
+    "relax": "Relax",
+    "poolDusk": "Pool at dusk",
+    "masterPavilion": "Master Pavilion",
+    "signaturePavilion": "Signature Pavilion",
+    "deluxePavilion": "Deluxe Pavilion"
+  }
+}

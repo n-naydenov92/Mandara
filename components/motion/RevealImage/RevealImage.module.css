@@ -1,0 +1,9 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.img {
+  object-fit: cover;
+}

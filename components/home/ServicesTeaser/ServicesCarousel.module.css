@@ -1,0 +1,141 @@
+/* Височина на надписа под снимката (заглавие + мета + gap) — ползва се за
+   вертикалното центриране на стрелките спрямо снимковата лента. */
+.carousel {
+  --caption-h: 4.25rem;
+  position: relative;
+}
+
+.track {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-block: 0.25rem;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 4px;
+}
+
+.card {
+  flex: 0 0 clamp(20rem, 46%, 34rem);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 300ms var(--ease);
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.title {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-h3);
+  line-height: 1.15;
+  color: var(--espresso);
+}
+
+.meta {
+  font-family: var(--f-ui);
+  font-size: var(--fs-ui);
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.nav {
+  position: absolute;
+  top: calc((100% - var(--caption-h)) / 2);
+  transform: translateY(-50%);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--sand);
+  border-radius: 999px;
+  color: var(--espresso);
+  background: var(--ivory);
+  cursor: pointer;
+  transition:
+    background var(--dur-ui) var(--ease),
+    border-color var(--dur-ui) var(--ease),
+    color var(--dur-ui) var(--ease),
+    opacity var(--dur-ui) var(--ease);
+}
+
+.nav:hover {
+  border-color: var(--terra);
+  color: var(--terra);
+}
+
+.nav:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 2px;
+}
+
+.nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.prev {
+  left: -1.25rem;
+}
+
+.next {
+  right: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    flex-basis: 70%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex-basis: 82%;
+  }
+
+  .nav {
+    display: none;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "title": "The Region — Gorna Kovachevitsa | Villa Mandara",
+    "description": "Gorna Kovachevitsa — an authentic Rhodope village of stone houses and pine forest, a step away from Villa Mandara."
+  },
+  "hero": {
+    "eyebrow": "the region",
+    "title": "Gorna Kovachevitsa",
+    "scroll": "Explore"
+  },
+  "intro": {
+    "lead": "Hidden high in the Western Rhodopes, Gorna Kovachevitsa is a village paused in time — stone houses, narrow cobbled lanes and a quiet broken only by the mountain. Villa Mandara sits a step away from all of it."
+  },
+  "blocks": {
+    "village": {
+      "eyebrow": "the village",
+      "title": "Stone, timber and time",
+      "body": "Revival-era houses of stone and hand-cut timber climb the slope, linked by cobbled lanes and old stone bridges. Everything here is authentic — no shopfronts, no noise, only the calm of a living Rhodope village."
+    },
+    "nature": {
+      "eyebrow": "nature",
+      "title": "Forests, rivers and trails",
+      "body": "Pine forests begin at the doorstep and the river sings at the bottom of the gorge. Walking routes set off straight from the village — to peaks, meadows and tucked-away springs, at whatever pace you choose."
+    },
+    "nearby": {
+      "eyebrow": "nearby",
+      "title": "Easy to discover",
+      "body": "Minutes away lie the reserve villages of Kovachevitsa and Leshten, the mineral baths of Ognyanovo and the lively markets of Gotse Delchev. Local wine, home cooking and Rhodope hospitality — all within easy reach."
+    }
+  }
+}

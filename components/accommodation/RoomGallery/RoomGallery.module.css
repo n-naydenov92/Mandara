@@ -1,0 +1,95 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--sand);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.img {
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+}
+
+.frame:hover .img {
+  transform: scale(1.03);
+}
+
+.expand {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 9999px;
+  background: rgba(250, 246, 238, 0.92);
+  color: var(--espresso);
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity var(--dur-ui) var(--ease),
+    transform var(--dur-ui) var(--ease);
+}
+
+.frame:hover .expand,
+.frame:focus-visible .expand {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.counter {
+  font-family: var(--f-ui);
+  font-size: var(--fs-ui);
+  letter-spacing: var(--tracking-ui);
+  color: var(--stone);
+  font-variant-numeric: tabular-nums;
+}
+
+.arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(168, 159, 146, 0.5);
+  color: var(--espresso);
+  transition:
+    background var(--dur-ui) var(--ease),
+    color var(--dur-ui) var(--ease),
+    border-color var(--dur-ui) var(--ease);
+}
+
+.arrow:hover {
+  background: var(--terra);
+  color: var(--cream);
+  border-color: var(--terra);
+}

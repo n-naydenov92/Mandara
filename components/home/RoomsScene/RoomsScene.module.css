@@ -1,0 +1,237 @@
+/* ── Pinned сиквенс: слоганът е slide 0, после стаите ── */
+.wrapper {
+  position: relative;
+  /* височина = брой slide-ове (слоган + стаи) × SLIDE_VH + 100vh hold.
+     --slide-count идва инлайн от React; --slide-vh пада на мобилно. */
+  height: calc(var(--slide-count, 7) * var(--slide-vh, 130) * 1vh + 100vh);
+}
+
+.pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--night);
+}
+
+/* Slide-овете са един върху друг; HARD CUT през .isActive (visibility). */
+.slide {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+
+.slide.isActive {
+  visibility: visible;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(16, 9, 4, 0.04) 0%, rgba(16, 9, 4, 0.28) 54%, rgba(16, 9, 4, 0.58) 100%),
+    linear-gradient(0deg, rgba(16, 9, 4, 0.34), transparent 50%);
+}
+
+/* Картата се анимира САМО с transform + opacity (от JS).
+   Resting state = CURVE.startY (80px) и opacity 0, за да няма flash преди JS. */
+.card {
+  position: absolute;
+  right: clamp(1.5rem, 6vw, 6rem);
+  bottom: 12vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: min(32rem, 80vw);
+  color: var(--cream);
+  opacity: 0;
+  transform: translate3d(0, 80px, 0);
+  will-change: transform, opacity;
+}
+
+.index {
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  color: rgba(245, 237, 224, 0.65);
+}
+
+.name {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5vw, 4.25rem);
+  line-height: 1.02;
+}
+
+.desc {
+  margin-top: 0.2rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.75;
+  color: rgba(245, 237, 224, 0.9);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  margin-top: 0.7rem;
+  padding-bottom: 0.4rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-ui);
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+  text-transform: uppercase;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(245, 237, 224, 0.5);
+  transition:
+    border-color var(--dur-ui) var(--ease),
+    gap var(--dur-ui) var(--ease);
+}
+
+.cta:hover {
+  border-color: var(--cream);
+  gap: 0.85rem;
+}
+
+/* ── Slide 0 — слоган: gradient фон + центрирана карта (анимира се като всяка друга) ── */
+.sloganBg {
+  background: linear-gradient(165deg, var(--olive) 0%, var(--forest) 55%, var(--forest) 100%);
+}
+
+/* По-висока специфичност (.card.sloganCard) → центрирано навсякъде, без зависимост от реда. */
+.card.sloganCard {
+  right: auto;
+  left: 0;
+  bottom: auto;
+  top: 32vh;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: none;
+  padding-inline: var(--side-pad);
+  text-align: center;
+}
+
+.sloganTitle {
+  max-width: 18ch;
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-h2);
+  line-height: 1.12;
+}
+
+.sloganSubtitle {
+  max-width: 44ch;
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  opacity: 0.72;
+}
+
+/* scroll cue (статичен, на слогана) */
+.scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(2.5rem, 8vh, 5rem);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--cream);
+}
+
+.scrollLabel {
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+  text-transform: uppercase;
+  color: rgba(245, 237, 224, 0.8);
+}
+
+.scrollLine {
+  position: relative;
+  width: 1px;
+  height: 52px;
+  overflow: hidden;
+  background: rgba(245, 237, 224, 0.28);
+}
+
+.scrollLine::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 45%;
+  background: var(--cream);
+  animation: roomsScroll 2.2s var(--ease) infinite;
+}
+
+@keyframes roomsScroll {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(230%);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  .wrapper {
+    --slide-vh: 100;
+  }
+
+  .card {
+    right: auto;
+    left: clamp(1.25rem, 6vw, 2rem);
+    bottom: 14vh;
+    width: calc(100vw - 48px);
+  }
+
+  .scrim {
+    background: linear-gradient(0deg, rgba(16, 9, 4, 0.72), rgba(16, 9, 4, 0.12) 62%);
+  }
+}
+
+/* ── Reduced motion: без pinning, slide-овете се подреждат един под друг ── */
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    height: auto;
+  }
+
+  .pin {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .slide {
+    position: relative;
+    visibility: visible;
+    min-height: 100vh;
+  }
+
+  .card {
+    position: absolute;
+    opacity: 1;
+    transform: none;
+  }
+
+  .scrollLine::after {
+    animation: none;
+  }
+}

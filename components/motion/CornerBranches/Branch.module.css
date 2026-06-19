@@ -1,0 +1,46 @@
+.branch {
+  position: absolute;
+  width: clamp(80px, 13vw, 210px);
+  /* Цветът се подава от .branches[data-tone] чрез --branch-color (наследяване). */
+  color: var(--branch-color, rgba(245, 237, 224, 0.2));
+  pointer-events: none;
+  will-change: transform;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tl {
+  top: -2%;
+  left: -1%;
+}
+
+.tr {
+  top: -2%;
+  right: -1%;
+}
+
+.bl {
+  bottom: 0%;
+  left: -1%;
+}
+
+.br {
+  bottom: 0%;
+  right: -1%;
+}
+
+.tr .svg {
+  transform: scaleX(-1);
+}
+
+.bl .svg {
+  transform: scaleY(-1);
+}
+
+.br .svg {
+  transform: scale(-1, -1);
+}

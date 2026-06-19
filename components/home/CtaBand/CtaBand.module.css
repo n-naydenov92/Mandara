@@ -1,0 +1,36 @@
+.band {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(2.25rem, 4vw, 3.5rem);
+  background:
+    radial-gradient(110% 140% at 50% 0%, rgba(196, 147, 80, 0.2), transparent 60%),
+    var(--sand);
+  color: var(--espresso);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+}
+
+.subtitle {
+  max-width: 34rem;
+  margin-top: 1rem;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: var(--fs-body);
+  color: rgba(46, 34, 24, 0.7);
+}
+
+.button {
+  margin-top: 1.5rem;
+}

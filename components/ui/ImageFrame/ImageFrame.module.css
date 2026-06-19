@@ -1,0 +1,13 @@
+/* Презентационна рамка: попълва родителя (който задава размер/радиус/aspect)
+   и clip-ва снимката по наследения радиус. Без motion — анимира я родителят. */
+.frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.img {
+  object-fit: cover;
+}

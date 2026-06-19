@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Галерия — Вила Мандара",
+    "description": "Разгледайте вила Мандара в детайли — екстериор, интериор, градина, басейн и стаи."
+  },
+  "eyebrow": "галерия",
+  "title": "Всеки кадър е покана",
+  "scroll": "Разгледай",
+  "categoriesLabel": "Категории на галерията",
+  "empty": "Няма снимки в тази категория.",
+  "categories": {
+    "all": "Всички",
+    "exterior": "Екстериор",
+    "interior": "Интериор",
+    "garden": "Градина",
+    "pool": "Басейн",
+    "rooms": "Стаи"
+  },
+  "captions": {
+    "facade": "Фасада",
+    "terrace": "Тераса",
+    "entrance": "Вход",
+    "panorama": "Панорама",
+    "courtyard": "Двор",
+    "dusk": "Здрач",
+    "living": "Дневна",
+    "dining": "Трапезария",
+    "lounge": "Кът за сядане",
+    "hall": "Антре",
+    "reading": "Кът за четене",
+    "fireplace": "Камина",
+    "herbs": "Билки",
+    "lawn": "Морава",
+    "flowers": "Цветя",
+    "gardenView": "Градина",
+    "morning": "Утро",
+    "shade": "Сянка",
+    "poolside": "Край басейна",
+    "sunbeds": "Шезлонги",
+    "water": "Вода",
+    "poolView": "Изглед към басейна",
+    "relax": "Релакс",
+    "poolDusk": "Басейн на здрач",
+    "masterPavilion": "Master павилион",
+    "signaturePavilion": "Signature павилион",
+    "deluxePavilion": "Deluxe павилион"
+  }
+}

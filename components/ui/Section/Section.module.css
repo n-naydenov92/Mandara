@@ -1,0 +1,47 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: var(--section-pad);
+}
+
+.transparent {
+  background: transparent;
+  color: var(--espresso);
+}
+
+.panel {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(250, 246, 238, 0.6) 16%,
+    rgba(250, 246, 238, 0.6) 84%,
+    transparent 100%
+  );
+  color: var(--espresso);
+}
+
+.cream {
+  background: var(--cream);
+  color: var(--espresso);
+}
+
+.ivory {
+  background: var(--ivory);
+  color: var(--espresso);
+}
+
+.olive {
+  background: linear-gradient(165deg, #939b80 0%, var(--olive) 45%, var(--forest) 100%);
+  color: var(--cream);
+}
+
+.forest {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.night {
+  background: var(--night);
+  color: var(--cream);
+}

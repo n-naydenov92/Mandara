@@ -1,0 +1,17 @@
+.leadWrap {
+  max-width: 46rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.lead {
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.8;
+  color: rgba(46, 34, 24, 0.72);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}

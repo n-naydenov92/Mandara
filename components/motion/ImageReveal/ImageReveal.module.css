@@ -1,0 +1,42 @@
+.frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.mask {
+  position: absolute;
+  inset: 0;
+}
+
+.zoom {
+  position: absolute;
+  inset: 0;
+}
+
+.img {
+  object-fit: cover;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.001);
+  }
+  to {
+    transform: scale(1.07);
+  }
+}
+
+.kenburns {
+  animation: kenburns 16s var(--ease) infinite alternate;
+}
+
+.hoverZoom .zoom {
+  transition: transform 0.9s var(--ease);
+}
+
+.hoverZoom:hover .zoom {
+  transform: scale(1.05);
+}

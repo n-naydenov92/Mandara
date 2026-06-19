@@ -1,0 +1,137 @@
+/* Разположение 1:1 по omaivillas.com — "side by side images + content":
+   flex 2 колони (50/50); дясната колона е flex-column space-between,
+   за да "падне" текстът + бутонът в дъното. По-широк контейнер за
+   по-доминиращи снимки. */
+.wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1880px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 3vw, 3rem);
+  display: flex;
+  flex-direction: row;
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+
+.colLeft,
+.colRight {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.colRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.textTop {
+  padding-left: clamp(1.875rem, 4vw, 5rem);
+  padding-right: clamp(0rem, 3vw, 3.75rem);
+}
+
+.lead {
+  margin-top: clamp(0.75rem, 1.3vw, 1.25rem);
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+  line-height: 1.36;
+  color: var(--espresso);
+}
+
+.imgLeft,
+.imgRight {
+  width: 100%;
+  max-width: 870.5px;
+  aspect-ratio: 870.5 / 1305.75;
+  border-radius: var(--radius-card);
+}
+
+.imgLeft {
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+}
+
+/* Билка в долно-дясното празно пространство, растяща нагоре. По-висока
+   специфичност (.wrap .leaf), за да печели над генеричните .accent/corner
+   класове от BotanicalAccent.module.css. */
+.wrap .leaf {
+  top: auto;
+  left: auto;
+  bottom: clamp(2rem, 6vh, 6rem);
+  right: clamp(1.5rem, 4vw, 5rem);
+  width: clamp(90px, 9vw, 170px);
+  transform: none;
+  opacity: 0.16;
+}
+
+.textBottom {
+  padding-left: 0;
+}
+
+.footerText {
+  max-width: 320px;
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: rgba(46, 34, 24, 0.72);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding-bottom: 0.35rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-ui);
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+  text-transform: uppercase;
+  color: var(--espresso);
+  border-bottom: 1px solid var(--sand);
+  transition:
+    gap var(--dur-ui) var(--ease),
+    border-color var(--dur-ui) var(--ease),
+    color var(--dur-ui) var(--ease);
+}
+
+.cta:hover {
+  gap: 0.85rem;
+  border-color: var(--terra);
+  color: var(--terra);
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .textTop {
+    padding-left: 1.875rem;
+    padding-right: 0;
+  }
+
+  /* мобилен зигзаг като в оригинала: лявата снимка тясна вляво,
+     дясната снимка тясна вдясно */
+  .imgLeft {
+    margin-top: 2.5rem;
+    width: 70%;
+    margin-right: auto;
+  }
+
+  .imgRight {
+    margin-bottom: 1.25rem;
+    width: 70%;
+    margin-left: auto;
+  }
+
+  .textBottom {
+    padding-left: 1.875rem;
+  }
+
+  /* Тясно за декор при стек на колоните — крие се, за да не припокрива текста. */
+  .wrap .leaf {
+    display: none;
+  }
+}

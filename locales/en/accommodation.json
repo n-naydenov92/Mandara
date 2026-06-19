@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "title": "Accommodation | Villa Mandara",
+    "description": "The whole villa for your group or a single room — six rooms named after the hours of the day, with in-season and off-season rates."
+  },
+  "hero": {
+    "eyebrow": "accommodation",
+    "title": "The rooms of Mandara",
+    "lead": "Six rooms named after the hours of the day, and one shared villa in complete privacy. Take the whole space for your group, or just your own room.",
+    "scroll": "Explore"
+  },
+  "stats": {
+    "rooms": "{{n}} bedrooms",
+    "guests": "up to {{n}} guests",
+    "shared": "shared common areas"
+  },
+  "compare": {
+    "villa": {
+      "tag": "Private · Exclusive",
+      "title": "The whole villa",
+      "note": "6 bedrooms · up to 9 guests · the entire space to yourselves",
+      "cta": "See the villa"
+    },
+    "room": {
+      "tag": "Shared",
+      "title": "A single room",
+      "note": "Common areas and bathrooms are shared with other guests",
+      "cta": "See the rooms"
+    }
+  },
+  "parts": {
+    "villa": { "index": "01", "label": "The whole villa", "tag": "Private · Exclusive" },
+    "rooms": { "index": "02", "label": "The rooms", "tag": "Shared · By the room" }
+  },
+  "villa": {
+    "eyebrow": "the whole villa",
+    "title": "The whole villa — just for you",
+    "lead": "Rent the entire villa and have it all to yourself — the six rooms, the shared living room, the kitchen, the pool and the garden, in complete calm and privacy for your group.",
+    "badge": "Exclusive",
+    "exclusivity": "The whole villa just for your group — complete privacy, with no shared spaces.",
+    "highlights": [
+      "The whole villa to yourselves",
+      "Complete privacy",
+      "Private pool and garden",
+      "Up to 9 guests in 6 bedrooms"
+    ],
+    "includesTitle": "What's included",
+    "includes": {
+      "pool": "Outdoor pool",
+      "kitchen": "Fully equipped kitchen",
+      "living": "Shared living room with fireplace",
+      "bbq": "Barbecue area",
+      "garden": "Garden and terraces with a view",
+      "parking": "Parking and free Wi-Fi"
+    }
+  },
+  "rooms": {
+    "eyebrow": "by the room",
+    "title": "Or just your room",
+    "lead": "Booking a single room is possible. The common areas and bathrooms are shared — so rooms are combined with other guests of the villa.",
+    "featuresTitle": "Key features",
+    "sharedNote": "Bathrooms and common areas are shared when booking a single room.",
+    "beds_one": "{{count}} bed",
+    "beds_other": "{{count}} beds",
+    "items": {
+      "dawn": {
+        "features": [
+          "Large bed with linen sheets",
+          "East-facing view of the sunrise",
+          "A cosy corner for morning coffee",
+          "Tall windows and plenty of light"
+        ]
+      },
+      "sunrise": {
+        "features": [
+          "Spacious bed for two",
+          "Private terrace facing the garden",
+          "Natural materials and warm tones",
+          "The scent of lemongrass"
+        ]
+      },
+      "noon": {
+        "features": [
+          "The most spacious room — 30 m²",
+          "Tall windows and cool stone",
+          "Shade from old trees",
+          "A breath of rosemary"
+        ]
+      },
+      "sunset": {
+        "features": [
+          "Bed for two and a deep armchair",
+          "View of the sunset over the mountain",
+          "Warm, terracotta light",
+          "The scent of garden sage"
+        ]
+      },
+      "dusk": {
+        "features": [
+          "Soft, dimmed lighting",
+          "Scented candles for a long sleep",
+          "View of the herb bed",
+          "A breath of lavender"
+        ]
+      },
+      "night": {
+        "features": [
+          "Heavy drapes for deep sleep",
+          "Warm textures and silence",
+          "A view of the stars",
+          "The scent of night herbs"
+        ]
+      }
+    }
+  },
+  "pricing": {
+    "offSeasonLabel": "Off-season",
+    "inSeasonLabel": "In season",
+    "perNight": "/ night",
+    "from": "from",
+    "guestsRooms": "up to {{guests}} guests · {{bedrooms}} bedrooms"
+  },
+  "cta": {
+    "villa": "Inquire about the villa",
+    "room": "Inquire about this room"
+  },
+  "gallery": {
+    "prev": "Previous photo",
+    "next": "Next photo",
+    "open": "Open photo full screen"
+  }
+}

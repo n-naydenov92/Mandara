@@ -1,0 +1,26 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+}
+
+.link {
+  color: rgba(245, 237, 224, 0.55);
+  transition: color var(--dur-ui) var(--ease);
+}
+
+.link:hover {
+  color: var(--ember);
+}
+
+.active {
+  color: var(--ember);
+}
+
+.separator {
+  color: rgba(245, 237, 224, 0.25);
+}

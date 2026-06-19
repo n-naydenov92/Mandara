@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "title": "About Villa Mandara | A home among the herbs",
+    "description": "Six rooms named after the hours of the day, a herb garden, a pool and quiet — Villa Mandara near Gorna Kovachitsa."
+  },
+  "hero": {
+    "eyebrow": "the villa",
+    "title": "A home among the herbs",
+    "scroll": "Explore"
+  },
+  "intro": {
+    "lead": "Villa Mandara was made for one home at a time. Six rooms, a shared living room, an outdoor pool and a herb garden — a place where every group stays alone, at its own pace, wrapped in the silence of the Rhodopes.",
+    "stats": {
+      "rooms": { "label": "Rooms", "value": "6" },
+      "capacity": { "label": "Guests", "value": "up to 12" },
+      "area": { "label": "Area", "value": "~400 m²" },
+      "location": { "label": "Location", "value": "Gorna Kovachitsa" }
+    }
+  },
+  "blocks": {
+    "architecture": {
+      "eyebrow": "the space",
+      "title": "Stone, wood and light",
+      "body": "The villa follows the slope — stone foundations, oak beams and wide windows that let the mountain inside. Restrained and warm, the architecture is in dialogue with the landscape, not above it."
+    },
+    "interior": {
+      "eyebrow": "interior",
+      "title": "Comfort woven from nature",
+      "body": "Linen, wool, clay and wood in natural tones. A spacious living room with a fireplace, a long table for shared dinners and quiet reading corners — all in the palette of the earth."
+    },
+    "garden": {
+      "eyebrow": "the garden",
+      "title": "Herbs within reach",
+      "body": "A living garden of mint, rosemary, lavender and garden sage grows around the villa. Pick, dry, steep — Mandara's herbal rituals begin at the doorstep and end in a cup of tea before sleep."
+    },
+    "wellness": {
+      "eyebrow": "pool & relax",
+      "title": "Water, sun and calm",
+      "body": "An outdoor pool with a terrace facing the mountain, loungers in the shade and a quiet corner to restore. The day flows slowly here — exactly as long as it needs to."
+    }
+  },
+  "rooms": {
+    "eyebrow": "the rooms",
+    "title": "Six hours of the day",
+    "subtitle": "Each room carries the name of a moment in the day.",
+    "lead": "From the soft blue of Dawn to the deep calm of Night — the six rooms follow the light through the day. Different in character, united by the same natural materials and breath of herbs.",
+    "labels": {
+      "beds": "Beds",
+      "area": "Area",
+      "areaUnit": "m²",
+      "view": "View",
+      "herb": "Herb"
+    },
+    "detail": {
+      "dawn": { "view": "to the sunrise", "herb": "mint" },
+      "sunrise": { "view": "to the garden", "herb": "lemongrass" },
+      "noon": { "view": "to the courtyard", "herb": "rosemary" },
+      "sunset": { "view": "to the mountain", "herb": "garden sage" },
+      "dusk": { "view": "to the herb bed", "herb": "lavender" },
+      "night": { "view": "to the stars", "herb": "night herbs" }
+    }
+  },
+  "amenities": {
+    "eyebrow": "amenities",
+    "title": "What the stay includes",
+    "groups": {
+      "accommodation": {
+        "title": "Accommodation",
+        "items": {
+          "sixRooms": "Six rooms with their own character",
+          "linens": "Luxurious linen bedding",
+          "livingRoom": "Shared living room with fireplace",
+          "kitchen": "Fully equipped kitchen",
+          "heating": "Heating and air conditioning",
+          "wifi": "Free Wi-Fi"
+        }
+      },
+      "wellness": {
+        "title": "Relax",
+        "items": {
+          "pool": "Outdoor pool",
+          "herbalRituals": "Herbal rituals and teas",
+          "sauna": "Recovery area",
+          "loungers": "Loungers and terrace"
+        }
+      },
+      "outdoors": {
+        "title": "Outdoors",
+        "items": {
+          "garden": "Herb garden",
+          "terrace": "Terraces with a view",
+          "firePit": "Outdoor fire pit",
+          "parking": "Free parking"
+        }
+      },
+      "services": {
+        "title": "Services",
+        "items": {
+          "chef": "Chef on request",
+          "transfer": "Transfer",
+          "concierge": "Concierge",
+          "cleaning": "Daily housekeeping"
+        }
+      }
+    }
+  },
+  "location": {
+    "eyebrow": "location",
+    "title": "Where the noise ends",
+    "body": "Villa Mandara sits in Mandara Village near Gorna Kovachitsa — tucked into the Western Rhodopes, far from everything and close to yourself.",
+    "cta": "About the region",
+    "nearby": {
+      "title": "Nearby",
+      "items": {
+        "monastery": { "place": "Monastery", "time": "15 min" },
+        "trails": { "place": "Mountain trails", "time": "20 min" },
+        "springs": { "place": "Mineral baths, Ognyanovo", "time": "25 min" },
+        "town": { "place": "Gotse Delchev", "time": "30 min" }
+      }
+    }
+  }
+}

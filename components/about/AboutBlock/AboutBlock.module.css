@@ -1,0 +1,56 @@
+.grid {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+/* reversed само обръща визуалния ред — снимката и текстът остават на един ред. */
+.reversed {
+  flex-direction: row-reverse;
+}
+
+.text {
+  flex: 1 1 0;
+}
+
+.media {
+  flex: 1 1 0;
+  min-height: clamp(300px, 34vw, 440px);
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 60px -32px rgba(46, 34, 24, 0.45);
+}
+
+.title {
+  margin-top: 0.5rem;
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 2.7vw, 2.7rem);
+  line-height: 1.1;
+  color: var(--espresso);
+}
+
+.body {
+  margin-top: clamp(1rem, 1.6vw, 1.5rem);
+  max-width: 46ch;
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: rgba(46, 34, 24, 0.72);
+}
+
+@media (max-width: 860px) {
+  .grid,
+  .reversed {
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .media {
+    min-height: clamp(240px, 60vw, 360px);
+  }
+
+  .body {
+    max-width: none;
+  }
+}

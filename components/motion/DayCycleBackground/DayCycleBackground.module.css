@@ -1,0 +1,13 @@
+.layer,
+.static {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.static {
+  background:
+    radial-gradient(42% 34% at 60% 32%, rgba(196, 147, 80, 0.16), transparent 70%),
+    linear-gradient(180deg, #f8efe3 0%, #e6d9c8 100%);
+}
