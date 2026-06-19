@@ -18,6 +18,7 @@ const CURVE = { fadeInUntil: 0.12, fadeOutFrom: 0.78, startY: 80, travelY: -260 
 const FADE_OUT_DRIFT = 0.25
 const INTRO_SLIDE_INDEX = 0
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
+const MOBILE_QUERY = '(max-width: 720px)'
 const OPACITY_PRECISION = 3
 const TRANSFORM_PRECISION = 2
 
@@ -70,12 +71,16 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
       return
     }
 
+    // На мобилно картата влиза с CSS анимация при активиране (compositor),
+    // без покадрови JS записи — иначе текстът лага спрямо нативния скрол.
+    const isMobile = window.matchMedia(MOBILE_QUERY).matches
+
     let lastActive = 0
     let ticking = false
     let frameId = 0
 
     const resetCard = (card: HTMLElement | null | undefined) => {
-      if (!card) {
+      if (!card || isMobile) {
         return
       }
       card.style.opacity = '0'
@@ -111,7 +116,7 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
       }
 
       const card = cards[active]
-      if (!card) {
+      if (!card || isMobile) {
         return
       }
       const local = (progress - active * segment) / segment
