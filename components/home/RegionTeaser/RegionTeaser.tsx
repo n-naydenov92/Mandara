@@ -18,6 +18,11 @@ interface RegionTeaserProps {
 
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
 const ICON_SIZE = 16
+// Само на мобилно (нативен скрол) включваме CSS scroll-snap: всяка дестинация е
+// snap точка със scroll-snap-stop:always → силен скрол спира на следващата, не
+// прелита. Десктопът (Lenis води wheel-а) остава на плавния scrub.
+const MOBILE_SNAP_QUERY = '(max-width: 820px)'
+const SNAP_TYPE = 'y proximity'
 // Dwell: всеки сегмент „почива“ върху дестинация през първите 45%, после мек swap.
 const DWELL = 0.45
 const SWAP = 1 - DWELL
@@ -112,7 +117,8 @@ function useRegionScroll(sectionRef: RefObject<HTMLElement | null>, count: numbe
         body.style.opacity = index === active ? '1' : '0'
       })
       images.forEach((image) => {
-        image.style.visibility = Number(image.dataset.i) === active ? 'visible' : 'hidden'
+        // Меко преливане (opacity), а не рязък hard cut → по-плавна смяна.
+        image.style.opacity = Number(image.dataset.i) === active ? '1' : '0'
       })
       // Width-swap следва суровия прогрес → реагира веднага, без dwell забавяне.
       applyBalance(progress)
@@ -170,12 +176,42 @@ function useRegionScroll(sectionRef: RefObject<HTMLElement | null>, count: numbe
   }, [sectionRef, count])
 }
 
+// Включва CSS scroll-snap на root-а САМО на мобилно и САМО докато секцията е на
+// екрана → snap-ът не пипа другите секции/десктопа, а scroll-snap-stop:always по
+// маркерите спира силния скрол на следващата дестинация (1 скрол = 1 местене).
+function useRegionSnap(sectionRef: RefObject<HTMLElement | null>): void {
+  useEffect(() => {
+    const section = sectionRef.current
+    if (
+      !section ||
+      window.matchMedia(REDUCED_MOTION_QUERY).matches ||
+      !window.matchMedia(MOBILE_SNAP_QUERY).matches
+    ) {
+      return
+    }
+    const root = document.documentElement
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0]
+      if (!entry) {
+        return
+      }
+      root.style.scrollSnapType = entry.isIntersecting ? SNAP_TYPE : ''
+    })
+    observer.observe(section)
+    return () => {
+      observer.disconnect()
+      root.style.scrollSnapType = ''
+    }
+  }, [sectionRef])
+}
+
 export function RegionTeaser({ lng }: RegionTeaserProps) {
   const { t } = useTranslation('home')
   const sectionRef = useRef<HTMLElement>(null)
   const count = REGION_KEYS.length
 
   useRegionScroll(sectionRef, count)
+  useRegionSnap(sectionRef)
 
   return (
     <section
@@ -185,6 +221,15 @@ export function RegionTeaser({ lng }: RegionTeaserProps) {
       style={{ '--region-count': count } as CSSProperties}
       aria-label={t('region.eyebrow')}
     >
+      {/* Невидими snap точки — по една на дестинация, на нейната scroll позиция. */}
+      {REGION_KEYS.map((key, index) => (
+        <span
+          key={`snap-${key}`}
+          className={styles.snapPoint}
+          aria-hidden="true"
+          style={{ top: `calc(var(--region-vh, 100) * 1vh * ${index})` }}
+        />
+      ))}
       <div className={styles.pin}>
         <CornerBranches tone="dark" corners={['bl']} />
         <div className={styles.layout}>

@@ -145,16 +145,30 @@
   border-radius: var(--radius-card);
 }
 
-/* Снимките се сменят рязко (hard cut) — само активната е видима, без opacity/fade. */
+/* Снимките преливат меко (opacity), стекнати една върху друга. */
 .img {
   position: absolute;
   inset: 0;
-  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--dur-ui) var(--ease);
+  will-change: opacity;
 }
 
 /* Първата дестинация е видима още преди JS. */
 .img[data-i='0'] {
-  visibility: visible;
+  opacity: 1;
+}
+
+/* Невидими scroll-snap котви — по една на дестинация (top подаден инлайн).
+   Активни само когато root-ът има scroll-snap-type (мобилно, секцията на екрана). */
+.snapPoint {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .imgInner {
@@ -229,7 +243,7 @@
   }
 
   .img[data-i='0'] {
-    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .img:not([data-i='0']) {
