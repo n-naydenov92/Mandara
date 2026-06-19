@@ -1,10 +1,12 @@
 /* ── Pinned scroll-секция: N дестинации сменят паралелно title/body/снимки ──
-   Височина = (count-1) swap-а × region-vh + 100vh hold. --region-count идва инлайн от React. */
+   Височина = count × region-vh + 100vh hold. Последният сегмент е dwell за
+   последната дестинация (престой преди pin-ът да се освободи). --region-count
+   идва инлайн от React. */
 .section {
   position: relative;
   background: var(--cream);
   color: var(--espresso);
-  height: calc((var(--region-count, 4) - 1) * var(--region-vh, 100) * 1vh + 100vh);
+  height: calc(var(--region-count, 4) * var(--region-vh, 100) * 1vh + 100vh);
 }
 
 .pin {
@@ -58,6 +60,7 @@
   line-height: 1.04;
   white-space: nowrap;
   opacity: 0;
+  transition: opacity var(--dur-ui) var(--ease);
   will-change: opacity;
 }
 
@@ -81,6 +84,7 @@
   flex-direction: column;
   gap: 0.75rem;
   opacity: 0;
+  transition: opacity var(--dur-ui) var(--ease);
   will-change: opacity;
 }
 

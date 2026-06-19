@@ -26,7 +26,6 @@ const MIN_COUNT = 2
 // честотата на scroll събитията (Lenis ги подава разредено).
 const DAMP = 0.16
 const SETTLE = 0.0005
-const OPACITY_PRECISION = 3
 const FR_PRECISION = 3
 // Width-swap: лявата колона започва широка (COL_WIDE), дясната тясна (COL_NARROW);
 // на скрол се разменят. Стойностите са в fr — ~63/37 → 37/63.
@@ -42,8 +41,10 @@ function easeInOut(t: number): number {
 }
 
 // „Почивка → мек swap → почивка“ вместо linear мъгла. Изисква count >= 2.
+// count сегмента (не count-1): последният е чист dwell за последната
+// дестинация, за да има престой върху нея преди pin-ът да се освободи.
 function computeSmoothIndex(progress: number, count: number): number {
-  const segWidth = 1 / (count - 1)
+  const segWidth = 1 / count
   const rawSeg = progress / segWidth
   const segInt = Math.floor(rawSeg)
   if (segInt >= count - 1) {
@@ -54,11 +55,6 @@ function computeSmoothIndex(progress: number, count: number): number {
     return segInt
   }
   return segInt + easeInOut((frac - DWELL) / SWAP)
-}
-
-// Текст: симетричен crossfade — старият избледнява, докато новият се появява.
-function fadeOpacity(smoothIndex: number, index: number): number {
-  return clamp(1 - Math.abs(smoothIndex - index), 0, 1)
 }
 
 // Vanilla scroll+RAF engine. Прогресът се чете през getBoundingClientRect (Lenis-safe),
@@ -104,14 +100,17 @@ function useRegionScroll(sectionRef: RefObject<HTMLElement | null>, count: numbe
 
     const applyFrame = (progress: number) => {
       const smoothIndex = computeSmoothIndex(progress, count)
+      // Текстът и снимките сменят на ЕДНА И СЪЩА активна дестинация (snap при
+      // средата) → никога два текста наслагани. Мекотата идва от CSS opacity
+      // transition, а не от scroll-обвързан crossfade, който „застиваше“ между
+      // две заглавия при малък скрол.
+      const active = clamp(Math.round(smoothIndex), 0, count - 1)
       titles.forEach((title, index) => {
-        title.style.opacity = fadeOpacity(smoothIndex, index).toFixed(OPACITY_PRECISION)
+        title.style.opacity = index === active ? '1' : '0'
       })
       bodies.forEach((body, index) => {
-        body.style.opacity = fadeOpacity(smoothIndex, index).toFixed(OPACITY_PRECISION)
+        body.style.opacity = index === active ? '1' : '0'
       })
-      // Снимки: рязка смяна (hard cut) — без opacity, без наслагване.
-      const active = clamp(Math.round(smoothIndex), 0, count - 1)
       images.forEach((image) => {
         image.style.visibility = Number(image.dataset.i) === active ? 'visible' : 'hidden'
       })
