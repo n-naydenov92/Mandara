@@ -28,15 +28,26 @@ export function Hero({ lng }: HeroProps) {
   const reduced = useReducedMotionSafe()
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  // React не рендира `muted` в SSR HTML-а → мобилните браузъри блокират autoplay.
-  // Задаваме го реално от клиента преди play().
+  // React не рендира `muted` в SSR HTML-а → браузърите блокират autoplay.
+  // Задаваме го реално от клиента и пробваме play() пак щом има данни
+  // (първият опит може да е прекъснат от зареждането → AbortError).
   useEffect(() => {
     const video = videoRef.current
     if (!video) {
       return
     }
     video.muted = true
-    void video.play().catch(() => undefined)
+    video.defaultMuted = true
+
+    const attemptPlay = () => {
+      void video.play().catch(() => undefined)
+    }
+
+    attemptPlay()
+    video.addEventListener('canplay', attemptPlay)
+    return () => {
+      video.removeEventListener('canplay', attemptPlay)
+    }
   }, [])
 
   const contentMotion = reduced

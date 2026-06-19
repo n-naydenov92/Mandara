@@ -18,7 +18,6 @@ const CURVE = { fadeInUntil: 0.12, fadeOutFrom: 0.78, startY: 80, travelY: -260 
 const FADE_OUT_DRIFT = 0.25
 const INTRO_SLIDE_INDEX = 0
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
-const MOBILE_QUERY = '(max-width: 720px)'
 const OPACITY_PRECISION = 3
 const TRANSFORM_PRECISION = 2
 
@@ -71,16 +70,23 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
       return
     }
 
-    // На мобилно картата влиза с CSS анимация при активиране (compositor),
-    // без покадрови JS записи — иначе текстът лага спрямо нативния скрол.
-    const isMobile = window.matchMedia(MOBILE_QUERY).matches
-
     let lastActive = 0
     let ticking = false
     let frameId = 0
+    let alive = true
+    let sectionTop = 0
+    let runway = 0
+
+    // Кешираме скъпите layout метрики; per-frame четем само window.scrollY
+    // (не форсира reflow) → гладко на мобилно, без скок при скриване на
+    // адресната лента (innerHeight се преизчислява само тук).
+    const measure = () => {
+      sectionTop = section.getBoundingClientRect().top + window.scrollY
+      runway = section.offsetHeight - window.innerHeight
+    }
 
     const resetCard = (card: HTMLElement | null | undefined) => {
-      if (!card || isMobile) {
+      if (!card) {
         return
       }
       card.style.opacity = '0'
@@ -95,11 +101,10 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
 
     const update = () => {
       ticking = false
-      const runway = section.offsetHeight - window.innerHeight
       if (!Number.isFinite(runway) || runway <= 0) {
         return
       }
-      let progress = -section.getBoundingClientRect().top / runway
+      let progress = (window.scrollY - sectionTop) / runway
       if (!Number.isFinite(progress)) {
         progress = 0
       }
@@ -116,7 +121,7 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
       }
 
       const card = cards[active]
-      if (!card || isMobile) {
+      if (!card) {
         return
       }
       const local = (progress - active * segment) / segment
@@ -133,15 +138,27 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
       ticking = true
     }
 
+    const onResize = () => {
+      if (!alive) {
+        return
+      }
+      measure()
+      update()
+    }
+
     cards.forEach(resetCard)
+    measure()
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    window.addEventListener('resize', onResize)
+    // Шрифтовете/медията изместват layout-а след монтиране → преизмерваме.
+    void document.fonts?.ready.then(onResize)
     update()
     frameId = requestAnimationFrame(update)
 
     return () => {
+      alive = false
       window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      window.removeEventListener('resize', onResize)
       cancelAnimationFrame(frameId)
     }
   }, [sectionRef])

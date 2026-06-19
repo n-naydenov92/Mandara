@@ -207,25 +207,6 @@
   }
 }
 
-/* ── Мобилно: картата влиза ЕДНОКРАТНО при активиране (compositor анимация),
-   без scroll-linked JS трансформации → гладко, без лаг спрямо нативния скрол. ── */
-@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
-  .slide.isActive .card {
-    animation: roomsCardIn 0.7s var(--ease) forwards;
-  }
-}
-
-@keyframes roomsCardIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 80px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 /* ── Reduced motion: без pinning, slide-овете се подреждат един под друг ── */
 @media (prefers-reduced-motion: reduce) {
   .wrapper {
