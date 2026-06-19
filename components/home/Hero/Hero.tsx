@@ -29,8 +29,8 @@ export function Hero({ lng }: HeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // React не рендира `muted` в SSR HTML-а → браузърите блокират autoplay.
-  // Задаваме го реално от клиента и пробваме play() пак щом има данни
-  // (първият опит може да е прекъснат от зареждането → AbortError).
+  // Задаваме го реално и пробваме play() при няколко момента; ако политиката
+  // (Data Saver и т.н.) пак блокира, пускаме при първия жест на потребителя.
   useEffect(() => {
     const video = videoRef.current
     if (!video) {
@@ -43,10 +43,18 @@ export function Hero({ lng }: HeroProps) {
       void video.play().catch(() => undefined)
     }
 
+    const mediaEvents = ['canplay', 'loadeddata'] as const
+    const gestureEvents = ['pointerdown', 'touchstart', 'keydown', 'scroll'] as const
+
     attemptPlay()
-    video.addEventListener('canplay', attemptPlay)
+    mediaEvents.forEach((event) => video.addEventListener(event, attemptPlay))
+    gestureEvents.forEach((event) =>
+      window.addEventListener(event, attemptPlay, { once: true, passive: true }),
+    )
+
     return () => {
-      video.removeEventListener('canplay', attemptPlay)
+      mediaEvents.forEach((event) => video.removeEventListener(event, attemptPlay))
+      gestureEvents.forEach((event) => window.removeEventListener(event, attemptPlay))
     }
   }, [])
 

@@ -59,6 +59,7 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
     const slideClass = styles.slide
     const activeClass = styles.isActive
     const cardClass = styles.card
+    const cssScrollClass = styles.cssScroll
     if (!slideClass || !activeClass || !cardClass) {
       return
     }
@@ -69,6 +70,14 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
     if (count === 0) {
       return
     }
+
+    // При поддръжка на CSS scroll timelines картата пътува изцяло на
+    // композитора (копринено гладко); JS само активира slide-овете и подава
+    // диапазоните. Иначе — JS fallback с кешираните метрики.
+    const cssDriven =
+      Boolean(cssScrollClass) &&
+      typeof CSS !== 'undefined' &&
+      CSS.supports('animation-timeline', 'scroll()')
 
     let lastActive = 0
     let ticking = false
@@ -83,10 +92,23 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
     const measure = () => {
       sectionTop = section.getBoundingClientRect().top + window.scrollY
       runway = section.offsetHeight - window.innerHeight
+      if (!cssDriven || runway <= 0) {
+        return
+      }
+      // Диапазонът на всяка карта = нейният сегмент от runway-а (в px от scroll 0),
+      // огледало на активирането долу (active = floor(progress * count)).
+      const segment = runway / count
+      cards.forEach((card, index) => {
+        if (!card) {
+          return
+        }
+        card.style.setProperty('--travel-start', `${sectionTop + index * segment}px`)
+        card.style.setProperty('--travel-end', `${sectionTop + (index + 1) * segment}px`)
+      })
     }
 
     const resetCard = (card: HTMLElement | null | undefined) => {
-      if (!card) {
+      if (!card || cssDriven) {
         return
       }
       card.style.opacity = '0'
@@ -121,7 +143,7 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
       }
 
       const card = cards[active]
-      if (!card) {
+      if (!card || cssDriven) {
         return
       }
       const local = (progress - active * segment) / segment
@@ -148,6 +170,9 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
 
     cards.forEach(resetCard)
     measure()
+    if (cssDriven && cssScrollClass) {
+      section.classList.add(cssScrollClass)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResize)
     // Шрифтовете/медията изместват layout-а след монтиране → преизмерваме.

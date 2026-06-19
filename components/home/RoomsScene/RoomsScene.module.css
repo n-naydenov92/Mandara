@@ -207,6 +207,61 @@
   }
 }
 
+/* ── Compositor-driven travel (Chrome/Edge 115+, Safari 26+): картата пътува
+   със скрола изцяло на композитор-нишката → копринено гладко, без main-thread
+   лаг. JS подава диапазоните (--travel-start/end в px) и НЕ пише per-frame.
+   Браузъри без поддръжка падат към JS варианта. ── */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .cssScroll .card {
+      animation: roomsCardTravel linear both;
+      animation-timeline: scroll(root block);
+      animation-range: var(--travel-start, 0px) var(--travel-end, 0px);
+    }
+
+    .cssScroll .card.sloganCard {
+      animation-name: roomsCardTravelIntro;
+    }
+  }
+}
+
+/* Стойностите огледало на CURVE в RoomsScene.tsx (startY 80, travelY -260,
+   fade-out drift → -325). */
+@keyframes roomsCardTravel {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0);
+  }
+  12% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  78% {
+    opacity: 1;
+    transform: translate3d(0, -260px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -325px, 0);
+  }
+}
+
+@keyframes roomsCardTravelIntro {
+  0%,
+  12% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  78% {
+    opacity: 1;
+    transform: translate3d(0, -260px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -325px, 0);
+  }
+}
+
 /* ── Reduced motion: без pinning, slide-овете се подреждат един под друг ── */
 @media (prefers-reduced-motion: reduce) {
   .wrapper {
