@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
 import { IconArrowRight, IconBrandInstagram, IconBrandFacebook } from '@tabler/icons-react'
@@ -25,6 +26,18 @@ export function Hero({ lng }: HeroProps) {
   const { t } = useTranslation('home')
   const { t: tCommon } = useTranslation('common')
   const reduced = useReducedMotionSafe()
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // React не рендира `muted` в SSR HTML-а → мобилните браузъри блокират autoplay.
+  // Задаваме го реално от клиента преди play().
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) {
+      return
+    }
+    video.muted = true
+    void video.play().catch(() => undefined)
+  }, [])
 
   const contentMotion = reduced
     ? {}
@@ -37,6 +50,7 @@ export function Hero({ lng }: HeroProps) {
   return (
     <section className={styles.hero} id="home">
       <video
+        ref={videoRef}
         className={styles.video}
         autoPlay
         muted
