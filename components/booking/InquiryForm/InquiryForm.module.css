@@ -71,6 +71,53 @@
   transform: translateY(-2px);
 }
 
+.submit:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 3px;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.submit:disabled:hover {
+  background: var(--terra);
+  transform: none;
+}
+
+.success,
+.error {
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+.success {
+  max-width: 38rem;
+  padding: 1.1rem 1.35rem;
+  color: var(--forest);
+  background: var(--ivory);
+  border: 1px solid var(--sand);
+  border-left: 3px solid var(--olive);
+  border-radius: var(--radius-card);
+}
+
+.error {
+  margin-top: 0.25rem;
+  color: var(--clay);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submit {
+    transition: background var(--dur-ui) var(--ease);
+  }
+
+  .submit:hover {
+    transform: none;
+  }
+}
+
 @media (max-width: 560px) {
   .row {
     grid-template-columns: 1fr;

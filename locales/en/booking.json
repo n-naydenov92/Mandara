@@ -1,14 +1,57 @@
 {
   "title": "Inquire about a stay",
   "subtitle": "Fill in the form and we'll get back to you as soon as possible.",
+  "hero": {
+    "eyebrow": "reservations",
+    "title": "Reserve your stay",
+    "scroll": "Explore"
+  },
   "form": {
     "name": "Name",
     "email": "Email",
     "phone": "Phone",
     "dates": "Preferred dates",
     "guests": "Number of guests",
+    "loungers": "Number of loungers",
     "message": "Message",
     "submit": "Send inquiry"
+  },
+  "modes": {
+    "label": "Choose a booking type",
+    "villa": {
+      "tab": "The whole villa",
+      "price": "from {{price}} / night",
+      "desc": "The entire villa is yours — 6 bedrooms, pool and complete privacy.",
+      "note": "You rent the whole villa; we reply to your inquiry by email."
+    },
+    "lounger": {
+      "tab": "Lounger",
+      "price": "{{price}} / day",
+      "desc": "A day by the pool. Available only when the villa is free.",
+      "note": "You reserve a lounger for the day — only possible if the villa isn't booked."
+    },
+    "room": {
+      "tab": "Room",
+      "price": "{{price}} / night",
+      "desc": "Your own room, shared common areas. Only when the villa is free.",
+      "note": "You reserve a specific room; the kitchen and pool are shared with other guests."
+    }
+  },
+  "room": {
+    "pickLabel": "Which room"
+  },
+  "price": {
+    "title": "Price",
+    "total": "Total",
+    "empty": "Select dates to see the price.",
+    "disclaimer": "This is an inquiry, not a booking. We confirm by email.",
+    "lineWeekday_one": "{{count}} weekday night",
+    "lineWeekday_other": "{{count}} weekday nights",
+    "lineWeekend_one": "{{count}} night (Fri/Sat)",
+    "lineWeekend_other": "{{count}} nights (Fri/Sat)",
+    "lineRoom_one": "{{count}} night",
+    "lineRoom_other": "{{count}} nights",
+    "lineLounger": "{{quantity}} lounger × {{days}} days"
   },
   "placeholder": {
     "title": "Online booking — coming soon",
@@ -16,11 +59,39 @@
   },
   "states": {
     "loading": "Loading…",
+    "submitting": "Sending…",
     "error": "Something went wrong. Please try again or write to us directly.",
-    "success": "Thank you! We've received your inquiry."
+    "success": "Thank you! We've received your inquiry and will be in touch soon."
+  },
+  "units": {
+    "label": "What are you interested in",
+    "villa": "The whole villa"
+  },
+  "calendar": {
+    "title": "Check availability",
+    "selectDates": "Select dates",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "pricePerNight": "per night",
+    "nights_one": "{{count}} night",
+    "nights_other": "{{count}} nights",
+    "days_one": "{{count}} day",
+    "days_other": "{{count}} days",
+    "minStay": "Minimum stay: {{count}} nights",
+    "unavailableRange": "The selected dates are not available. Please try another period.",
+    "legend": {
+      "available": "Available",
+      "unavailable": "Booked"
+    },
+    "loading": "Loading availability…",
+    "error": "Availability can't be loaded right now. You can still send an inquiry.",
+    "empty": "No availability information for this period.",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month"
   },
   "prefill": {
     "villa": "Hello! I'm interested in renting the whole villa.",
+    "lounger": "Hello! I'd like to reserve a lounger by the pool.",
     "room": "Hello! I'm interested in the \"{{name}}\" room."
   }
 }

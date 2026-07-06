@@ -1,0 +1,75 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--ivory);
+  border: 1px solid var(--sand);
+  border-left: 3px solid var(--terra);
+  border-radius: var(--radius-card);
+}
+
+.title {
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--f-ui);
+  font-size: 0.95rem;
+  color: var(--espresso);
+}
+
+.total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--sand);
+  font-family: var(--f-ui);
+  font-weight: 500;
+  color: var(--espresso);
+}
+
+.totalvalue {
+  font-family: var(--f-display);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  color: var(--clay);
+}
+
+.disclaimer {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: var(--fs-body);
+  color: var(--stone);
+}
+
+.empty {
+  padding: 1.1rem 1.25rem;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: var(--fs-body);
+  color: var(--stone);
+  background: var(--ivory);
+  border: 1px dashed var(--sand);
+  border-radius: var(--radius-card);
+}

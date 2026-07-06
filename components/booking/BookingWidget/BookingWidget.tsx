@@ -1,41 +1,25 @@
-import { getTranslation } from '@/lib/i18n/server'
-import { bookingGateway } from '@/lib/booking/bookingGateway'
-import { InquiryForm } from '@/components/booking/InquiryForm/InquiryForm'
-import type { Locale } from '@/lib/i18n/settings'
-import styles from './BookingWidget.module.css'
+import { ReservationExperience } from '@/components/booking/ReservationExperience/ReservationExperience'
+import { isSmoobuConfigured, resolveApartmentId } from '@/lib/booking/smoobuUnits'
+import { VILLA_UNIT } from '@/lib/booking/bookingGateway'
+import type { BookingMode } from '@/lib/booking/modes'
 
 interface BookingWidgetProps {
-  lng: Locale
+  initialMode: BookingMode
+  initialRoom?: string
   prefillMessage?: string
 }
 
-export async function BookingWidget({ lng, prefillMessage }: BookingWidgetProps) {
-  const { t } = await getTranslation(lng, 'booking')
-  const config = bookingGateway.getEmbedConfig()
-
-  if (config.provider === 'smoobu' && config.src) {
-    return (
-      <iframe
-        className={styles.embed}
-        src={config.src}
-        title={t('title')}
-        loading="lazy"
-      />
-    )
-  }
+// Сървърна граница: чете тайните SMOOBU_*, за да реши дали има жив календар.
+// После клиентският ReservationExperience поема избора и формата.
+export function BookingWidget({ initialMode, initialRoom, prefillMessage }: BookingWidgetProps) {
+  const hasCalendar = isSmoobuConfigured() && resolveApartmentId(VILLA_UNIT) !== undefined
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.notice}>
-        <h2 className={styles.noticeTitle}>{t('placeholder.title')}</h2>
-        <p className={styles.noticeText}>{t('placeholder.text')}</p>
-      </div>
-
-      <div>
-        <h2 className={styles.formTitle}>{t('title')}</h2>
-        <p className={styles.formSubtitle}>{t('subtitle')}</p>
-        <InquiryForm defaultMessage={prefillMessage} />
-      </div>
-    </div>
+    <ReservationExperience
+      initialMode={initialMode}
+      initialRoom={initialRoom}
+      hasCalendar={hasCalendar}
+      defaultMessage={prefillMessage}
+    />
   )
 }

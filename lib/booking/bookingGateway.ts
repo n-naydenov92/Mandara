@@ -1,3 +1,10 @@
+// Booking домейн типове — споделена граница между формата, Smoobu клиента и UI.
+// senior-architect: типовете живеят отделно от конкретните реализации (Formspree, Smoobu),
+// за да са сменяеми без да чупим употребата.
+
+// Идентификатор на „цялата вила" като обект (клиент-безопасна константа).
+export const VILLA_UNIT = 'villa'
+
 export interface InquiryInput {
   name: string
   email: string
@@ -5,38 +12,28 @@ export interface InquiryInput {
   dates?: string
   guests?: string
   message?: string
+  // Контекст от календара (Фаза 2) — обект и избран интервал.
+  unit?: string
+  arrival?: string
+  departure?: string
+  // Контекст от режим-базирания панел — кой режим, коя стая, брой шезлонги, изчислена цена.
+  mode?: string
+  room?: string
+  quantity?: string
+  total?: string
+  currency?: string
 }
 
 export type InquiryResult = { ok: true } | { ok: false; error: string }
 
-export interface EmbedConfig {
-  provider: 'smoobu' | 'none'
-  src?: string
+// Наличност за един ден от един обект — пречистена форма, която UI консумира.
+export interface DayAvailability {
+  date: string // ISO yyyy-mm-dd
+  available: boolean
+  price: number | null
+  minStay: number | null
 }
 
-export interface BookingGateway {
-  getEmbedConfig(): EmbedConfig
-  submitInquiry(input: InquiryInput): Promise<InquiryResult>
+export interface AvailabilityResult {
+  days: readonly DayAvailability[]
 }
-
-const PLACEHOLDER = '__TBD__'
-const SMOOBU_EMBED_ID = process.env.NEXT_PUBLIC_SMOOBU_EMBED_ID
-
-function isConfigured(value: string | undefined): value is string {
-  return Boolean(value) && value !== PLACEHOLDER
-}
-
-class PlaceholderBookingGateway implements BookingGateway {
-  getEmbedConfig(): EmbedConfig {
-    if (isConfigured(SMOOBU_EMBED_ID)) {
-      return { provider: 'smoobu', src: `https://login.smoobu.com/booking/${SMOOBU_EMBED_ID}` }
-    }
-    return { provider: 'none' }
-  }
-
-  async submitInquiry(): Promise<InquiryResult> {
-    return { ok: false, error: 'not-configured' }
-  }
-}
-
-export const bookingGateway: BookingGateway = new PlaceholderBookingGateway()

@@ -1,0 +1,213 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 24rem;
+  padding: 1.25rem;
+  background: var(--ivory);
+  border: 1px solid var(--sand);
+  border-radius: var(--radius-card);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.monthLabel {
+  font-family: var(--f-display);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  text-transform: capitalize;
+  color: var(--espresso);
+}
+
+.nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--espresso);
+  background: transparent;
+  border: 1px solid var(--sand);
+  border-radius: 9999px;
+  transition:
+    background var(--dur-ui) var(--ease),
+    border-color var(--dur-ui) var(--ease);
+}
+
+.nav:hover:not(:disabled) {
+  background: var(--cream);
+  border-color: var(--stone);
+}
+
+.nav:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 2px;
+}
+
+.nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.weekdays,
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+
+.weekday {
+  padding-bottom: 0.25rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--stone);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: opacity var(--dur-ui) var(--ease);
+}
+
+/* Докато идва новата наличност: решетката остава, само се затъмнява (без премигване). */
+.gridLoading {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05rem;
+  aspect-ratio: 1;
+  padding: 0;
+  font-family: var(--f-ui);
+  color: var(--espresso);
+  background: var(--cream);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background var(--dur-ui) var(--ease),
+    color var(--dur-ui) var(--ease),
+    border-color var(--dur-ui) var(--ease);
+}
+
+.day:hover:not(:disabled) {
+  border-color: var(--terra);
+}
+
+.day:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 2px;
+}
+
+.day:disabled {
+  color: var(--stone);
+  background: transparent;
+  cursor: not-allowed;
+}
+
+/* Зачертаваме само реално заетите дни, не всичко disabled (минали/зареждащи). */
+.unavailable {
+  text-decoration: line-through;
+}
+
+.dayNum {
+  font-size: 0.95rem;
+}
+
+.dayPrice {
+  font-size: 0.6rem;
+  white-space: nowrap;
+  color: var(--stone);
+}
+
+.selected {
+  color: var(--cream);
+  background: var(--terra);
+}
+
+.selected .dayPrice {
+  color: var(--cream);
+}
+
+.inRange {
+  background: var(--sand);
+}
+
+.empty {
+  aspect-ratio: 1;
+}
+
+.legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  color: var(--stone);
+}
+
+.swatch {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 3px;
+}
+
+.swatchFree {
+  background: var(--cream);
+  border: 1px solid var(--sand);
+}
+
+.swatchBusy {
+  background: transparent;
+  border: 1px solid var(--stone);
+}
+
+.status,
+.note,
+.summary {
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+}
+
+.status {
+  padding: 1.5rem 0;
+  text-align: center;
+  color: var(--stone);
+}
+
+.note {
+  color: var(--clay);
+}
+
+.summary {
+  font-weight: 500;
+  color: var(--espresso);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .day,
+  .grid {
+    transition: none;
+  }
+}
