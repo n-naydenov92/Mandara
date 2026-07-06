@@ -4,7 +4,6 @@ import { getTranslation } from '@/lib/i18n/server'
 import { DEFAULT_LOCALE, isLocale } from '@/lib/i18n/settings'
 import { Hero } from '@/components/home/Hero/Hero'
 import { AboutSplit } from '@/components/home/AboutSplit/AboutSplit'
-import { GalleryPreview } from '@/components/home/GalleryPreview/GalleryPreview'
 import { RoomsScene } from '@/components/home/RoomsScene/RoomsScene'
 import { ExperienceTeaser } from '@/components/home/ExperienceTeaser/ExperienceTeaser'
 import { RegionTeaser } from '@/components/home/RegionTeaser/RegionTeaser'
@@ -40,7 +39,6 @@ export default async function HomePage({ params }: HomePageProps) {
     <>
       <Hero lng={lng} />
       <AboutSplit lng={lng} />
-      <GalleryPreview lng={lng} />
       <RoomsScene lng={lng} />
       <ExperienceTeaser lng={lng} />
       <RegionTeaser lng={lng} />

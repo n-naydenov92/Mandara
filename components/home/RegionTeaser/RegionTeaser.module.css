@@ -175,6 +175,58 @@
   object-fit: cover;
 }
 
+/* ── Фейд ефект на снимката: меко потъмняване от долу нагоре за четимост ── */
+.imgScrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(22, 16, 10, 0.62) 0%,
+    rgba(22, 16, 10, 0.32) 22%,
+    rgba(22, 16, 10, 0) 48%
+  );
+}
+
+/* ── Разстояние/време от вилата: чипове от долу нагоре, върху снимката ── */
+.distance {
+  position: absolute;
+  left: clamp(0.85rem, 1.6vw, 1.25rem);
+  bottom: clamp(0.85rem, 1.6vw, 1.25rem);
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 0.82rem;
+  border-radius: var(--radius-pill, 999px);
+  background: rgba(250, 246, 238, 0.86);
+  border: 1px solid rgba(250, 246, 238, 0.5);
+  backdrop-filter: blur(6px);
+  color: var(--espresso);
+  font-family: var(--f-ui);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(22, 16, 10, 0.18);
+}
+
+.chip svg {
+  color: var(--olive);
+  flex-shrink: 0;
+}
+
 /* ── Responsive: 1-колонен стак под 820px (engine остава същият) ── */
 @media (max-width: 820px) {
   .section {

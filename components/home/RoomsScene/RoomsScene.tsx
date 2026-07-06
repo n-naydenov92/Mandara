@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ROOMS } from '@/lib/content/rooms'
+import { VILLA_SPACES } from '@/lib/content/home'
 import { IntroLayer } from './IntroLayer'
 import { RoomLayer } from './RoomLayer'
 import type { Locale } from '@/lib/i18n/settings'
@@ -190,11 +190,10 @@ function useStickySlides(sectionRef: React.RefObject<HTMLElement | null>) {
 }
 
 export function RoomsScene({ lng }: RoomsSceneProps) {
-  const { t } = useTranslation('rooms')
   const { t: tHome } = useTranslation('home')
   const sectionRef = useRef<HTMLElement>(null)
-  const total = ROOMS.length
-  // Слоганът е slide 0, стаите са slide 1..N → общо N+1 slide-а.
+  const total = VILLA_SPACES.length
+  // Слоганът е slide 0, пространствата са slide 1..N → общо N+1 slide-а.
   const slideCount = total + 1
   const title = tHome('rooms.title')
   const cta = tHome('rooms.cta')
@@ -211,13 +210,14 @@ export function RoomsScene({ lng }: RoomsSceneProps) {
     >
       <div className={styles.pin}>
         <IntroLayer eyebrow={tHome('rooms.eyebrow')} title={title} subtitle={tHome('rooms.subtitle')} isActive />
-        {ROOMS.map((room, index) => (
+        {VILLA_SPACES.map((space, index) => (
           <RoomLayer
-            key={room.slug}
-            room={room}
+            key={space.slug}
+            image={space.image}
+            href="/about"
             lng={lng}
-            name={t(`${room.slug}.name`)}
-            description={t(`${room.slug}.description`)}
+            name={tHome(`rooms.spaces.${space.slug}.name`)}
+            description={tHome(`rooms.spaces.${space.slug}.description`)}
             cta={cta}
             index={index}
             total={total}

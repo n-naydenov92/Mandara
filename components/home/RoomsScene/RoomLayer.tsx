@@ -2,12 +2,12 @@ import Image from 'next/image'
 import { IconArrowRight } from '@tabler/icons-react'
 import { LocaleLink } from '@/components/ui/LocaleLink/LocaleLink'
 import { Icon } from '@/components/ui/Icon/Icon'
-import type { Room } from '@/lib/content/rooms'
 import type { Locale } from '@/lib/i18n/settings'
 import styles from './RoomsScene.module.css'
 
 interface RoomLayerProps {
-  room: Room
+  image: string
+  href: string // цел на CTA бутона
   lng: Locale
   name: string
   description: string
@@ -28,7 +28,8 @@ function loadProps(isFirst: boolean) {
 }
 
 export function RoomLayer({
-  room,
+  image,
+  href,
   lng,
   name,
   description,
@@ -44,14 +45,14 @@ export function RoomLayer({
   return (
     <article className={slideClass} data-index={index}>
       <div className={styles.bg}>
-        <Image src={room.image} alt={name} fill sizes="100vw" className={styles.img} {...loadProps(isFirst)} />
+        <Image src={image} alt={name} fill sizes="100vw" className={styles.img} {...loadProps(isFirst)} />
       </div>
       <div className={styles.scrim} aria-hidden="true" />
       <div className={styles.card}>
         <span className={styles.index}>{label}</span>
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.desc}>{description}</p>
-        <LocaleLink lng={lng} href="/accommodation" className={styles.cta}>
+        <LocaleLink lng={lng} href={href} className={styles.cta}>
           {cta}
           <Icon icon={IconArrowRight} size={ICON_SIZE} />
         </LocaleLink>

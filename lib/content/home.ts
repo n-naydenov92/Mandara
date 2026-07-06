@@ -16,6 +16,8 @@ export interface RegionDestination {
   // [широка лява, тясна дясна] landscape снимка за scroll-секцията „За региона“
   images: readonly [ExperienceImage, ExperienceImage]
   href: string
+  distanceKm: number // разстояние от вилата (placeholder — потребителят ще уточни)
+  timeMin: number // време за път от вилата в минути (placeholder)
 }
 
 // Placeholder снимки — 8 различни, за да личи смяната при скрол. Заменяеми с реални
@@ -32,28 +34,26 @@ const REGION_IMG = {
 } as const satisfies Record<string, ExperienceImage>
 
 export const REGION_DESTINATIONS = {
-  belasitsa: { images: [REGION_IMG.lounge, REGION_IMG.exterior], href: '/region' },
-  monastery: { images: [REGION_IMG.villa, REGION_IMG.pool], href: '/region' },
-  wine: { images: [REGION_IMG.interior, REGION_IMG.pavilion1], href: '/region' },
-  trails: { images: [REGION_IMG.pavilion2, REGION_IMG.pavilion3], href: '/region' },
+  belasitsa: { images: [REGION_IMG.lounge, REGION_IMG.exterior], href: '/region', distanceKm: 15, timeMin: 25 },
+  monastery: { images: [REGION_IMG.villa, REGION_IMG.pool], href: '/region', distanceKm: 10, timeMin: 15 },
+  wine: { images: [REGION_IMG.interior, REGION_IMG.pavilion1], href: '/region', distanceKm: 6, timeMin: 12 },
+  trails: { images: [REGION_IMG.pavilion2, REGION_IMG.pavilion3], href: '/region', distanceKm: 2, timeMin: 6 },
 } as const satisfies Record<RegionKey, RegionDestination>
 
-export interface GalleryItem {
-  key: string
-  src: string
-  width: number
-  height: number
+export interface VillaSpace {
+  slug: string
+  image: string // корица за slide-а (placeholder — потребителят ще смени с реален кадър)
 }
 
-export const GALLERY_ITEMS: readonly GalleryItem[] = [
-  { key: 'pool', src: '/images/gallery/g1.jpg', width: 1024, height: 1229 },
-  { key: 'lounge', src: '/images/gallery/g4.jpg', width: 1200, height: 800 },
-  { key: 'interior', src: '/images/gallery/g2.jpg', width: 1024, height: 1229 },
-  { key: 'exterior', src: '/images/gallery/g5.jpg', width: 1200, height: 800 },
+// Пространствата на вилата за pinned scroll-секцията на началната страница.
+// Отделно от ROOMS (стаите) — тук показваме цялата вила, не настаняването.
+export const VILLA_SPACES: readonly VillaSpace[] = [
+  { slug: 'pool', image: '/images/gallery/g1.jpg' },
+  { slug: 'dining', image: '/images/gallery/g2.jpg' },
+  { slug: 'rooms', image: '/images/gallery/omai_zile_accommodation_106_deluxe_pavilion_01.png' },
+  { slug: 'kitchen', image: '/images/gallery/g4.jpg' },
+  { slug: 'kids', image: '/images/gallery/g5.jpg' },
+  { slug: 'yard', image: '/images/about/villa.jpg' },
+  { slug: 'sauna', image: '/images/gallery/omai_zile_accommodation_105_deluxe_pavilion_02.png' },
 ] as const
 
-export const GALLERY_SMALL: readonly GalleryItem[] = [
-  { key: 'gardens', src: '/images/about/villa.jpg', width: 1200, height: 674 },
-  { key: 'view', src: '/images/gallery/g5.jpg', width: 1200, height: 800 },
-  { key: 'sunset', src: '/images/gallery/g4.jpg', width: 1200, height: 800 },
-] as const

@@ -3,7 +3,7 @@
 import { useEffect, useRef, type CSSProperties, type RefObject } from 'react'
 import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
-import { IconArrowRight } from '@tabler/icons-react'
+import { IconArrowRight, IconClock, IconMapPin } from '@tabler/icons-react'
 import { LocaleLink } from '@/components/ui/LocaleLink/LocaleLink'
 import { Icon } from '@/components/ui/Icon/Icon'
 import { Eyebrow } from '@/components/ui/Eyebrow/Eyebrow'
@@ -18,6 +18,7 @@ interface RegionTeaserProps {
 
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
 const ICON_SIZE = 16
+const META_ICON_SIZE = 18
 // Само на мобилно (нативен скрол) включваме CSS scroll-snap: всяка дестинация е
 // snap точка със scroll-snap-stop:always → силен скрол спира на следващата, не
 // прелита. Десктопът (Lenis води wheel-а) остава на плавния scrub.
@@ -269,6 +270,17 @@ export function RegionTeaser({ lng }: RegionTeaserProps) {
                     className={styles.imgInner}
                     {...(index === 0 ? { priority: true } : { loading: 'eager' as const })}
                   />
+                  <div className={styles.imgScrim} aria-hidden="true" />
+                  <ul className={styles.distance}>
+                    <li className={styles.chip}>
+                      <Icon icon={IconClock} size={META_ICON_SIZE} />
+                      {REGION_DESTINATIONS[key].timeMin} {t('region.units.min')}
+                    </li>
+                    <li className={styles.chip}>
+                      <Icon icon={IconMapPin} size={META_ICON_SIZE} />
+                      {REGION_DESTINATIONS[key].distanceKm} {t('region.units.km')}
+                    </li>
+                  </ul>
                 </div>
               ))}
             </div>

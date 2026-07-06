@@ -15,24 +15,41 @@
     "body2": "Far from everything, close to yourself. No rush, no noise — just you and the calm of the mountain.",
     "closing": "Stay until you feel at home."
   },
-  "gallery": {
-    "eyebrow": "gallery",
-    "title": "Feel it before you arrive",
-    "captions": {
-      "pool": "Pool",
-      "lounge": "Living room",
-      "interior": "Dining",
-      "exterior": "Architecture",
-      "gardens": "Gardens",
-      "view": "View",
-      "sunset": "Sunset"
-    }
-  },
   "rooms": {
-    "eyebrow": "accommodation",
-    "title": "Six rooms, six moods of the day",
-    "subtitle": "Each room bears the name of a moment of the day and its own herb.",
-    "cta": "Explore the rooms"
+    "eyebrow": "the villa",
+    "title": "Feel it before you arrive",
+    "subtitle": "Explore every corner — from the pool to the sauna — and feel the atmosphere before you come.",
+    "cta": "Explore the villa",
+    "spaces": {
+      "pool": {
+        "name": "Pool",
+        "description": "An open-air pool bathed in sun — for slow mornings and long afternoons by the water, facing the mountain."
+      },
+      "dining": {
+        "name": "Dining room",
+        "description": "A long table under soft light — where unhurried dinners and shared meals turn into memories."
+      },
+      "rooms": {
+        "name": "Rooms",
+        "description": "Six rooms, each named after a moment of the day and its own herb — a quiet shelter made for restful sleep."
+      },
+      "kitchen": {
+        "name": "Kitchen",
+        "description": "A fully equipped kitchen — for homemade breakfasts or a dinner prepared by your private chef."
+      },
+      "kids": {
+        "name": "Kids corner",
+        "description": "A space of their own for the little ones — safe, bright and full of play, while the grown-ups unwind."
+      },
+      "yard": {
+        "name": "Yard",
+        "description": "A green yard with a herb garden and shaded corners — a step from nature, far from the noise."
+      },
+      "sauna": {
+        "name": "Sauna",
+        "description": "The warmth of the sauna after a day in the mountains — a quiet ritual for body and mind."
+      }
+    }
   },
   "experience": {
     "eyebrow": "experience",
@@ -44,6 +61,10 @@
   "region": {
     "eyebrow": "the region",
     "cta": "Discover the region",
+    "units": {
+      "km": "km",
+      "min": "min"
+    },
     "points": {
       "belasitsa": {
         "title": "Belasitsa",
