@@ -1,0 +1,214 @@
+/* Топъл пясъчен фон + меко разделяне от кремавата секция отгоре. */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(90% 60% at 50% 6%, rgba(196, 147, 80, 0.1), transparent 68%),
+    linear-gradient(180deg, #f0e6d5 0%, #e7d9c1 100%);
+  box-shadow: inset 0 1px 0 rgba(46, 34, 24, 0.06);
+}
+
+/* Декоративни листа в двата ъгъла — рамкират картата, без да пречат на текста. */
+.foliage {
+  position: absolute;
+  z-index: -1;
+  width: clamp(120px, 15vw, 210px);
+  height: auto;
+  overflow: visible;
+  opacity: 0.18;
+}
+
+.foliageTop {
+  top: 0;
+  left: 0;
+}
+
+.foliageBottom {
+  right: 0;
+  bottom: 0;
+}
+
+.leafBody {
+  fill: var(--olive);
+}
+
+.leafVein {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.title {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-h2);
+  line-height: 1.08;
+  color: var(--espresso);
+}
+
+.figureWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.figure {
+  width: 100%;
+  max-width: 960px;
+  margin: 0;
+}
+
+/* Съотношението съвпада с viewBox (1000×639) → процентните етикети лягат точно върху SVG. */
+.map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1000 / 639;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.country {
+  fill: rgba(138, 146, 119, 0.16);
+  stroke: rgba(79, 86, 64, 0.5);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.link {
+  stroke: rgba(168, 159, 146, 0.55);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+}
+
+.cityDot {
+  fill: var(--olive);
+  stroke: var(--cream);
+  stroke-width: 2;
+}
+
+.villaHalo {
+  fill: none;
+  stroke: var(--ember);
+  stroke-width: 2;
+  opacity: 0.55;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 3.2s var(--ease) infinite;
+}
+
+.villaDot {
+  fill: var(--terra);
+  stroke: var(--cream);
+  stroke-width: 2.5;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.28);
+    opacity: 0.15;
+  }
+}
+
+/* ── Етикети (HTML върху SVG за чиста типография) ── */
+.cityLabel,
+.villaLabel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.cityLabel[data-side='right'] {
+  transform: translate(14px, -50%);
+  align-items: flex-start;
+  text-align: left;
+}
+
+.cityLabel[data-side='left'] {
+  transform: translate(calc(-100% - 14px), -50%);
+  align-items: flex-end;
+  text-align: right;
+}
+
+.cityLabel[data-side='top'] {
+  transform: translate(-50%, calc(-100% - 14px));
+  align-items: center;
+  text-align: center;
+}
+
+.cityName {
+  font-family: var(--f-ui);
+  font-size: clamp(0.62rem, 1.1vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-ui);
+  text-transform: uppercase;
+  color: var(--espresso);
+}
+
+.cityDist {
+  margin-top: 0.15rem;
+  font-family: var(--f-ui);
+  font-size: clamp(0.54rem, 0.9vw, 0.66rem);
+  letter-spacing: var(--tracking-ui);
+  color: var(--stone);
+  white-space: nowrap;
+}
+
+.villaLabel {
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%, calc(-100% - 20px));
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+  line-height: 1;
+  color: var(--terra);
+}
+
+.caption {
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  font-family: var(--f-ui);
+  font-size: var(--fs-ui);
+  letter-spacing: var(--tracking-ui);
+  text-transform: uppercase;
+  color: var(--stone);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .villaHalo {
+    animation: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .cityName {
+    letter-spacing: 0.12em;
+  }
+
+  .cityDist {
+    letter-spacing: 0.1em;
+  }
+}

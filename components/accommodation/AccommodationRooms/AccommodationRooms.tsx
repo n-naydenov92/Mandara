@@ -6,7 +6,6 @@ import { Reveal } from '@/components/motion/Reveal/Reveal'
 import { PartHeader } from '@/components/accommodation/PartHeader/PartHeader'
 import { RoomFeature } from '@/components/accommodation/RoomFeature/RoomFeature'
 import { ROOMS } from '@/lib/content/rooms'
-import { PRICING, formatPrice, lowestRate } from '@/lib/content/pricing'
 import type { Locale } from '@/lib/i18n/settings'
 import styles from './AccommodationRooms.module.css'
 
@@ -27,7 +26,6 @@ export async function AccommodationRooms({ lng }: AccommodationRoomsProps) {
     open: t('gallery.open'),
   }
   const areaUnit = tAbout('rooms.labels.areaUnit')
-  const priceValue = formatPrice(lowestRate(PRICING.perRoom), PRICING.currency)
 
   return (
     <Section id="rooms" tone="transparent">
@@ -51,17 +49,11 @@ export async function AccommodationRooms({ lng }: AccommodationRoomsProps) {
               <Reveal key={room.slug} duration={ROOM_REVEAL_DURATION}>
                 <RoomFeature
                   room={room}
-                  lng={lng}
                   name={tRooms(`${room.slug}.name`)}
                   description={tRooms(`${room.slug}.description`)}
                   metaItems={metaItems}
                   features={features}
                   featuresTitle={t('rooms.featuresTitle')}
-                  sharedNote={t('rooms.sharedNote')}
-                  fromLabel={t('pricing.from')}
-                  priceValue={priceValue}
-                  perNight={t('pricing.perNight')}
-                  ctaLabel={t('cta.room')}
                   galleryLabels={galleryLabels}
                 />
               </Reveal>

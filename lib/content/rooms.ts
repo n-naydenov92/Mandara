@@ -22,18 +22,7 @@ export const ROOMS: readonly Room[] = [
       '/images/gallery/omai_zile_accommodation_106_deluxe_pavilion_05.png',
       '/images/gallery/omai_zile_accommodation_106_deluxe_pavilion_06.png',
     ],
-    specs: { beds: 1, area: 28 },
-  },
-  {
-    slug: 'sunrise',
-    accent: 'hsl(40, 80%, 70%)',
-    image: '/images/gallery/g5.jpg',
-    images: [
-      '/images/gallery/g5.jpg',
-      '/images/gallery/omai_zile_accommodation_105_deluxe_pavilion_02.png',
-      '/images/gallery/omai_zile_accommodation_106_deluxe_pavilion_07.png',
-    ],
-    specs: { beds: 2, area: 26 },
+    specs: { beds: 2, area: 28 },
   },
   {
     slug: 'noon',
@@ -44,7 +33,7 @@ export const ROOMS: readonly Room[] = [
       '/images/gallery/omai_zile_accommodation_104_signature_pavilion_03.png',
       '/images/gallery/omai_zile_accommodation_104_signature_pavilion_04.png',
     ],
-    specs: { beds: 1, area: 30 },
+    specs: { beds: 2, area: 30 },
   },
   {
     slug: 'sunset',
@@ -55,18 +44,7 @@ export const ROOMS: readonly Room[] = [
       '/images/gallery/omai_zile_accommodation_104_signature_pavilion_04-2.png',
       '/images/gallery/omai_zile_accommodation_101_master_pavilion_02.png',
     ],
-    specs: { beds: 2, area: 27 },
-  },
-  {
-    slug: 'dusk',
-    accent: 'hsl(295, 22%, 48%)',
-    image: '/images/about/villa.jpg',
-    images: [
-      '/images/about/villa.jpg',
-      '/images/gallery/omai_zile_accommodation_101_master_pavilion_14.png',
-      '/images/gallery/omai_zile_accommodation_106_deluxe_pavilion_06.png',
-    ],
-    specs: { beds: 1, area: 24 },
+    specs: { beds: 3, area: 27 },
   },
   {
     slug: 'night',
@@ -77,6 +55,6 @@ export const ROOMS: readonly Room[] = [
       '/images/gallery/omai_zile_accommodation_105_deluxe_pavilion_02.png',
       '/images/gallery/omai_zile_accommodation_101_master_pavilion_14.png',
     ],
-    specs: { beds: 1, area: 25 },
+    specs: { beds: 2, area: 25 },
   },
 ] as const

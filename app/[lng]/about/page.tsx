@@ -5,6 +5,7 @@ import { DEFAULT_LOCALE, isLocale } from '@/lib/i18n/settings'
 import { buildPageMetadata } from '@/lib/routing/metadata'
 import { AboutHero } from '@/components/about/AboutHero/AboutHero'
 import { AboutIntro } from '@/components/about/AboutIntro/AboutIntro'
+import { BulgariaMap } from '@/components/about/BulgariaMap/BulgariaMap'
 import { AboutBlock } from '@/components/about/AboutBlock/AboutBlock'
 import { RoomsShowcase } from '@/components/about/RoomsShowcase/RoomsShowcase'
 import { AmenitiesGrid } from '@/components/about/AmenitiesGrid/AmenitiesGrid'
@@ -34,6 +35,7 @@ export default async function AboutPage({ params }: PageProps) {
     <>
       <AboutHero lng={lng} />
       <AboutIntro lng={lng} />
+      <BulgariaMap lng={lng} />
       {ABOUT_BLOCKS.map((block) => (
         <AboutBlock
           key={block.key}

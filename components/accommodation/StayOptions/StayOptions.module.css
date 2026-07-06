@@ -1,6 +1,7 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: minmax(0, 34rem);
+  justify-content: center;
   gap: clamp(1.25rem, 3vw, 2rem);
 }
 

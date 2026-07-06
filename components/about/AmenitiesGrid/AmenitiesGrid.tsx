@@ -41,7 +41,7 @@ interface TablerIconProps {
 }
 
 const AMENITY_ICON: Record<string, ComponentType<TablerIconProps>> = {
-  sixRooms: IconBed,
+  rooms: IconBed,
   linens: IconHanger,
   livingRoom: IconArmchair,
   kitchen: IconToolsKitchen2,

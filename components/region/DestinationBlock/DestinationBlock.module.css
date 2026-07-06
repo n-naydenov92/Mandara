@@ -6,7 +6,7 @@
 }
 
 .text {
-  max-width: 40ch;
+  max-width: 42ch;
 }
 
 .eyebrowRow {
@@ -41,6 +41,10 @@
   font-size: var(--fs-body);
   line-height: 1.7;
   color: rgba(46, 34, 24, 0.72);
+}
+
+.chips {
+  margin-top: clamp(1.25rem, 2vw, 1.75rem);
 }
 
 @media (max-width: 860px) {

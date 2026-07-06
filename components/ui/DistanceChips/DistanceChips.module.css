@@ -1,0 +1,31 @@
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 0.82rem;
+  border-radius: var(--radius-pill, 999px);
+  background: var(--ivory);
+  border: 1px solid var(--sand);
+  color: var(--espresso);
+  font-family: var(--f-ui);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.chip svg {
+  color: var(--olive);
+  flex-shrink: 0;
+}

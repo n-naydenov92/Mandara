@@ -9,7 +9,6 @@ import type { Locale } from '@/lib/i18n/settings'
 import styles from './StayOptions.module.css'
 
 const VILLA_IMAGE = '/images/about/villa.jpg'
-const ROOM_IMAGE = '/images/gallery/omai_zile_accommodation_106_deluxe_pavilion_01.png'
 
 interface StayOptionsProps {
   lng: Locale
@@ -34,17 +33,6 @@ export async function StayOptions({ lng }: StayOptionsProps) {
             price={priceFrom(lowestRate(PRICING.whole))}
             note={t('compare.villa.note')}
             ctaLabel={t('compare.villa.cta')}
-          />
-          <StayOptionCard
-            variant="room"
-            href="#rooms"
-            image={ROOM_IMAGE}
-            imageAlt={t('compare.room.title')}
-            tag={t('compare.room.tag')}
-            title={t('compare.room.title')}
-            price={priceFrom(lowestRate(PRICING.perRoom))}
-            note={t('compare.room.note')}
-            ctaLabel={t('compare.room.cta')}
           />
         </RevealGroup>
       </Container>

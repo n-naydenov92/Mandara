@@ -3,7 +3,6 @@ import { PageHero } from '@/components/layout/PageHero/PageHero'
 import { Container } from '@/components/ui/Container/Container'
 import { BotanicalAccent } from '@/components/ui/BotanicalAccent/BotanicalAccent'
 import { Reveal } from '@/components/motion/Reveal/Reveal'
-import { PRICING } from '@/lib/content/pricing'
 import type { Locale } from '@/lib/i18n/settings'
 import styles from './AccommodationHero.module.css'
 
@@ -16,9 +15,11 @@ interface AccommodationHeroProps {
 export async function AccommodationHero({ lng }: AccommodationHeroProps) {
   const { t } = await getTranslation(lng, 'accommodation')
   const stats = [
-    t('stats.rooms', { n: PRICING.bedrooms }),
-    t('stats.guests', { n: PRICING.capacity }),
-    t('stats.shared'),
+    t('stats.bedrooms'),
+    t('stats.guests'),
+    t('stats.sauna'),
+    t('stats.pool'),
+    t('stats.attractions'),
   ]
 
   return (

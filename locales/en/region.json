@@ -8,24 +8,66 @@
     "title": "Gorna Kovachevitsa",
     "scroll": "Explore"
   },
-  "intro": {
-    "lead": "Hidden high in the Western Rhodopes, Gorna Kovachevitsa is a village paused in time — stone houses, narrow cobbled lanes and a quiet broken only by the mountain. Villa Mandara sits a step away from all of it."
-  },
-  "blocks": {
-    "village": {
-      "eyebrow": "the village",
-      "title": "Stone, timber and time",
-      "body": "Revival-era houses of stone and hand-cut timber climb the slope, linked by cobbled lanes and old stone bridges. Everything here is authentic — no shopfronts, no noise, only the calm of a living Rhodope village."
+  "destinations": {
+    "eyebrow": "what to explore",
+    "title": "Nearby",
+    "lead": "Monasteries, waterfalls and natural landmarks within reach of the villa. Distances and times are by car — ordered from the closest to the further day trips.",
+    "units": {
+      "km": "km",
+      "min": "min",
+      "hour": "h"
     },
-    "nature": {
-      "eyebrow": "nature",
-      "title": "Forests, rivers and trails",
-      "body": "Pine forests begin at the doorstep and the river sings at the bottom of the gorge. Walking routes set off straight from the village — to peaks, meadows and tucked-away springs, at whatever pace you choose."
-    },
-    "nearby": {
-      "eyebrow": "nearby",
-      "title": "Easy to discover",
-      "body": "Minutes away lie the reserve villages of Kovachevitsa and Leshten, the mineral baths of Ognyanovo and the lively markets of Gotse Delchev. Local wine, home cooking and Rhodope hospitality — all within easy reach."
+    "items": {
+      "lopushanski": {
+        "eyebrow": "monastery",
+        "title": "Lopushanski Monastery",
+        "body": "The closest major landmark — a beautiful monastery renowned for its woodcarving and a peaceful courtyard set in greenery."
+      },
+      "chiprovtsiMonastery": {
+        "eyebrow": "monastery",
+        "title": "Chiprovtsi Monastery of St. John of Rila",
+        "body": "A working monastery with roots in the 10th century, tucked into the mountain slopes above Chiprovtsi."
+      },
+      "chiprovtsiMuseum": {
+        "eyebrow": "museum",
+        "title": "Chiprovtsi History Museum",
+        "body": "The famous Chiprovtsi carpets and the story of the Chiprovtsi Uprising, gathered under one roof."
+      },
+      "chiprovtsiWaterfall": {
+        "eyebrow": "waterfall",
+        "title": "Chiprovtsi Waterfall",
+        "body": "A marked, easy walking trail leads to the falls — a pleasant stroll through forest and river."
+      },
+      "martinovoDam": {
+        "eyebrow": "reservoir",
+        "title": "Martinovo Reservoir",
+        "body": "A small roadside reservoir with quiet picnic spots and views toward the Balkan mountains."
+      },
+      "gushovski": {
+        "eyebrow": "monastery",
+        "title": "Gushovski Monastery (ruins)",
+        "body": "Ruins with a stunning panoramic view and a large cross — the reward for a short climb."
+      },
+      "durshinSkok": {
+        "eyebrow": "waterfall",
+        "title": "Durshin Skok Waterfall",
+        "body": "An accessible ten-metre waterfall — a short drive and an easy walk on foot to reach it."
+      },
+      "chernogorski": {
+        "eyebrow": "monastery",
+        "title": "Chernogorski Monastery of Sts. Cosmas and Damian",
+        "body": "A more distant but very beautiful monastery with an adjoining farm — perfect for a full-day trip."
+      },
+      "magura": {
+        "eyebrow": "cave",
+        "title": "Magura Cave",
+        "body": "One of Bulgaria's most famous caves, with prehistoric wall paintings thousands of years old."
+      },
+      "zemen": {
+        "eyebrow": "monastery",
+        "title": "Zemen Monastery of St. John the Theologian",
+        "body": "One of the country's oldest monasteries (11th century), with a unique cubic church and frescoes."
+      }
     }
   }
 }

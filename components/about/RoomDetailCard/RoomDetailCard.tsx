@@ -1,6 +1,6 @@
 import type { ComponentType, CSSProperties } from 'react'
 import Image from 'next/image'
-import { IconPlant, IconPlant2, IconLeaf, IconLeaf2, IconFlower, IconSeeding } from '@tabler/icons-react'
+import { IconPlant2, IconLeaf, IconLeaf2, IconSeeding } from '@tabler/icons-react'
 import { Icon } from '@/components/ui/Icon/Icon'
 import { ROOM_TIME_ICON, ROOM_TIME_ICON_FALLBACK } from '@/lib/content/roomIcons'
 import type { Room } from '@/lib/content/rooms'
@@ -32,10 +32,8 @@ interface RoomDetailCardProps {
 // Различна билка за всяка стая — за характер и емоция.
 const ROOM_HERB_ICON: Record<string, ComponentType<TablerIconProps>> = {
   dawn: IconPlant2,
-  sunrise: IconPlant,
   noon: IconLeaf,
   sunset: IconLeaf2,
-  dusk: IconFlower,
   night: IconSeeding,
 }
 

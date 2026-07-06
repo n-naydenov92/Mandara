@@ -43,7 +43,7 @@ export interface AmenityGroup {
 }
 
 export const AMENITY_GROUPS = [
-  { key: 'accommodation', items: ['sixRooms', 'linens', 'livingRoom', 'kitchen', 'heating', 'wifi'] },
+  { key: 'accommodation', items: ['rooms', 'linens', 'livingRoom', 'kitchen', 'heating', 'wifi'] },
   { key: 'wellness', items: ['pool', 'herbalRituals', 'sauna', 'loungers'] },
   { key: 'outdoors', items: ['garden', 'terrace', 'firePit', 'parking'] },
   { key: 'services', items: ['chef', 'transfer', 'concierge', 'cleaning'] },

@@ -4,10 +4,10 @@ import { getTranslation } from '@/lib/i18n/server'
 import { DEFAULT_LOCALE, isLocale } from '@/lib/i18n/settings'
 import { buildPageMetadata } from '@/lib/routing/metadata'
 import { RegionHero } from '@/components/region/RegionHero/RegionHero'
-import { RegionIntro } from '@/components/region/RegionIntro/RegionIntro'
-import { RegionBlock } from '@/components/region/RegionBlock/RegionBlock'
+import { DestinationsIntro } from '@/components/region/DestinationsIntro/DestinationsIntro'
+import { DestinationBlock } from '@/components/region/DestinationBlock/DestinationBlock'
 import { CtaBand } from '@/components/home/CtaBand/CtaBand'
-import { REGION_BLOCKS } from '@/lib/content/region'
+import { DESTINATIONS } from '@/lib/content/region'
 
 interface PageProps {
   params: Promise<{ lng: string }>
@@ -30,16 +30,9 @@ export default async function RegionPage({ params }: PageProps) {
   return (
     <>
       <RegionHero lng={lng} />
-      <RegionIntro lng={lng} />
-      {REGION_BLOCKS.map((block) => (
-        <RegionBlock
-          key={block.key}
-          lng={lng}
-          blockKey={block.key}
-          src={block.src}
-          tone={block.reversed ? 'ivory' : 'transparent'}
-          reversed={block.reversed}
-        />
+      <DestinationsIntro lng={lng} />
+      {DESTINATIONS.map((destination) => (
+        <DestinationBlock key={destination.key} lng={lng} destination={destination} />
       ))}
       <CtaBand lng={lng} />
     </>

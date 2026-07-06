@@ -1,10 +1,11 @@
 export const GALLERY_CATEGORIES = [
   'all',
-  'exterior',
-  'interior',
-  'garden',
+  'dining',
+  'bedrooms',
   'pool',
-  'rooms',
+  'yard',
+  'attractions',
+  'amenities',
 ] as const
 export type GalleryCategory = (typeof GALLERY_CATEGORIES)[number]
 
@@ -62,29 +63,24 @@ function img(
 // квадратна клетка, третият — във вертикалната, петият — в единствената хоризонтална.
 // Затова portrait е на 1/3, а широкият кадър — на 5.
 export const GALLERY_IMAGES: readonly GalleryImage[] = [
-  // Екстериор
-  img('ext-1', 'exterior', 'facade', PLACEHOLDERS.portraitA),
-  img('ext-2', 'exterior', 'terrace', PLACEHOLDERS.landscapeA),
-  img('ext-3', 'exterior', 'courtyard', PLACEHOLDERS.portraitB),
-  img('ext-4', 'exterior', 'entrance', PLACEHOLDERS.landscapeB),
-  img('ext-5', 'exterior', 'panorama', PLACEHOLDERS.wide),
-  img('ext-6', 'exterior', 'dusk', PLACEHOLDERS.landscapeA),
+  // Трапезария — реален интериор от павилионите + placeholder-и
+  img('din-1', 'dining', 'dining', ROOMS.signature1),
+  img('din-2', 'dining', 'breakfast', PLACEHOLDERS.landscapeA),
+  img('din-3', 'dining', 'diningNook', PLACEHOLDERS.portraitB),
+  img('din-4', 'dining', 'kitchen', ROOMS.deluxe2),
+  img('din-5', 'dining', 'diningView', PLACEHOLDERS.wide),
+  img('din-6', 'dining', 'lounge', PLACEHOLDERS.landscapeB),
 
-  // Интериор — g2 (portrait) + реални интериори от павилионите
-  img('int-1', 'interior', 'living', PLACEHOLDERS.portraitB),
-  img('int-2', 'interior', 'dining', ROOMS.signature1),
-  img('int-3', 'interior', 'lounge', ROOMS.deluxe2),
-  img('int-4', 'interior', 'hall', ROOMS.master2),
-  img('int-5', 'interior', 'fireplace', ROOMS.signature2),
-  img('int-6', 'interior', 'reading', ROOMS.deluxe3),
-
-  // Градина
-  img('gar-1', 'garden', 'herbs', PLACEHOLDERS.portraitA),
-  img('gar-2', 'garden', 'lawn', PLACEHOLDERS.landscapeB),
-  img('gar-3', 'garden', 'morning', PLACEHOLDERS.portraitB),
-  img('gar-4', 'garden', 'flowers', PLACEHOLDERS.landscapeA),
-  img('gar-5', 'garden', 'gardenView', PLACEHOLDERS.wide),
-  img('gar-6', 'garden', 'shade', PLACEHOLDERS.landscapeB),
+  // Спални — реални кадри на павилионите
+  img('bed-1', 'bedrooms', 'masterPavilion', ROOMS.master1),
+  img('bed-2', 'bedrooms', 'signaturePavilion', ROOMS.signature1),
+  img('bed-3', 'bedrooms', 'deluxePavilion', ROOMS.deluxe1),
+  img('bed-4', 'bedrooms', 'masterPavilion', ROOMS.master2),
+  img('bed-5', 'bedrooms', 'signaturePavilion', ROOMS.signature2),
+  img('bed-6', 'bedrooms', 'deluxePavilion', ROOMS.deluxe3),
+  img('bed-7', 'bedrooms', 'signaturePavilion', ROOMS.signature3),
+  img('bed-8', 'bedrooms', 'deluxePavilion', ROOMS.deluxe4),
+  img('bed-9', 'bedrooms', 'deluxePavilion', ROOMS.deluxe5),
 
   // Басейн
   img('pool-1', 'pool', 'poolside', PLACEHOLDERS.portraitB),
@@ -94,15 +90,27 @@ export const GALLERY_IMAGES: readonly GalleryImage[] = [
   img('pool-5', 'pool', 'poolView', PLACEHOLDERS.wide),
   img('pool-6', 'pool', 'poolDusk', PLACEHOLDERS.landscapeA),
 
-  // Стаи — реални кадри на павилионите
-  img('room-1', 'rooms', 'masterPavilion', ROOMS.master1),
-  img('room-2', 'rooms', 'signaturePavilion', ROOMS.signature1),
-  img('room-3', 'rooms', 'deluxePavilion', ROOMS.deluxe1),
-  img('room-4', 'rooms', 'masterPavilion', ROOMS.master2),
-  img('room-5', 'rooms', 'signaturePavilion', ROOMS.signature2),
-  img('room-6', 'rooms', 'deluxePavilion', ROOMS.deluxe2),
-  img('room-7', 'rooms', 'signaturePavilion', ROOMS.signature3),
-  img('room-8', 'rooms', 'deluxePavilion', ROOMS.deluxe3),
-  img('room-9', 'rooms', 'deluxePavilion', ROOMS.deluxe4),
-  img('room-10', 'rooms', 'deluxePavilion', ROOMS.deluxe5),
+  // Двор — екстериор и градина
+  img('yard-1', 'yard', 'courtyard', PLACEHOLDERS.portraitB),
+  img('yard-2', 'yard', 'terrace', PLACEHOLDERS.landscapeA),
+  img('yard-3', 'yard', 'garden', PLACEHOLDERS.portraitA),
+  img('yard-4', 'yard', 'lawn', PLACEHOLDERS.landscapeB),
+  img('yard-5', 'yard', 'panorama', PLACEHOLDERS.wide),
+  img('yard-6', 'yard', 'flowers', PLACEHOLDERS.landscapeA),
+
+  // Атракциони — placeholder-и (очакват реални снимки от региона)
+  img('attr-1', 'attractions', 'oldTown', PLACEHOLDERS.portraitA),
+  img('attr-2', 'attractions', 'beach', PLACEHOLDERS.landscapeA),
+  img('attr-3', 'attractions', 'vineyard', PLACEHOLDERS.portraitB),
+  img('attr-4', 'attractions', 'hiking', PLACEHOLDERS.landscapeB),
+  img('attr-5', 'attractions', 'landmark', PLACEHOLDERS.wide),
+  img('attr-6', 'attractions', 'sunset', PLACEHOLDERS.landscapeA),
+
+  // Удобства — placeholder-и (очакват реални снимки)
+  img('amen-1', 'amenities', 'lounge', PLACEHOLDERS.portraitB),
+  img('amen-2', 'amenities', 'fireplace', PLACEHOLDERS.landscapeA),
+  img('amen-3', 'amenities', 'spa', PLACEHOLDERS.portraitA),
+  img('amen-4', 'amenities', 'wine', PLACEHOLDERS.landscapeB),
+  img('amen-5', 'amenities', 'terraceView', PLACEHOLDERS.wide),
+  img('amen-6', 'amenities', 'firepit', PLACEHOLDERS.landscapeB),
 ] as const

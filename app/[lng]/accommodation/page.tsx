@@ -4,7 +4,6 @@ import { getTranslation } from '@/lib/i18n/server'
 import { DEFAULT_LOCALE, isLocale } from '@/lib/i18n/settings'
 import { buildPageMetadata } from '@/lib/routing/metadata'
 import { AccommodationHero } from '@/components/accommodation/AccommodationHero/AccommodationHero'
-import { StayOptions } from '@/components/accommodation/StayOptions/StayOptions'
 import { WholeVillaSection } from '@/components/accommodation/WholeVillaSection/WholeVillaSection'
 import { AccommodationRooms } from '@/components/accommodation/AccommodationRooms/AccommodationRooms'
 import { CtaBand } from '@/components/home/CtaBand/CtaBand'
@@ -30,7 +29,6 @@ export default async function AccommodationPage({ params }: PageProps) {
   return (
     <>
       <AccommodationHero lng={lng} />
-      <StayOptions lng={lng} />
       <WholeVillaSection lng={lng} />
       <AccommodationRooms lng={lng} />
       <CtaBand lng={lng} />

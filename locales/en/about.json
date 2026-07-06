@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "About Villa Mandara | A home among the herbs",
-    "description": "Six rooms named after the hours of the day, a herb garden, a pool and quiet — Villa Mandara near Gorna Kovachitsa."
+    "description": "Four rooms named after the hours of the day, a herb garden, a pool and quiet — Villa Mandara near Gorna Kovachitsa."
   },
   "hero": {
     "eyebrow": "the villa",
@@ -9,10 +9,10 @@
     "scroll": "Explore"
   },
   "intro": {
-    "lead": "Villa Mandara was made for one home at a time. Six rooms, a shared living room, an outdoor pool and a herb garden — a place where every group stays alone, at its own pace, wrapped in the silence of the Rhodopes.",
+    "lead": "Villa Mandara was made for one home at a time. Four rooms, a shared living room, an outdoor pool and a herb garden — a place where every group stays alone, at its own pace, wrapped in the mountain silence.",
     "stats": {
-      "rooms": { "label": "Rooms", "value": "6" },
-      "capacity": { "label": "Guests", "value": "up to 12" },
+      "rooms": { "label": "Rooms", "value": "4" },
+      "capacity": { "label": "Guests", "value": "up to 9" },
       "area": { "label": "Area", "value": "~400 m²" },
       "location": { "label": "Location", "value": "Gorna Kovachitsa" }
     }
@@ -41,9 +41,9 @@
   },
   "rooms": {
     "eyebrow": "the rooms",
-    "title": "Six hours of the day",
+    "title": "Four hours of the day",
     "subtitle": "Each room carries the name of a moment in the day.",
-    "lead": "From the soft blue of Dawn to the deep calm of Night — the six rooms follow the light through the day. Different in character, united by the same natural materials and breath of herbs.",
+    "lead": "From the soft blue of Dawn to the deep calm of Night — the four rooms follow the light through the day. Different in character, united by the same natural materials and breath of herbs.",
     "labels": {
       "beds": "Beds",
       "area": "Area",
@@ -53,10 +53,8 @@
     },
     "detail": {
       "dawn": { "view": "to the sunrise", "herb": "mint" },
-      "sunrise": { "view": "to the garden", "herb": "lemongrass" },
       "noon": { "view": "to the courtyard", "herb": "rosemary" },
       "sunset": { "view": "to the mountain", "herb": "garden sage" },
-      "dusk": { "view": "to the herb bed", "herb": "lavender" },
       "night": { "view": "to the stars", "herb": "night herbs" }
     }
   },
@@ -67,7 +65,7 @@
       "accommodation": {
         "title": "Accommodation",
         "items": {
-          "sixRooms": "Six rooms with their own character",
+          "rooms": "Four rooms with their own character",
           "linens": "Luxurious linen bedding",
           "livingRoom": "Shared living room with fireplace",
           "kitchen": "Fully equipped kitchen",
@@ -107,15 +105,33 @@
   "location": {
     "eyebrow": "location",
     "title": "Where the noise ends",
-    "body": "Villa Mandara sits in Mandara Village near Gorna Kovachitsa — tucked into the Western Rhodopes, far from everything and close to yourself.",
+    "body": "Villa Mandara sits in Mandara Village near Gorna Kovachitsa — tucked into the foothills of the Western Balkan Mountains, far from everything and close to yourself.",
     "cta": "About the region",
     "nearby": {
       "title": "Nearby",
       "items": {
-        "monastery": { "place": "Monastery", "time": "15 min" },
-        "trails": { "place": "Mountain trails", "time": "20 min" },
-        "springs": { "place": "Mineral baths, Ognyanovo", "time": "25 min" },
-        "town": { "place": "Gotse Delchev", "time": "30 min" }
+        "monastery": { "place": "Chiprovtsi Monastery", "time": "20 min" },
+        "trails": { "place": "Mountain trails", "time": "15 min" },
+        "springs": { "place": "Mineral baths, Varshets", "time": "35 min" },
+        "town": { "place": "Berkovitsa", "time": "20 min" }
+      }
+    },
+    "map": {
+      "eyebrow": "getting here",
+      "title": "Distances to the villa",
+      "villa": "Mandara",
+      "caption": "Approximate driving distances and times to Villa Mandara.",
+      "cities": {
+        "vidin": { "name": "Vidin", "distance": "120 km · 1h 40m" },
+        "sofia": { "name": "Sofia", "distance": "110 km · 1h 40m" },
+        "pleven": { "name": "Pleven", "distance": "150 km · 2h" },
+        "blagoevgrad": { "name": "Blagoevgrad", "distance": "210 km · 3h" },
+        "plovdiv": { "name": "Plovdiv", "distance": "250 km · 3h" },
+        "staraZagora": { "name": "Stara Zagora", "distance": "300 km · 3h 30m" },
+        "haskovo": { "name": "Haskovo", "distance": "330 km · 4h" },
+        "smolyan": { "name": "Smolyan", "distance": "340 km · 4h 30m" },
+        "burgas": { "name": "Burgas", "distance": "400 km · 4h 30m" },
+        "varna": { "name": "Varna", "distance": "410 km · 4h 30m" }
       }
     }
   }
