@@ -15,27 +15,19 @@ export interface VillaNightlyRate {
 export interface VillaPricing {
   currency: string
   whole: SeasonalRate // наемане на цялата вила (маркетинг „от …")
-  perRoom: SeasonalRate // наемане на единична стая (маркетинг „от …")
   capacity: number // максимален брой гости
   bedrooms: number // брой спални
-  // Резервационни тарифи — експлицитни бизнес правила за живата цена в панела.
-  villaNight: VillaNightlyRate // делник / пт-сб
-  roomNight: number // €/нощ за единична стая
-  loungerDay: number // €/ден за един шезлонг
-  loungerMax: number // UI таван за поле „брой шезлонги"
+  villaNight: VillaNightlyRate // делник / пт-сб (маркетинг „от …")
+  deposit: number // депозит за потвърждение (фиксиран, съвпада със Stripe линка)
 }
 
 const DEFAULT_WHOLE_OFF_SEASON = 500
 const DEFAULT_WHOLE_IN_SEASON = 700
-const DEFAULT_ROOM_OFF_SEASON = 180
-const DEFAULT_ROOM_IN_SEASON = 180
 const DEFAULT_CAPACITY = 9
 const DEFAULT_BEDROOMS = 4
 const DEFAULT_VILLA_WEEKDAY = 500
 const DEFAULT_VILLA_WEEKEND = 700
-const DEFAULT_ROOM_NIGHT = 180
-const DEFAULT_LOUNGER_DAY = 18
-const DEFAULT_LOUNGER_MAX = 8
+const DEFAULT_DEPOSIT = 500
 
 function readPositiveNumber(value: string | undefined, fallback: number): number {
   const parsed = Number(value)
@@ -48,19 +40,13 @@ export const PRICING: VillaPricing = {
     offSeason: readPositiveNumber(process.env.NEXT_PUBLIC_PRICE_VILLA_OFF, DEFAULT_WHOLE_OFF_SEASON),
     inSeason: readPositiveNumber(process.env.NEXT_PUBLIC_PRICE_VILLA_IN, DEFAULT_WHOLE_IN_SEASON),
   },
-  perRoom: {
-    offSeason: readPositiveNumber(process.env.NEXT_PUBLIC_PRICE_ROOM_OFF, DEFAULT_ROOM_OFF_SEASON),
-    inSeason: readPositiveNumber(process.env.NEXT_PUBLIC_PRICE_ROOM_IN, DEFAULT_ROOM_IN_SEASON),
-  },
   capacity: readPositiveNumber(process.env.NEXT_PUBLIC_VILLA_CAPACITY, DEFAULT_CAPACITY),
   bedrooms: readPositiveNumber(process.env.NEXT_PUBLIC_VILLA_BEDROOMS, DEFAULT_BEDROOMS),
   villaNight: {
     weekday: readPositiveNumber(process.env.NEXT_PUBLIC_PRICE_VILLA_WEEKDAY, DEFAULT_VILLA_WEEKDAY),
     weekend: readPositiveNumber(process.env.NEXT_PUBLIC_PRICE_VILLA_WEEKEND, DEFAULT_VILLA_WEEKEND),
   },
-  roomNight: readPositiveNumber(process.env.NEXT_PUBLIC_PRICE_ROOM_NIGHT, DEFAULT_ROOM_NIGHT),
-  loungerDay: readPositiveNumber(process.env.NEXT_PUBLIC_PRICE_LOUNGER_DAY, DEFAULT_LOUNGER_DAY),
-  loungerMax: readPositiveNumber(process.env.NEXT_PUBLIC_LOUNGER_MAX, DEFAULT_LOUNGER_MAX),
+  deposit: readPositiveNumber(process.env.NEXT_PUBLIC_DEPOSIT_AMOUNT, DEFAULT_DEPOSIT),
 }
 
 const CURRENCY_SYMBOLS: Record<string, string> = {

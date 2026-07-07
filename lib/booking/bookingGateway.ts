@@ -16,10 +16,8 @@ export interface InquiryInput {
   unit?: string
   arrival?: string
   departure?: string
-  // Контекст от режим-базирания панел — кой режим, коя стая, брой шезлонги, изчислена цена.
+  // Контекст от панела — режим (винаги „villa") и изчислена цена от Smoobu.
   mode?: string
-  room?: string
-  quantity?: string
   total?: string
   currency?: string
 }

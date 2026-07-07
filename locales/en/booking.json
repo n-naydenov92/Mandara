@@ -1,6 +1,6 @@
 {
-  "title": "Inquire about a stay",
-  "subtitle": "Fill in the form and we'll get back to you as soon as possible.",
+  "title": "Book your stay",
+  "subtitle": "Fill in your details and secure your dates with a deposit.",
   "hero": {
     "eyebrow": "reservations",
     "title": "Reserve your stay",
@@ -12,60 +12,56 @@
     "phone": "Phone",
     "dates": "Preferred dates",
     "guests": "Number of guests",
-    "loungers": "Number of loungers",
     "message": "Message",
-    "submit": "Send inquiry"
+    "submit": "Reserve"
   },
   "modes": {
-    "label": "Choose a booking type",
     "villa": {
       "tab": "The whole villa",
-      "price": "from {{price}} / night",
-      "desc": "The entire villa is yours — 4 bedrooms, pool and complete privacy.",
-      "note": "You rent the whole villa; we reply to your inquiry by email."
-    },
-    "lounger": {
-      "tab": "Lounger",
-      "price": "{{price}} / day",
-      "desc": "A day by the pool. Available only when the villa is free.",
-      "note": "You reserve a lounger for the day — only possible if the villa isn't booked."
-    },
-    "room": {
-      "tab": "Room",
-      "price": "{{price}} / night",
-      "desc": "Your own room, shared common areas. Only when the villa is free.",
-      "note": "You reserve a specific room; the kitchen and pool are shared with other guests."
+      "note": "You rent the whole villa; you confirm the reservation with a deposit."
     }
-  },
-  "room": {
-    "pickLabel": "Which room"
   },
   "price": {
     "title": "Price",
     "total": "Total",
     "empty": "Select dates to see the price.",
-    "disclaimer": "This is an inquiry, not a booking. We confirm by email.",
-    "lineWeekday_one": "{{count}} weekday night",
-    "lineWeekday_other": "{{count}} weekday nights",
-    "lineWeekend_one": "{{count}} night (Fri/Sat)",
-    "lineWeekend_other": "{{count}} nights (Fri/Sat)",
-    "lineRoom_one": "{{count}} night",
-    "lineRoom_other": "{{count}} nights",
-    "lineLounger": "{{quantity}} lounger × {{days}} days"
+    "disclaimer": "The reservation is confirmed with a deposit; the balance is paid on arrival.",
+    "lineNights_one": "{{count}} night",
+    "lineNights_other": "{{count}} nights"
   },
   "placeholder": {
-    "title": "Online booking — coming soon",
-    "text": "For now we accept inquiries via the form. Direct booking will be available soon."
+    "title": "Calendar coming soon",
+    "text": "Enter your preferred dates and details to reserve your stay."
   },
   "states": {
     "loading": "Loading…",
     "submitting": "Sending…",
     "error": "Something went wrong. Please try again or write to us directly.",
-    "success": "Thank you! We've received your inquiry and will be in touch soon."
+    "success": "Thank you! We've received your details. Complete your reservation with the deposit below."
   },
-  "units": {
-    "label": "What are you interested in",
-    "villa": "The whole villa"
+  "thankYou": {
+    "eyebrow": "confirmation",
+    "title": "Thank you!",
+    "lead": "We've received your reservation.",
+    "body": "Once we confirm your deposit payment, someone from Villa Mandara will get in touch to arrange the final details of your stay.",
+    "note": "If you have any questions in the meantime, write to us anytime — we're here for you.",
+    "home": "Back to home"
+  },
+  "summary": {
+    "title": "Your reservation",
+    "intro": "Review the details and pay the deposit to confirm.",
+    "unit": "Property",
+    "dates": "Dates",
+    "guests": "Guests",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "deposit": {
+    "now": "Deposit now",
+    "note": "Deducted from the total — you're not paying for the nights now.",
+    "pay": "Pay {{amount}} deposit",
+    "safe": "Payment is secured by Stripe."
   },
   "calendar": {
     "title": "Check availability",
@@ -84,14 +80,41 @@
       "unavailable": "Booked"
     },
     "loading": "Loading availability…",
-    "error": "Availability can't be loaded right now. You can still send an inquiry.",
+    "error": "Availability can't be loaded right now. You can still reserve directly.",
     "empty": "No availability information for this period.",
     "prevMonth": "Previous month",
     "nextMonth": "Next month"
   },
   "prefill": {
-    "villa": "Hello! I'm interested in renting the whole villa.",
-    "lounger": "Hello! I'd like to reserve a lounger by the pool.",
-    "room": "Hello! I'm interested in the \"{{name}}\" room."
+    "villa": "Hello! I'm interested in renting the whole villa."
+  },
+  "stayInfo": {
+    "title": "Important information during your stay",
+    "items": [
+      {
+        "title": "Check-in and check-out",
+        "body": "Check-in after 3:00 pm, check-out by 11:00 am. If you need a different time, let us know in advance and we'll find a solution."
+      },
+      {
+        "title": "Quiet hours",
+        "body": "Please keep noise down between 10:00 pm and 8:00 am — out of respect for the neighbours and the calm of the place."
+      },
+      {
+        "title": "Pool",
+        "body": "Use of the pool is at your own risk. Children must be supervised by an adult at all times."
+      },
+      {
+        "title": "Smoking",
+        "body": "Smoking is allowed only on the open terraces. The villa interior is non-smoking."
+      },
+      {
+        "title": "Pets",
+        "body": "Pets are welcome only by prior arrangement with us."
+      },
+      {
+        "title": "Caring for the villa",
+        "body": "Please treat the space as your own home. Part of the deposit is withheld in case of damage."
+      }
+    ]
   }
 }

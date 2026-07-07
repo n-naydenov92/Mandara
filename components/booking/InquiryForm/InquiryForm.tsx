@@ -4,32 +4,22 @@ import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { submitInquiry } from '@/lib/booking/inquiry'
 import type { InquiryInput } from '@/lib/booking/bookingGateway'
-import { modeConfig, type BookingMode } from '@/lib/booking/modes'
 import type { Quote } from '@/lib/booking/quote'
-import { PRICING } from '@/lib/content/pricing'
+import { PRICING, formatPrice } from '@/lib/content/pricing'
+import { SITE } from '@/lib/config/site'
 import { PriceSummary } from '@/components/booking/PriceSummary/PriceSummary'
 import styles from './InquiryForm.module.css'
 
 interface InquiryFormProps {
   defaultMessage?: string
-  mode: BookingMode
-  unitLabel: string // човешко име на режима/обекта за имейла
-  room?: string // slug на избраната стая (само режим „стая")
+  unitLabel: string // човешко име на обекта за имейла (цялата вила)
   guests: string
   onGuestsChange: (value: string) => void
-  quantity: number
-  onQuantityChange: (value: number) => void
   arrival?: string
   departure?: string
   quote: Quote | null
   showDates?: boolean // fallback без календар → текстово поле за дати
 }
-
-type FormState =
-  | { status: 'idle' }
-  | { status: 'submitting' }
-  | { status: 'success' }
-  | { status: 'error' }
 
 function readContact(form: HTMLFormElement) {
   const data = new FormData(form)
@@ -43,60 +33,122 @@ function readContact(form: HTMLFormElement) {
   }
 }
 
-function clamp(value: number, min: number, max: number): number {
-  if (Number.isNaN(value)) {
-    return min
-  }
-  return Math.min(max, Math.max(min, value))
+type ContactInfo = ReturnType<typeof readContact>
+
+type FormState =
+  | { status: 'idle' }
+  | { status: 'submitting' }
+  | { status: 'success'; contact: ContactInfo }
+
+function formatDate(iso: string, locale: string): string {
+  return new Date(`${iso}T00:00:00`).toLocaleDateString(locale, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+}
+
+interface SummaryRowProps {
+  label: string
+  value: string
+}
+
+function SummaryRow({ label, value }: SummaryRowProps) {
+  return (
+    <div className={styles.summaryRow}>
+      <dt className={styles.summaryKey}>{label}</dt>
+      <dd className={styles.summaryValue}>{value}</dd>
+    </div>
+  )
 }
 
 export function InquiryForm({
   defaultMessage = '',
-  mode,
   unitLabel,
-  room,
   guests,
   onGuestsChange,
-  quantity,
-  onQuantityChange,
   arrival,
   departure,
   quote,
   showDates = false,
 }: InquiryFormProps) {
-  const { t } = useTranslation('booking')
+  const { t, i18n } = useTranslation('booking')
   const [state, setState] = useState<FormState>({ status: 'idle' })
-  const config = modeConfig(mode)
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const form = event.currentTarget
+    const contact = readContact(event.currentTarget)
     setState({ status: 'submitting' })
-    const contact = readContact(form)
     const input: InquiryInput = {
       ...contact,
-      mode,
+      mode: 'villa',
       unit: unitLabel,
-      room: config.needsRoom ? room : undefined,
-      guests: config.needsGuests ? guests || undefined : undefined,
-      quantity: config.needsQuantity ? String(quantity) : undefined,
+      guests: guests || undefined,
       arrival,
       departure,
       total: quote ? String(quote.total) : undefined,
       currency: quote?.currency,
     }
-    const result = await submitInquiry(input)
-    setState({ status: result.ok ? 'success' : 'error' })
-    if (result.ok) {
-      form.reset()
-    }
+    // Детайлите отиват при собственика (ако формата е настроена). Резервацията се
+    // потвърждава с депозита на следващия екран, затова показваме обобщението независимо.
+    await submitInquiry(input)
+    setState({ status: 'success', contact })
   }
 
   if (state.status === 'success') {
+    const { contact } = state
+    const depositUrl = SITE.payments.stripeDepositUrl
+    const depositAmount = formatPrice(PRICING.deposit)
+    const dateLabel =
+      arrival && departure
+        ? `${formatDate(arrival, i18n.language)} – ${formatDate(departure, i18n.language)}`
+        : contact.dates || '—'
+
     return (
-      <p className={styles.success} role="status" aria-live="polite">
-        {t('states.success')}
-      </p>
+      <div className={styles.summaryCard} role="status" aria-live="polite">
+        <div className={styles.summaryHead}>
+          <h3 className={styles.summaryTitle}>{t('summary.title')}</h3>
+          <p className={styles.summaryIntro}>{t('summary.intro')}</p>
+        </div>
+
+        <dl className={styles.summaryList}>
+          <SummaryRow label={t('summary.unit')} value={unitLabel} />
+          <SummaryRow label={t('summary.dates')} value={dateLabel} />
+          {guests && <SummaryRow label={t('summary.guests')} value={guests} />}
+          <SummaryRow label={t('summary.name')} value={contact.name} />
+          <SummaryRow label={t('summary.email')} value={contact.email} />
+          {contact.phone && <SummaryRow label={t('summary.phone')} value={contact.phone} />}
+        </dl>
+
+        {quote && quote.total > 0 && (
+          <div className={styles.priceBlock}>
+            {quote.lines.map((line) => (
+              <div key={line.labelKey} className={styles.priceLine}>
+                <span>{t(line.labelKey, line.labelParams)}</span>
+                <span>{formatPrice(line.amount, quote.currency)}</span>
+              </div>
+            ))}
+            <div className={styles.priceTotal}>
+              <span>{t('price.total')}</span>
+              <span>{formatPrice(quote.total, quote.currency)}</span>
+            </div>
+          </div>
+        )}
+
+        <div className={styles.depositBlock}>
+          <div className={styles.depositHeadRow}>
+            <span className={styles.depositLabel}>{t('deposit.now')}</span>
+            <span className={styles.depositAmount}>{depositAmount}</span>
+          </div>
+          <p className={styles.depositNote}>{t('deposit.note')}</p>
+          {depositUrl && (
+            <a className={styles.depositButton} href={depositUrl}>
+              {t('deposit.pay', { amount: depositAmount })}
+            </a>
+          )}
+          <p className={styles.depositSafe}>{t('deposit.safe')}</p>
+        </div>
+      </div>
     )
   }
 
@@ -121,35 +173,18 @@ export function InquiryForm({
           <input className={styles.input} type="tel" name="phone" autoComplete="tel" />
         </label>
 
-        {config.needsGuests && (
-          <label className={styles.field}>
-            <span className={styles.label}>{t('form.guests')}</span>
-            <input
-              className={styles.input}
-              type="number"
-              name="guests"
-              min={1}
-              max={PRICING.capacity}
-              value={guests}
-              onChange={(event) => onGuestsChange(event.target.value)}
-            />
-          </label>
-        )}
-
-        {config.needsQuantity && (
-          <label className={styles.field}>
-            <span className={styles.label}>{t('form.loungers')}</span>
-            <input
-              className={styles.input}
-              type="number"
-              name="quantity"
-              min={1}
-              max={PRICING.loungerMax}
-              value={quantity}
-              onChange={(event) => onQuantityChange(clamp(Number(event.target.value), 1, PRICING.loungerMax))}
-            />
-          </label>
-        )}
+        <label className={styles.field}>
+          <span className={styles.label}>{t('form.guests')}</span>
+          <input
+            className={styles.input}
+            type="number"
+            name="guests"
+            min={1}
+            max={PRICING.capacity}
+            value={guests}
+            onChange={(event) => onGuestsChange(event.target.value)}
+          />
+        </label>
       </div>
 
       {showDates && (
@@ -169,12 +204,6 @@ export function InquiryForm({
       <button type="submit" className={styles.submit} disabled={submitting}>
         {submitting ? t('states.submitting') : t('form.submit')}
       </button>
-
-      {state.status === 'error' && (
-        <p className={styles.error} role="alert" aria-live="assertive">
-          {t('states.error')}
-        </p>
-      )}
     </form>
   )
 }

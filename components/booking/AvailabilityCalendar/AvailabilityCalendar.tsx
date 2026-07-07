@@ -21,6 +21,7 @@ import styles from './AvailabilityCalendar.module.css'
 export interface DateRange {
   arrival: string
   departure: string
+  prices: (number | null)[] // Smoobu цени за избраните нощи/дни, в реда на интервала
 }
 
 // Нощувки (вила/стая) или дни (шезлонг) — определя поведението на избора.
@@ -30,10 +31,15 @@ interface AvailabilityCalendarProps {
   availabilityUnit: string // обектът, чиято наличност четем (винаги вилата за v1)
   selectionKind: SelectionKind
   onRangeChange: (range: DateRange | null) => void
-  dayPrice?: (iso: string) => number | null // цена в клетката (само за вила); иначе скрита
+  // Локална цена в клетката (шезлонг — фиксирана добавка). Липсва ли → показваме
+  // цената от Smoobu (dayInfo.price); нищо, ако Smoobu още няма стойност.
+  dayPrice?: (iso: string) => number | null
 }
 
 type Phase = 'loading' | 'loaded' | 'error'
+type RangeError = 'unavailable' | 'tooShort'
+
+const MIN_NIGHTS = 1
 
 const NAV_ICON_SIZE = 18
 
@@ -66,7 +72,7 @@ export function AvailabilityCalendar({
   const [phase, setPhase] = useState<Phase>('loading')
   const [arrival, setArrival] = useState<string | null>(null)
   const [departure, setDeparture] = useState<string | null>(null)
-  const [rangeError, setRangeError] = useState(false)
+  const [rangeError, setRangeError] = useState<RangeError | null>(null)
 
   const today = useMemo(() => toISO(new Date()), [])
   const minMonth = useMemo(() => startOfMonth(new Date()), [])
@@ -106,15 +112,21 @@ export function AvailabilityCalendar({
   const allAvailable = (dates: readonly string[]): boolean =>
     dates.every((date) => dayInfo(date)?.available === true)
 
+  const pricesFor = (dates: readonly string[]): (number | null)[] =>
+    dates.map((date) => dayInfo(date)?.price ?? null)
+
+  // Минимален брой нощувки за дадена дата (Smoobu minStay), но никога под 1.
+  const requiredNights = (iso: string): number => Math.max(MIN_NIGHTS, dayInfo(iso)?.minStay ?? MIN_NIGHTS)
+
   const emit = (next: DateRange | null) => {
-    setRangeError(false)
+    setRangeError(null)
     onRangeChange(next)
   }
 
   const selectSingle = (iso: string) => {
     setArrival(iso)
     setDeparture(iso)
-    emit(selectionKind === 'days' ? { arrival: iso, departure: iso } : null)
+    emit(selectionKind === 'days' ? { arrival: iso, departure: iso, prices: pricesFor([iso]) } : null)
   }
 
   // Нощувки: 1-ви клик = пристигане, 2-ри (по-късна дата) = заминаване.
@@ -125,12 +137,17 @@ export function AvailabilityCalendar({
       emit(null)
       return
     }
-    if (!allAvailable(nightsInRange(arrival, iso))) {
-      setRangeError(true)
+    const nights = nightsInRange(arrival, iso)
+    if (!allAvailable(nights)) {
+      setRangeError('unavailable')
+      return
+    }
+    if (nights.length < requiredNights(arrival)) {
+      setRangeError('tooShort')
       return
     }
     setDeparture(iso)
-    emit({ arrival, departure: iso })
+    emit({ arrival, departure: iso, prices: pricesFor(nights) })
   }
 
   // Дни: 1-ви клик = единичен ден; следващ по-късен ден разширява инклузивно.
@@ -138,11 +155,11 @@ export function AvailabilityCalendar({
     const single = Boolean(arrival && departure && arrival === departure)
     if (single && arrival && iso > arrival) {
       if (!allAvailable(daysInRange(arrival, iso))) {
-        setRangeError(true)
+        setRangeError('unavailable')
         return
       }
       setDeparture(iso)
-      emit({ arrival, departure: iso })
+      emit({ arrival, departure: iso, prices: pricesFor(daysInRange(arrival, iso)) })
       return
     }
     selectSingle(iso)
@@ -175,16 +192,32 @@ export function AvailabilityCalendar({
     return `${dateText} — ${status}`
   }
 
-  const selectionCount = useMemo(() => {
+  const selectedDates = useMemo(() => {
     if (!arrival || !departure) {
-      return 0
+      return []
     }
-    return selectionKind === 'days'
-      ? daysInRange(arrival, departure).length
-      : nightsInRange(arrival, departure).length
+    return selectionKind === 'days' ? daysInRange(arrival, departure) : nightsInRange(arrival, departure)
   }, [arrival, departure, selectionKind])
 
-  const minStay = arrival && selectionKind === 'nights' ? dayInfo(arrival)?.minStay ?? null : null
+  const selectionCount = selectedDates.length
+
+  // Крайна цена в календара: сборът на дневните цени за избрания период. Липсва ли
+  // някоя цена → null (не показваме сума), за да не подвеждаме с непълно число.
+  const selectionTotal = useMemo(() => {
+    if (selectedDates.length === 0) {
+      return null
+    }
+    const amounts = selectedDates.map((iso) => (dayPrice ? dayPrice(iso) : byDate.get(iso)?.price ?? null))
+    if (amounts.some((amount) => amount === null)) {
+      return null
+    }
+    return amounts.reduce<number>((sum, amount) => sum + (amount ?? 0), 0)
+  }, [selectedDates, dayPrice, byDate])
+
+  // Подсказка за минимален престой — само докато избираме (няма заминаване); щом
+  // изборът стане валиден, тя изчезва. При твърде кратък избор същият ред е грешка.
+  const arrivalMinNights = arrival && selectionKind === 'nights' ? requiredNights(arrival) : MIN_NIGHTS
+  const showMinStayHint = arrivalMinNights > MIN_NIGHTS && !departure
 
   return (
     <div className={styles.calendar}>
@@ -233,7 +266,7 @@ export function AvailabilityCalendar({
                   return <span key={`empty-${weekIndex}-${dayIndex}`} className={styles.empty} />
                 }
                 const iso = toISO(date)
-                const price = dayPrice?.(iso) ?? null
+                const price = dayPrice ? dayPrice(iso) : (dayInfo(iso)?.price ?? null)
                 return (
                   <button
                     key={iso}
@@ -265,20 +298,27 @@ export function AvailabilityCalendar({
         </span>
       </div>
 
-      {minStay != null && minStay > 1 && (
-        <p className={styles.note}>{t('calendar.minStay', { count: minStay })}</p>
+      {showMinStayHint && (
+        <p className={styles.note} role={rangeError === 'tooShort' ? 'alert' : undefined}>
+          {t('calendar.minStay', { count: arrivalMinNights })}
+        </p>
       )}
-      {rangeError && (
+      {rangeError === 'unavailable' && (
         <p className={styles.note} role="alert">
           {t('calendar.unavailableRange')}
         </p>
       )}
       {selectionCount > 0 && (
-        <p className={styles.summary} aria-live="polite">
-          {selectionKind === 'days'
-            ? t('calendar.days', { count: selectionCount })
-            : t('calendar.nights', { count: selectionCount })}
-        </p>
+        <div className={styles.summary} aria-live="polite">
+          <span>
+            {selectionKind === 'days'
+              ? t('calendar.days', { count: selectionCount })
+              : t('calendar.nights', { count: selectionCount })}
+          </span>
+          {selectionTotal != null && (
+            <span className={styles.summaryTotal}>{formatPrice(selectionTotal)}</span>
+          )}
+        </div>
       )}
     </div>
   )

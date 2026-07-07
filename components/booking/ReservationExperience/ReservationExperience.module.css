@@ -17,59 +17,6 @@
   color: var(--stone);
 }
 
-.rooms {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.roomsLabel {
-  font-family: var(--f-ui);
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--stone);
-}
-
-.roomPills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.roomPill {
-  padding: 0.45rem 1rem;
-  font-family: var(--f-ui);
-  font-size: var(--fs-label);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--espresso);
-  background: var(--cream);
-  border: 1px solid var(--sand);
-  border-radius: 9999px;
-  cursor: pointer;
-  transition:
-    background var(--dur-ui) var(--ease),
-    color var(--dur-ui) var(--ease),
-    border-color var(--dur-ui) var(--ease);
-}
-
-.roomPill:hover {
-  border-color: var(--terra);
-}
-
-.roomPill:focus-visible {
-  outline: 2px solid var(--terra);
-  outline-offset: 2px;
-}
-
-.roomPillActive {
-  color: var(--cream);
-  background: var(--terra);
-  border-color: var(--terra);
-}
-
 .grid {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -122,12 +69,6 @@
   font-style: italic;
   font-size: var(--fs-body);
   color: var(--stone);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .roomPill {
-    transition: none;
-  }
 }
 
 @media (max-width: 860px) {

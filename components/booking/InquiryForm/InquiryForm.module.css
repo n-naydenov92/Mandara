@@ -86,34 +86,170 @@
   transform: none;
 }
 
-.success,
-.error {
-  font-family: var(--f-ui);
-  font-size: var(--fs-body);
-  line-height: 1.6;
-}
-
-.success {
+.summaryCard {
+  /* четим вторичен тон — по-мек от espresso, но не блед като stone (WCAG AA) */
+  --muted: color-mix(in srgb, var(--espresso) 70%, var(--cream));
+  display: flex;
+  flex-direction: column;
   max-width: 38rem;
-  padding: 1.1rem 1.35rem;
-  color: var(--forest);
   background: var(--ivory);
   border: 1px solid var(--sand);
-  border-left: 3px solid var(--olive);
   border-radius: var(--radius-card);
+  overflow: hidden;
 }
 
-.error {
+.summaryHead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.35rem 1.5rem 1.1rem;
+}
+
+.summaryTitle {
+  font-family: var(--f-display);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  color: var(--espresso);
+}
+
+.summaryIntro {
+  font-family: var(--f-ui);
+  font-size: var(--fs-ui);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.summaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0 1.5rem 1.25rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+}
+
+.summaryKey {
+  color: var(--muted);
+}
+
+.summaryValue {
+  color: var(--espresso);
+  font-weight: 500;
+  text-align: right;
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.1rem 1.5rem;
+  border-top: 1px solid var(--sand);
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+}
+
+.priceLine {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+}
+
+.priceTotal {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   margin-top: 0.25rem;
+  color: var(--espresso);
+  font-weight: 500;
+}
+
+.depositBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.25rem 1.5rem 1.4rem;
+  border-top: 1px solid var(--sand);
+  background: var(--cream);
+}
+
+.depositHeadRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.depositLabel {
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--espresso);
+}
+
+.depositAmount {
+  font-family: var(--f-display);
+  font-size: var(--fs-h3);
   color: var(--clay);
 }
 
+.depositNote {
+  font-family: var(--f-ui);
+  font-size: var(--fs-ui);
+  line-height: 1.5;
+  color: var(--espresso);
+}
+
+.depositButton {
+  display: block;
+  margin-top: 0.15rem;
+  padding: 0.9rem 1.85rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-ui);
+  font-weight: 500;
+  letter-spacing: var(--tracking-ui);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--cream);
+  background: var(--terra);
+  border-radius: 9999px;
+  transition:
+    background var(--dur-ui) var(--ease),
+    transform var(--dur-ui) var(--ease);
+}
+
+.depositButton:hover {
+  background: var(--clay);
+  transform: translateY(-2px);
+}
+
+.depositButton:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 3px;
+}
+
+.depositSafe {
+  font-family: var(--f-ui);
+  font-size: var(--fs-label);
+  color: var(--muted);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .submit {
+  .submit,
+  .depositButton {
     transition: background var(--dur-ui) var(--ease);
   }
 
-  .submit:hover {
+  .submit:hover,
+  .depositButton:hover {
     transform: none;
   }
 }

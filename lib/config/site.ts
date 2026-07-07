@@ -15,11 +15,16 @@ export interface SiteMap {
   lng: number
 }
 
+export interface SitePayments {
+  stripeDepositUrl: string // Stripe Payment Link за депозита (публичен, не е тайна)
+}
+
 export interface SiteConfig {
   url: string
   contact: SiteContact
   social: SiteSocial
   map: SiteMap
+  payments: SitePayments
 }
 
 export const SITE: SiteConfig = {
@@ -37,5 +42,9 @@ export const SITE: SiteConfig = {
   map: {
     lat: Number(process.env.NEXT_PUBLIC_MAP_LAT ?? 0),
     lng: Number(process.env.NEXT_PUBLIC_MAP_LNG ?? 0),
+  },
+  payments: {
+    stripeDepositUrl:
+      process.env.NEXT_PUBLIC_STRIPE_DEPOSIT_URL ?? 'https://buy.stripe.com/4gM28ke1T2Aq3MI423fEk17',
   },
 }
