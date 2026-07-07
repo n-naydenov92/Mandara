@@ -20,7 +20,6 @@ import { PRICING } from '@/lib/content/pricing'
 
 const RATES_ENDPOINT = 'https://login.smoobu.com/api/rates'
 const RESERVATIONS_ENDPOINT = 'https://login.smoobu.com/api/reservations'
-const REVALIDATE_SECONDS = 600
 const RESERVATIONS_PAGE_SIZE = 100
 // Канал за резервациите от сайта. По подразбиране „Direct booking" (6655906) — единственият
 // наличен в акаунта. Активираш ли отделен „Website" канал в Smoobu, сложи id-то му в
@@ -28,7 +27,6 @@ const RESERVATIONS_PAGE_SIZE = 100
 const DEFAULT_BOOKING_CHANNEL = 6655906
 const BOOKING_CHANNEL_ID = Number(process.env.SMOOBU_BOOKING_CHANNEL_ID) || DEFAULT_BOOKING_CHANNEL
 const PLACEHOLDER = '__TBD__'
-export const AVAILABILITY_TAG = 'smoobu-availability'
 
 const rawKey = process.env.SMOOBU_API_KEY
 const API_KEY = rawKey && rawKey !== PLACEHOLDER ? rawKey : undefined
@@ -38,8 +36,6 @@ const API_KEY = rawKey && rawKey !== PLACEHOLDER ? rawKey : undefined
 function smoobuHeaders(): HeadersInit {
   return { 'Api-Key': API_KEY ?? '', 'Content-Type': 'application/json' }
 }
-
-const cacheOptions = { next: { revalidate: REVALIDATE_SECONDS, tags: [AVAILABILITY_TAG] } }
 
 // Формата на /api/rates: data[apartmentId][YYYY-MM-DD] = { price, min_length_of_stay, available }.
 interface SmoobuRateDay {
@@ -85,7 +81,8 @@ function occupies(booking: SmoobuBooking): boolean {
 }
 
 async function fetchJson<T>(url: string, label: string): Promise<T> {
-  const response = await fetch(url, { headers: smoobuHeaders(), ...cacheOptions })
+  // Без кеш — наличността трябва да е винаги актуална (блок/резервация се вижда веднага).
+  const response = await fetch(url, { headers: smoobuHeaders(), cache: 'no-store' })
   if (!response.ok) {
     throw new Error(`Smoobu ${label} request failed: ${response.status}`)
   }
