@@ -125,6 +125,7 @@
         "vidin": { "name": "Vidin", "distance": "120 km · 1h 40m" },
         "sofia": { "name": "Sofia", "distance": "110 km · 1h 40m" },
         "pleven": { "name": "Pleven", "distance": "150 km · 2h" },
+        "ruse": { "name": "Ruse", "distance": "290 km · 3h 30m" },
         "blagoevgrad": { "name": "Blagoevgrad", "distance": "210 km · 3h" },
         "plovdiv": { "name": "Plovdiv", "distance": "250 km · 3h" },
         "staraZagora": { "name": "Stara Zagora", "distance": "300 km · 3h 30m" },
