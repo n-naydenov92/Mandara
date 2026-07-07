@@ -86,6 +86,14 @@
   transform: none;
 }
 
+.error {
+  margin-top: 0.25rem;
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--clay);
+}
+
 .summaryCard {
   /* четим вторичен тон — по-мек от espresso, но не блед като stone (WCAG AA) */
   --muted: color-mix(in srgb, var(--espresso) 70%, var(--cream));

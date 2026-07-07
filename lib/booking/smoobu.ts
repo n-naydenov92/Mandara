@@ -8,13 +8,25 @@
 //  • /api/reservations → реалните резервации И ръчните „Block dates" (blocked channel).
 // Ден е свободен само ако rates го позволява И няма резервация/блок върху него.
 
-import type { AvailabilityResult, DayAvailability } from '@/lib/booking/bookingGateway'
+import type {
+  AvailabilityResult,
+  DayAvailability,
+  InquiryInput,
+  InquiryResult,
+} from '@/lib/booking/bookingGateway'
+import { VILLA_UNIT } from '@/lib/booking/bookingGateway'
 import { resolveApartmentId } from '@/lib/booking/smoobuUnits'
+import { PRICING } from '@/lib/content/pricing'
 
 const RATES_ENDPOINT = 'https://login.smoobu.com/api/rates'
 const RESERVATIONS_ENDPOINT = 'https://login.smoobu.com/api/reservations'
 const REVALIDATE_SECONDS = 600
 const RESERVATIONS_PAGE_SIZE = 100
+// Канал за резервациите от сайта. По подразбиране „Direct booking" (6655906) — единственият
+// наличен в акаунта. Активираш ли отделен „Website" канал в Smoobu, сложи id-то му в
+// SMOOBU_BOOKING_CHANNEL_ID и резервациите влизат по него без промяна по кода.
+const DEFAULT_BOOKING_CHANNEL = 6655906
+const BOOKING_CHANNEL_ID = Number(process.env.SMOOBU_BOOKING_CHANNEL_ID) || DEFAULT_BOOKING_CHANNEL
 const PLACEHOLDER = '__TBD__'
 export const AVAILABILITY_TAG = 'smoobu-availability'
 
@@ -137,4 +149,61 @@ export async function getAvailability(
     available: day.available && !occupied.has(day.date),
   }))
   return { days }
+}
+
+// Smoobu иска отделни first/last name; формата има едно поле → делим на първата шпация.
+function splitName(fullName: string): { firstName: string; lastName: string } {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean)
+  const firstName = parts[0] ?? fullName.trim()
+  const lastName = parts.slice(1).join(' ') || firstName
+  return { firstName, lastName }
+}
+
+// Създава резервация в Smoobu (канал „Direct booking") → блокира датите и записва госта
+// + съобщението (notice). Депозитът се записва като prepayment, за да се вижда статусът.
+export async function createReservation(input: InquiryInput): Promise<InquiryResult> {
+  const apartmentId = resolveApartmentId(VILLA_UNIT)
+  if (!apartmentId || !API_KEY) {
+    return { ok: false, error: 'not-configured' }
+  }
+  if (!input.arrival || !input.departure) {
+    return { ok: false, error: 'missing-dates' }
+  }
+
+  const { firstName, lastName } = splitName(input.name)
+  const adults = Number(input.guests)
+  const price = Number(input.total)
+  const body: Record<string, unknown> = {
+    apartmentId: Number(apartmentId),
+    channelId: BOOKING_CHANNEL_ID,
+    arrivalDate: input.arrival,
+    departureDate: input.departure,
+    firstName,
+    lastName,
+    email: input.email,
+    prepayment: PRICING.deposit,
+  }
+  if (input.phone) {
+    body.phone = input.phone
+  }
+  if (input.message) {
+    body.notice = input.message
+  }
+  if (Number.isInteger(adults) && adults > 0) {
+    body.adults = adults
+  }
+  if (Number.isFinite(price) && price > 0) {
+    body.price = price
+  }
+
+  try {
+    const response = await fetch(RESERVATIONS_ENDPOINT, {
+      method: 'POST',
+      headers: smoobuHeaders(),
+      body: JSON.stringify(body),
+    })
+    return response.ok ? { ok: true } : { ok: false, error: `smoobu-${response.status}` }
+  } catch {
+    return { ok: false, error: 'network' }
+  }
 }

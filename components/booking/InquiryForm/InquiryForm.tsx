@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { submitInquiry } from '@/lib/booking/inquiry'
+import { submitReservation } from '@/lib/booking/reserve'
 import type { InquiryInput } from '@/lib/booking/bookingGateway'
 import type { Quote } from '@/lib/booking/quote'
 import { PRICING, formatPrice } from '@/lib/content/pricing'
@@ -39,6 +39,7 @@ type FormState =
   | { status: 'idle' }
   | { status: 'submitting' }
   | { status: 'success'; contact: ContactInfo }
+  | { status: 'error' }
 
 function formatDate(iso: string, locale: string): string {
   return new Date(`${iso}T00:00:00`).toLocaleDateString(locale, {
@@ -89,10 +90,10 @@ export function InquiryForm({
       total: quote ? String(quote.total) : undefined,
       currency: quote?.currency,
     }
-    // Детайлите отиват при собственика (ако формата е настроена). Резервацията се
-    // потвърждава с депозита на следващия екран, затова показваме обобщението независимо.
-    await submitInquiry(input)
-    setState({ status: 'success', contact })
+    // Създава резервацията в Smoobu (блокира датите, записва госта + съобщението).
+    // Успех → обобщение + депозит; неуспех → грешка (датите не са запазени).
+    const result = await submitReservation(input)
+    setState(result.ok ? { status: 'success', contact } : { status: 'error' })
   }
 
   if (state.status === 'success') {
@@ -204,6 +205,12 @@ export function InquiryForm({
       <button type="submit" className={styles.submit} disabled={submitting}>
         {submitting ? t('states.submitting') : t('form.submit')}
       </button>
+
+      {state.status === 'error' && (
+        <p className={styles.error} role="alert" aria-live="assertive">
+          {t('states.error')}
+        </p>
+      )}
     </form>
   )
 }
