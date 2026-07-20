@@ -33,18 +33,15 @@
   gap: 1rem;
 }
 
-.brand {
+.logo {
   display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--f-display);
-  font-size: 1.25rem;
-  font-weight: 300;
-  letter-spacing: var(--tracking-logo);
+  width: fit-content;
 }
 
-.brandHerb {
-  color: var(--ember);
+.logoImage {
+  width: auto;
+  height: clamp(2.25rem, 4vw, 3rem);
+  object-fit: contain;
 }
 
 .about {

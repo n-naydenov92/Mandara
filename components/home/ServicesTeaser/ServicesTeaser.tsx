@@ -37,7 +37,7 @@ export async function ServicesTeaser({ lng }: ServicesTeaserProps) {
             <h2 className={styles.title}>{t('services.title')}</h2>
           </Reveal>
           <Reveal delay={0.16}>
-            <LocaleLink lng={lng} href="/five-star-services" className={styles.cta}>
+            <LocaleLink lng={lng} href="/experience" className={styles.cta}>
               {t('services.cta')}
               <Icon icon={IconArrowRight} size={16} />
             </LocaleLink>

@@ -36,6 +36,7 @@ export function GalleryTile({
         sizes={sizes}
         kenburns
         hoverZoom
+        reveal={false}
         revealDelay={revealDelay}
         className={styles.image}
       />

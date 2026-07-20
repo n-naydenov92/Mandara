@@ -9,7 +9,7 @@ import { DEFAULT_LOCALE, isLocale } from '@/lib/i18n/settings'
 import styles from './thank-you.module.css'
 
 // Placeholder — потребителят ще смени с истинска hero снимка на вилата.
-const HERO_IMAGE = '/images/about/villa.jpg'
+const HERO_IMAGE = '/images/about/za-vilata-banner.webp'
 
 interface PageProps {
   params: Promise<{ lng: string }>

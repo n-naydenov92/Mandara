@@ -32,36 +32,35 @@ export function ReservationExperience({ hasCalendar, defaultMessage }: Reservati
       <div className={styles.panel}>
         <p className={styles.note}>{t('modes.villa.note')}</p>
 
-        <div className={styles.grid}>
-          <div className={styles.calendarCol}>
-            {hasCalendar ? (
-              <AvailabilityCalendar
-                availabilityUnit={VILLA_UNIT}
-                selectionKind="nights"
-                onRangeChange={handleRangeChange}
-              />
-            ) : (
-              <div className={styles.notice}>
-                <h3 className={styles.noticeTitle}>{t('placeholder.title')}</h3>
-                <p className={styles.noticeText}>{t('placeholder.text')}</p>
-              </div>
-            )}
-          </div>
-
-          <div className={styles.formCol}>
-            <h2 className={styles.formTitle}>{t('title')}</h2>
-            <p className={styles.formSubtitle}>{t('subtitle')}</p>
-            <InquiryForm
-              defaultMessage={defaultMessage}
-              unitLabel={t('modes.villa.tab')}
-              guests={guests}
-              onGuestsChange={setGuests}
-              arrival={range?.arrival}
-              departure={range?.departure}
-              quote={quote}
-              showDates={!hasCalendar}
+        <div className={styles.calendarCol}>
+          {hasCalendar ? (
+            <AvailabilityCalendar
+              availabilityUnit={VILLA_UNIT}
+              selectionKind="nights"
+              onRangeChange={handleRangeChange}
             />
-          </div>
+          ) : (
+            <div className={styles.notice}>
+              <h3 className={styles.noticeTitle}>{t('placeholder.title')}</h3>
+              <p className={styles.noticeText}>{t('placeholder.text')}</p>
+            </div>
+          )}
+        </div>
+
+        <div className={styles.formCol}>
+          <h2 className={styles.formTitle}>{t('title')}</h2>
+          <p className={styles.formSubtitle}>{t('subtitle')}</p>
+          <InquiryForm
+            defaultMessage={defaultMessage}
+            unitLabel={t('modes.villa.tab')}
+            guests={guests}
+            onGuestsChange={setGuests}
+            arrival={range?.arrival}
+            departure={range?.departure}
+            quote={quote}
+            showDates={!hasCalendar}
+          />
+          <p className={styles.depositNote}>{t('depositNote')}</p>
         </div>
       </div>
 

@@ -1,10 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
-import { IconLeaf } from '@tabler/icons-react'
 import { LocaleLink } from '@/components/ui/LocaleLink/LocaleLink'
-import { Icon } from '@/components/ui/Icon/Icon'
 import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher/LocaleSwitcher'
 import { OverlayMenu } from '@/components/layout/OverlayMenu/OverlayMenu'
 import { HamburgerIcon } from '@/components/layout/OverlayMenu/HamburgerIcon'
@@ -43,8 +42,14 @@ export function Header({ lng, secondaryNav }: HeaderProps) {
           </button>
 
           <LocaleLink lng={lng} href="/" className={styles.logo} aria-label={t('brandFull')}>
-            <span className={styles.logoText}>{t('brand')}</span>
-            <Icon icon={IconLeaf} size={16} className={styles.logoHerb} />
+            <Image
+              src="/images/homepage/mandara-logo-white.webp"
+              alt={t('brandFull')}
+              width={3139}
+              height={746}
+              priority
+              className={styles.logoImage}
+            />
           </LocaleLink>
 
           <div className={styles.right}>

@@ -8,6 +8,7 @@ export interface SiteSocial {
   instagramUrl: string
   instagramHandle: string
   facebookUrl: string
+  tiktokUrl: string
 }
 
 export interface SiteMap {
@@ -30,14 +31,16 @@ export interface SiteConfig {
 export const SITE: SiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vilamandara.bg',
   contact: {
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'contact@vilamandara.bg',
-    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '+359 000 000 000',
-    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? '+359 000 000 000',
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'mandara.houses@gmail.com',
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '+359 889 966 694',
+    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? '+359 889 966 694',
   },
   social: {
-    instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? 'https://instagram.com/vilamandara',
-    instagramHandle: process.env.NEXT_PUBLIC_INSTAGRAM_HANDLE ?? '@vilamandara',
-    facebookUrl: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? 'https://facebook.com/vilamandara',
+    instagramUrl:
+      process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? 'https://www.instagram.com/mandara.houses/',
+    instagramHandle: process.env.NEXT_PUBLIC_INSTAGRAM_HANDLE ?? '@mandara.houses',
+    facebookUrl: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? 'https://www.facebook.com/mandara.houses/',
+    tiktokUrl: process.env.NEXT_PUBLIC_TIKTOK_URL ?? 'https://www.tiktok.com/@mandara.village',
   },
   map: {
     lat: Number(process.env.NEXT_PUBLIC_MAP_LAT ?? 0),

@@ -73,7 +73,7 @@ export function ServicesCarousel({ items, controlLabels, regionLabel, className 
         onScroll={handleScroll}
         tabIndex={0}
         aria-label={regionLabel}
-        data-lenis-prevent
+        data-lenis-prevent-touch
       >
         {items.map((item) => (
           <li className={styles.card} key={item.src}>

@@ -4,7 +4,7 @@ import { getTranslation } from '@/lib/i18n/server'
 import { DEFAULT_LOCALE, isLocale } from '@/lib/i18n/settings'
 import { buildPageMetadata } from '@/lib/routing/metadata'
 import { ExperienceHero } from '@/components/experience/ExperienceHero/ExperienceHero'
-import { ExperienceBlock } from '@/components/experience/ExperienceBlock/ExperienceBlock'
+import { ExperienceShowcase } from '@/components/experience/ExperienceShowcase/ExperienceShowcase'
 import { CtaBand } from '@/components/home/CtaBand/CtaBand'
 
 interface PageProps {
@@ -28,10 +28,7 @@ export default async function ExperiencePage({ params }: PageProps) {
   return (
     <>
       <ExperienceHero lng={lng} />
-      <ExperienceBlock lng={lng} themeKey="gastronomy" tone="transparent" />
-      <ExperienceBlock lng={lng} themeKey="wellness" tone="ivory" reversed />
-      <ExperienceBlock lng={lng} themeKey="nature" tone="transparent" />
-      <ExperienceBlock lng={lng} themeKey="events" tone="ivory" reversed />
+      <ExperienceShowcase lng={lng} />
       <CtaBand lng={lng} />
     </>
   )

@@ -12,7 +12,7 @@ interface PageProps {
   params: Promise<{ lng: string }>
 }
 
-const HERO_IMAGE = '/images/gallery/omai_zile_accommodation_101_master_pavilion_02.png'
+const HERO_IMAGE = '/images/gallery/hf_20260712_204724_57e50f5e-842e-47db-b280-5e69dec12998.webp'
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lng } = await params

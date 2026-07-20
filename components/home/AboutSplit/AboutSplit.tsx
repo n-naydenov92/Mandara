@@ -39,7 +39,7 @@ export async function AboutSplit({ lng }: AboutSplitProps) {
 
         <Reveal delay={0.12} className={styles.media}>
           <ArchImage
-            src="/images/about/villa.jpg"
+            src="/images/homepage/hp-za-vilata.webp"
             alt={t('about.title')}
             sizes="(max-width: 900px) 100vw, 50vw"
           />

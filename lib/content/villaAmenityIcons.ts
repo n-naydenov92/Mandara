@@ -3,9 +3,9 @@ import {
   IconPool,
   IconToolsKitchen2,
   IconArmchair,
-  IconGrill,
-  IconPlant2,
-  IconCar,
+  IconFlame,
+  IconRipple,
+  IconMoodKid,
   IconLeaf,
 } from '@tabler/icons-react'
 
@@ -19,10 +19,10 @@ interface TablerIconProps {
 export const VILLA_AMENITY_ICON: Record<string, ComponentType<TablerIconProps>> = {
   pool: IconPool,
   kitchen: IconToolsKitchen2,
-  living: IconArmchair,
-  bbq: IconGrill,
-  garden: IconPlant2,
-  parking: IconCar,
+  diningLiving: IconArmchair,
+  bbqFirepit: IconFlame,
+  poolSlide: IconRipple,
+  kidsCorner: IconMoodKid,
 }
 
 export const VILLA_AMENITY_ICON_FALLBACK: ComponentType<TablerIconProps> = IconLeaf

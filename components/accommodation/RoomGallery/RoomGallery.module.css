@@ -20,6 +20,15 @@
   display: block;
 }
 
+/* Скрит слой само за предварително зареждане на съседните кадри. */
+.preload {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .img {
   object-fit: cover;
   transition: transform 0.9s var(--ease);

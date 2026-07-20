@@ -4,9 +4,10 @@
     "description": "A premium villa among nature and herbs near Gorna Kovachitsa. Far from everything, close to yourself."
   },
   "hero": {
-    "eyebrow": "welcome",
+    "eyebrow": "Welcome to Mandara.",
     "titleLine1": "Here time",
-    "titleLine2": "flows differently."
+    "titleLine2": "flows differently.",
+    "cta": "Reserve your stay"
   },
   "about": {
     "eyebrow": "about us",
@@ -54,37 +55,58 @@
   "experience": {
     "eyebrow": "experience",
     "lead": "Every experience at Mandara is made to measure — from herb walks and yoga in the silence, to dinners with a seasonal menu and slow afternoons by the pool. All shaped around the rhythm of the day and nature.",
-    "footer": "A private chef, spa rituals with local herbs, wine tastings, and quiet evenings outdoors — every detail arranged calmly and entirely around you.",
+    "footer": "Villa Mandara offers private experiences by prior arrangement — a private chef, massages, workouts and more.",
     "cta": "Explore the experiences",
     "imageAlt": "Experiences at Villa Mandara"
   },
   "region": {
     "eyebrow": "the region",
+    "place": "Gorna Kovachitsa, Chiprovtsi Municipality",
+    "intro": "Set in North-West Bulgaria, a short drive from some of the country's most famous and breathtaking landmarks — the Belogradchik Rocks, the Magura Cave and many more.",
     "cta": "Discover the region",
     "units": {
       "km": "km",
       "min": "min"
     },
+    "nav": {
+      "prev": "Previous destination",
+      "next": "Next destination"
+    },
     "points": {
-      "belasitsa": {
-        "title": "Belasitsa",
-        "meta": "Mountain trails · 20 min",
-        "body": "Belasitsa rises just a step from the doorstep — ancient beech forests, hidden waterfalls and paths made for a slow walk. The air is clean and quiet, and the views open gradually, all the way to the ridge."
+      "belogradchik": {
+        "title": "Belogradchik Rocks",
+        "meta": "A natural wonder",
+        "body": "A natural wonder of reddish rock formations, among the most beautiful landmarks in Bulgaria. The Kaleto fortress is built right into them — a sight that stays with you long after."
       },
-      "monastery": {
-        "title": "Monastery",
-        "meta": "History and peace · 15 min",
-        "body": "Fifteen minutes away, a monastery waits wrapped in silence and centuries-old walls. A place for a brief bow to history, where time seems to pause and your thoughts settle on their own."
+      "magura": {
+        "title": "Magura Cave",
+        "meta": "Cave & prehistory",
+        "body": "One of the largest caves in Bulgaria, famous for its unique prehistoric wall paintings. Sparkling wine even matures in its underground halls — a rare blend of history, nature and taste."
       },
-      "wine": {
-        "title": "Vineyards & cellars",
-        "meta": "Local wines · nearby",
-        "body": "The sunlit slopes nearby yield wines full of character. Visit the family cellars, taste the vintages straight from the barrel, and let the sunset over the vineyards stretch the evening out."
+      "radetzki": {
+        "title": "The Radetzky Steamship",
+        "meta": "History · Kozloduy",
+        "body": "A full-scale replica of the historic steamship on which Hristo Botev and his band crossed the Danube in 1876. Today a museum on the water — a living link to one of the most memorable moments in Bulgarian history."
       },
-      "trails": {
-        "title": "Walking trails",
-        "meta": "Into nature · from the doorstep",
-        "body": "Dozens of marked trails start right at the villa — across meadows, along rivers and toward quiet clearings. Choose a light morning stroll or a full day in nature, all at your own pace."
+      "chiprovtsiMonastery": {
+        "title": "Chiprovtsi Monastery",
+        "meta": "St. John of Rila · a thousand years",
+        "body": "One of the oldest monasteries in Bulgaria, with over ten centuries of history and a deep bond with the Chiprovtsi Uprising. Secluded in the mountains, it is the perfect start to a quiet walk through the past."
+      },
+      "chiprovtsi": {
+        "title": "Chiprovtsi",
+        "meta": "Carpets & crafts",
+        "body": "This small mountain town is famous for its hand-woven Chiprovtsi carpets — a craft passed down through generations. Along the quiet streets you can still feel the spirit of the old masters and the authentic Revival atmosphere."
+      },
+      "montanensium": {
+        "title": "Montanensium Fortress",
+        "meta": "Roman heritage · Montana",
+        "body": "An archaeological monument from Roman times, raised above the town of Montana. A walk among the ruins takes you centuries back — to the life of a Roman province."
+      },
+      "klisura": {
+        "title": "Klisura Monastery",
+        "meta": "Sts. Cyril & Methodius · working",
+        "body": "A working monastery nestled in a picturesque mountain setting among forests and streams. One of the calmest places in the region — for silence, clean air and a little rest for the soul."
       }
     }
   },
@@ -97,29 +119,21 @@
       "next": "Next service"
     },
     "items": {
+      "shopping": {
+        "title": "Pre-arrival shopping",
+        "meta": "Requested products · Before you arrive"
+      },
+      "gym": {
+        "title": "Gym access",
+        "meta": "Naydenov gym, Montana · Free of charge"
+      },
+      "massage": {
+        "title": "Massage & kinesitherapy",
+        "meta": "Kinesitherapist · In the villa"
+      },
       "chef": {
-        "title": "Private chef",
-        "meta": "Signature menu · Seasonal produce"
-      },
-      "transfer": {
-        "title": "Transfer & transport",
-        "meta": "Private driver · Airport"
-      },
-      "spa": {
-        "title": "Spa & wellness",
-        "meta": "Massage · Herbal rituals"
-      },
-      "tasting": {
-        "title": "Tastings",
-        "meta": "Local wines · Pairings"
-      },
-      "concierge": {
-        "title": "Concierge",
-        "meta": "Reservations · Whole stay"
-      },
-      "butler": {
-        "title": "Butler",
-        "meta": "Housekeeping · Discreet"
+        "title": "Chef / butler",
+        "meta": "On prior request"
       }
     }
   },

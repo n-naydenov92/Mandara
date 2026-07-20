@@ -46,6 +46,14 @@ export function RoomGallery({ images, alt, labels, sizes = DEFAULT_SIZES }: Room
     setIndex((next + count) % count)
   }
 
+  // Съседните кадри се зареждат предварително (скрит слой), за да е моментална навигацията.
+  const adjacentSrcs = hasMultiple
+    ? [...new Set([(index - 1 + count) % count, (index + 1) % count])]
+        .filter((i) => i !== index)
+        .map((i) => images[i])
+        .filter((src): src is string => src !== undefined)
+    : []
+
   if (current === undefined) {
     return null
   }
@@ -68,6 +76,11 @@ export function RoomGallery({ images, alt, labels, sizes = DEFAULT_SIZES }: Room
         <span className={styles.expand} aria-hidden="true">
           <Icon icon={IconArrowsMaximize} size={18} />
         </span>
+        {adjacentSrcs.map((src) => (
+          <span key={src} className={styles.preload} aria-hidden="true">
+            <Image src={src} alt="" fill sizes={sizes} className={styles.img} />
+          </span>
+        ))}
       </button>
 
       {hasMultiple ? (

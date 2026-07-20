@@ -123,6 +123,7 @@ export async function BulgariaMap({ lng }: BulgariaMapProps) {
                 >
                   <span className={styles.cityName}>{t(`location.map.cities.${city.key}.name`)}</span>
                   <span className={styles.cityDist}>{t(`location.map.cities.${city.key}.distance`)}</span>
+                  <span className={styles.cityDistShort}>{t(`location.map.cities.${city.key}.distanceShort`)}</span>
                 </span>
               ))}
             </div>

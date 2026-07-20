@@ -33,12 +33,11 @@
   border-radius: 9999px;
 }
 
-.exclusivity {
-  font-family: var(--f-display);
-  font-weight: 300;
-  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
-  line-height: 1.4;
-  color: var(--cream);
+.ratesLead {
+  font-family: var(--f-ui);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: rgba(245, 237, 224, 0.85);
 }
 
 .rates {
@@ -104,26 +103,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: clamp(1.25rem, 3vw, 2rem);
-}
-
-.highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.75rem;
-  list-style: none;
-}
-
-.highlight {
-  padding: 0.4rem 0.9rem;
-  font-family: var(--f-ui);
-  font-size: var(--fs-label);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--cream);
-  border: 1px solid rgba(245, 237, 224, 0.22);
-  border-radius: 9999px;
 }
 
 .cta {

@@ -68,11 +68,20 @@
   margin: 0;
 }
 
+/* На мобилно картата излиза почти до ръба на екрана → повече място за етикетите. */
+@media (max-width: 640px) {
+  .figure {
+    width: auto;
+    margin-inline: calc((var(--side-pad) - 0.75rem) * -1);
+  }
+}
+
 /* Съотношението съвпада с viewBox (1000×639) → процентните етикети лягат точно върху SVG. */
 .map {
   position: relative;
   width: 100%;
   aspect-ratio: 1000 / 639;
+  container-type: inline-size;
 }
 
 .canvas {
@@ -141,48 +150,67 @@
 }
 
 .cityLabel[data-side='right'] {
-  transform: translate(14px, -50%);
+  transform: translate(1.4cqw, -50%);
   align-items: flex-start;
   text-align: left;
 }
 
 .cityLabel[data-side='left'] {
-  transform: translate(calc(-100% - 14px), -50%);
+  transform: translate(calc(-100% - 1.4cqw), -50%);
   align-items: flex-end;
   text-align: right;
 }
 
 .cityLabel[data-side='top'] {
-  transform: translate(-50%, calc(-100% - 14px));
+  transform: translate(-50%, calc(-100% - 1.4cqw));
   align-items: center;
   text-align: center;
 }
 
+/* Шрифтовете са в cqw → мащабират се точно с картата и не се застъпват на мобилно. */
 .cityName {
   font-family: var(--f-ui);
-  font-size: clamp(0.62rem, 1.1vw, 0.82rem);
+  font-size: clamp(0.5rem, 1.4cqw, 0.82rem);
   font-weight: 600;
   letter-spacing: var(--tracking-ui);
   text-transform: uppercase;
   color: var(--espresso);
 }
 
-.cityDist {
+.cityDist,
+.cityDistShort {
   margin-top: 0.15rem;
   font-family: var(--f-ui);
-  font-size: clamp(0.54rem, 0.9vw, 0.66rem);
+  font-size: clamp(0.42rem, 1.1cqw, 0.66rem);
+  font-weight: 500;
   letter-spacing: var(--tracking-ui);
-  color: var(--stone);
+  color: var(--forest);
   white-space: nowrap;
+}
+
+/* Компактният вариант („120 км · 3ч") е с малко по-дребен шрифт и се показва само на тясна карта. */
+.cityDistShort {
+  display: none;
+  font-size: clamp(0.38rem, 0.95cqw, 0.58rem);
+}
+
+@container (max-width: 560px) {
+  .cityDist {
+    display: none;
+  }
+
+  .cityDistShort {
+    display: block;
+  }
 }
 
 .villaLabel {
   align-items: center;
   text-align: center;
-  transform: translate(-50%, calc(-100% - 20px));
+  transform: translate(-50%, calc(-100% - 2cqw));
   font-family: var(--f-display);
   font-style: italic;
-  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+  font-size: clamp(0.9rem, 2.8cqw, 1.7rem);
   line-height: 1;
   color: var(--terra);
 }
@@ -200,15 +228,5 @@
 @media (prefers-reduced-motion: reduce) {
   .villaHalo {
     animation: none;
-  }
-}
-
-@media (max-width: 520px) {
-  .cityName {
-    letter-spacing: 0.12em;
-  }
-
-  .cityDist {
-    letter-spacing: 0.1em;
   }
 }

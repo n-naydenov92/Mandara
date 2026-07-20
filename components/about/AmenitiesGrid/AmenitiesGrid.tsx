@@ -1,7 +1,6 @@
 import type { ComponentType } from 'react'
 import {
   IconBed,
-  IconHanger,
   IconArmchair,
   IconToolsKitchen2,
   IconAirConditioning,
@@ -9,15 +8,12 @@ import {
   IconSwimming,
   IconLeaf,
   IconBath,
-  IconSun,
-  IconPlant2,
-  IconMountain,
   IconFlame,
-  IconParking,
+  IconMoodKid,
   IconChefHat,
-  IconCar,
-  IconBell,
-  IconSparkles,
+  IconShoppingBag,
+  IconMassage,
+  IconBarbell,
 } from '@tabler/icons-react'
 import { getTranslation } from '@/lib/i18n/server'
 import { Section } from '@/components/ui/Section/Section'
@@ -42,23 +38,18 @@ interface TablerIconProps {
 
 const AMENITY_ICON: Record<string, ComponentType<TablerIconProps>> = {
   rooms: IconBed,
-  linens: IconHanger,
   livingRoom: IconArmchair,
   kitchen: IconToolsKitchen2,
   heating: IconAirConditioning,
   wifi: IconWifi,
   pool: IconSwimming,
-  herbalRituals: IconLeaf,
+  gardenFire: IconFlame,
   sauna: IconBath,
-  loungers: IconSun,
-  garden: IconPlant2,
-  terrace: IconMountain,
-  firePit: IconFlame,
-  parking: IconParking,
+  kids: IconMoodKid,
   chef: IconChefHat,
-  transfer: IconCar,
-  concierge: IconBell,
-  cleaning: IconSparkles,
+  shopping: IconShoppingBag,
+  massage: IconMassage,
+  gym: IconBarbell,
 }
 
 export async function AmenitiesGrid({ lng }: AmenitiesGridProps) {

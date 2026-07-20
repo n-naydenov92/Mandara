@@ -4,7 +4,7 @@ export const LOCALES = ['bg', 'en'] as const
 export type Locale = (typeof LOCALES)[number]
 export const DEFAULT_LOCALE: Locale = 'bg'
 
-export const NAMESPACES = ['common', 'nav', 'home', 'rooms', 'booking', 'experience', 'gallery', 'services', 'region', 'about', 'accommodation'] as const
+export const NAMESPACES = ['common', 'nav', 'home', 'rooms', 'booking', 'experience', 'gallery', 'region', 'about', 'accommodation'] as const
 export type Namespace = (typeof NAMESPACES)[number]
 export const DEFAULT_NAMESPACE: Namespace = 'common'
 

@@ -8,7 +8,7 @@ import { PRICING, formatPrice, lowestRate } from '@/lib/content/pricing'
 import type { Locale } from '@/lib/i18n/settings'
 import styles from './StayOptions.module.css'
 
-const VILLA_IMAGE = '/images/about/villa.jpg'
+const VILLA_IMAGE = '/images/about/za-vilata-banner.webp'
 
 interface StayOptionsProps {
   lng: Locale

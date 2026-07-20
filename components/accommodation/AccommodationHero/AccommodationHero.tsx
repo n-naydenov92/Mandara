@@ -6,7 +6,7 @@ import { Reveal } from '@/components/motion/Reveal/Reveal'
 import type { Locale } from '@/lib/i18n/settings'
 import styles from './AccommodationHero.module.css'
 
-const HERO_IMAGE = '/images/about/villa.jpg'
+const HERO_IMAGE = '/images/accomodation/nastanqvane-banner.webp'
 
 interface AccommodationHeroProps {
   lng: Locale

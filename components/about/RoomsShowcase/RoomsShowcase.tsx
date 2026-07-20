@@ -42,6 +42,7 @@ export async function RoomsShowcase({ lng }: RoomsShowcaseProps) {
               name={tRooms(`${room.slug}.name`)}
               description={tRooms(`${room.slug}.description`)}
               specLabels={specLabels}
+              beds={t(`rooms.detail.${room.slug}.beds`)}
               view={t(`rooms.detail.${room.slug}.view`)}
               herb={t(`rooms.detail.${room.slug}.herb`)}
             />

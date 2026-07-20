@@ -1,9 +1,9 @@
 import {
   IconBuildingChurch,
-  IconBuildingBank,
-  IconDroplet,
-  IconRipple,
+  IconBuildingCottage,
+  IconBuildingCastle,
   IconMountain,
+  IconShip,
 } from '@tabler/icons-react'
 import { getTranslation } from '@/lib/i18n/server'
 import { Section } from '@/components/ui/Section/Section'
@@ -28,10 +28,10 @@ const EYEBROW_ICON_SIZE = 22
 
 const DESTINATION_ICON = {
   monastery: IconBuildingChurch,
-  museum: IconBuildingBank,
-  waterfall: IconDroplet,
-  lake: IconRipple,
+  town: IconBuildingCottage,
+  fortress: IconBuildingCastle,
   cave: IconMountain,
+  ship: IconShip,
 } as const satisfies Record<DestinationIconKey, typeof IconBuildingChurch>
 
 export async function DestinationBlock({ lng, destination }: DestinationBlockProps) {

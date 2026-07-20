@@ -9,7 +9,7 @@ import { isLocale } from '@/lib/i18n/settings'
 import { buildPageMetadata } from '@/lib/routing/metadata'
 
 // Placeholder — потребителят ще смени с истинска hero снимка на басейна/вилата.
-const HERO_IMAGE = '/images/about/villa.jpg'
+const HERO_IMAGE = '/images/about/za-vilata-banner.webp'
 
 interface PageProps {
   params: Promise<{ lng: string }>

@@ -14,6 +14,9 @@ interface ImageRevealProps {
   kenburns?: boolean
   hoverZoom?: boolean
   revealDelay?: number
+  // Изключва scroll-задействания clip reveal. Нужно в layout-анимирани grid-ове
+  // (напр. bento галерията), където projection трансформациите чупят whileInView.
+  reveal?: boolean
 }
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -27,6 +30,7 @@ export function ImageReveal({
   kenburns = true,
   hoverZoom = false,
   revealDelay = 0,
+  reveal = true,
 }: ImageRevealProps) {
   const reduced = useReducedMotionSafe()
   const frameClass = [styles.frame, hoverZoom ? styles.hoverZoom : '', className ?? '']
@@ -40,7 +44,7 @@ export function ImageReveal({
     </div>
   )
 
-  if (reduced) {
+  if (reduced || !reveal) {
     return (
       <div className={frameClass}>
         <div className={styles.mask}>{inner}</div>

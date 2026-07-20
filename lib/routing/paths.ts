@@ -13,7 +13,6 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { href: '/experience', labelKey: 'experience' },
   { href: '/gallery', labelKey: 'gallery' },
   { href: '/region', labelKey: 'region' },
-  { href: '/five-star-services', labelKey: 'services' },
 ] as const
 
 export function buildLocalePath(lng: Locale, href: string): string {

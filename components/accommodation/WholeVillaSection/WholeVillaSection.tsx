@@ -32,10 +32,6 @@ export async function WholeVillaSection({ lng }: WholeVillaSectionProps) {
           <RoomGallery images={VILLA_GALLERY} alt={t('villa.title')} labels={galleryLabels} />
         </Reveal>
 
-        <Reveal className={styles.leadWrap}>
-          <p className={styles.lead}>{t('villa.lead')}</p>
-        </Reveal>
-
         <Reveal>
           <VillaOffer lng={lng} />
         </Reveal>

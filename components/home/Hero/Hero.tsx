@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
 import { IconArrowRight, IconBrandInstagram, IconBrandFacebook } from '@tabler/icons-react'
@@ -8,6 +8,7 @@ import { CornerBranches } from '@/components/motion/CornerBranches/CornerBranche
 import { LocaleLink } from '@/components/ui/LocaleLink/LocaleLink'
 import { Icon } from '@/components/ui/Icon/Icon'
 import { useReducedMotionSafe } from '@/components/motion/hooks/useReducedMotionSafe'
+import { HOME_HERO_IMAGE } from '@/lib/content/home'
 import { SITE } from '@/lib/config/site'
 import type { Locale } from '@/lib/i18n/settings'
 import styles from './Hero.module.css'
@@ -16,8 +17,6 @@ interface HeroProps {
   lng: Locale
 }
 
-const HERO_VIDEO = '/videos/mandara-hero.mp4'
-const HERO_POSTER = '/videos/mandara-hero-poster.jpg'
 const EASE = [0.22, 1, 0.36, 1] as const
 // Между overlay-а (z:1) и съдържанието (z:3).
 const BRANCHES_Z_INDEX = 2
@@ -26,37 +25,6 @@ export function Hero({ lng }: HeroProps) {
   const { t } = useTranslation('home')
   const { t: tCommon } = useTranslation('common')
   const reduced = useReducedMotionSafe()
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  // React не рендира `muted` в SSR HTML-а → браузърите блокират autoplay.
-  // Задаваме го реално и пробваме play() при няколко момента; ако политиката
-  // (Data Saver и т.н.) пак блокира, пускаме при първия жест на потребителя.
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) {
-      return
-    }
-    video.muted = true
-    video.defaultMuted = true
-
-    const attemptPlay = () => {
-      void video.play().catch(() => undefined)
-    }
-
-    const mediaEvents = ['canplay', 'loadeddata'] as const
-    const gestureEvents = ['pointerdown', 'touchstart', 'keydown', 'scroll'] as const
-
-    attemptPlay()
-    mediaEvents.forEach((event) => video.addEventListener(event, attemptPlay))
-    gestureEvents.forEach((event) =>
-      window.addEventListener(event, attemptPlay, { once: true, passive: true }),
-    )
-
-    return () => {
-      mediaEvents.forEach((event) => video.removeEventListener(event, attemptPlay))
-      gestureEvents.forEach((event) => window.removeEventListener(event, attemptPlay))
-    }
-  }, [])
 
   const contentMotion = reduced
     ? {}
@@ -68,18 +36,7 @@ export function Hero({ lng }: HeroProps) {
 
   return (
     <section className={styles.hero} id="home">
-      <video
-        ref={videoRef}
-        className={styles.video}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={HERO_POSTER}
-        preload="metadata"
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
+      <Image src={HOME_HERO_IMAGE} alt="" fill priority sizes="100vw" className={styles.image} />
       <div className={styles.overlay} />
       <CornerBranches tone="light" parallax zIndex={BRANCHES_Z_INDEX} />
 
@@ -91,7 +48,7 @@ export function Hero({ lng }: HeroProps) {
           <em>{t('hero.titleLine2')}</em>
         </h1>
         <LocaleLink lng={lng} href="/reservations" className={styles.cta}>
-          {tCommon('cta.inquire')}
+          {t('hero.cta')}
           <Icon icon={IconArrowRight} size={18} />
         </LocaleLink>
       </motion.div>

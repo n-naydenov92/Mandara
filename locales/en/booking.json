@@ -21,6 +21,7 @@
       "note": "You rent the whole villa; you confirm the reservation with a deposit."
     }
   },
+  "depositNote": "The reservation requires a deposit, which will be refunded when you check out of the villa.",
   "price": {
     "title": "Price",
     "total": "Total",
@@ -89,31 +90,87 @@
     "villa": "Hello! I'm interested in renting the whole villa."
   },
   "stayInfo": {
-    "title": "Important information during your stay",
+    "title": "Frequently asked questions",
     "items": [
       {
-        "title": "Check-in and check-out",
-        "body": "Check-in after 3:00 pm, check-out by 11:00 am. If you need a different time, let us know in advance and we'll find a solution."
+        "title": "What are the check-in and check-out times?",
+        "body": "Check-in from 3:00 pm, check-out by 11:00 am. If you need a different time, write to us in advance and we'll find a solution together."
       },
       {
-        "title": "Quiet hours",
-        "body": "Please keep noise down between 10:00 pm and 8:00 am — out of respect for the neighbours and the calm of the place."
+        "title": "Can I arrive earlier or leave later?",
+        "body": "It's possible if the booking schedule allows. Write to us at least 1-2 days in advance. When the villa is free, we often offer early check-in or late check-out at no extra charge."
       },
       {
-        "title": "Pool",
-        "body": "Use of the pool is at your own risk. Children must be supervised by an adult at all times."
+        "title": "How do I get the key?",
+        "body": "A member of our team welcomes you in person, shows you the villa and explains everything you need. There's no self check-in with a code — we want to welcome you properly and make sure everything is clear from the very start."
       },
       {
-        "title": "Smoking",
-        "body": "Smoking is allowed only on the open terraces. The villa interior is non-smoking."
+        "title": "Is there parking?",
+        "body": "Yes, free parking right in front of the villa entrance."
       },
       {
-        "title": "Pets",
-        "body": "Pets are welcome only by prior arrangement with us."
+        "title": "What is the Wi-Fi password?",
+        "body": "The password will be given to you at check-in. Wi-Fi covers the entire main house and most of the yard."
       },
       {
-        "title": "Caring for the villa",
-        "body": "Please treat the space as your own home. Part of the deposit is withheld in case of damage."
+        "title": "Is there a washer, dryer and iron?",
+        "body": "Yes — the utility room has a washing machine, dryer, iron and ironing board. When you rent the whole villa, they're entirely at your disposal. Laundry detergent is provided."
+      },
+      {
+        "title": "What is provided in the rooms?",
+        "body": "Each room is stocked with a set of towels for every guest (large, medium, small), clean linens, blankets, toilet paper, as well as shampoo, conditioner and shower gel in the bathroom dispensers. If you need anything extra — just ask."
+      },
+      {
+        "title": "Heating and air conditioning?",
+        "body": "All bedrooms and common areas have air conditioning for heating and cooling. During the cold months the fireplace and sauna add to the comfort."
+      },
+      {
+        "title": "Are there quiet hours?",
+        "body": "No, there's no need to keep silent, but between 10:00 pm and 8:00 am we'd appreciate it if you turned the music down, to keep the peace in the village. The yard is the perfect place for evening conversations, music and enjoyment. Inside you can also enjoy loud music, but we still rely on your good judgement about its limits."
+      },
+      {
+        "title": "Can I smoke?",
+        "body": "Smoking is allowed outdoors only. Inside the villa we kindly ask you to refrain. The villa interior is non-smoking — this protects the air, the fabrics and the furniture. If traces of smoking are found inside, a corresponding amount is withheld from the deposit."
+      },
+      {
+        "title": "Can I bring a pet?",
+        "body": "Pets are allowed only by prior arrangement with us. The reason is that we also host guests with allergies, and we need to coordinate appropriate cleaning. Guide and assistance dogs are always welcome."
+      },
+      {
+        "title": "Can I have a party?",
+        "body": "Mandara is a place for relaxation, experiences and memories. Fun, music and gatherings are welcome — the yard was created exactly for that, with a summer bar, a fire pit and an outdoor home cinema. Indoors we'd like to avoid noisy parties, to preserve the comfort and the property of the villa for everyone. We don't accept guests intending to get drunk, use drugs or behave in a way that endangers the property."
+      },
+      {
+        "title": "What is the deposit and when is it returned?",
+        "body": "At check-in we take a refundable deposit of €500, which serves as a guarantee against possible damage or violations. We return it in full at check-out, after a brief inspection of the villa (usually everything is fine). If damage or missing items are found, we withhold the corresponding part; if the damage exceeds the deposit, the difference is paid additionally."
+      },
+      {
+        "title": "How can I pay?",
+        "body": "On site we accept cash or card. For advance payment (a deposit at booking) — by bank transfer to an IBAN we'll send you when confirming your reservation."
+      },
+      {
+        "title": "Can I get an invoice?",
+        "body": "Yes. At check-in give us your company details or your personal details for an invoice — we'll provide it by check-out or send it to you by email."
+      },
+      {
+        "title": "Where is the nearest shop?",
+        "body": "In the centre of Gorna Kovachitsa there's a small shop for basic products. For a bigger stock-up we recommend Lidl, Kaufland or T-Market in the town of Montana — 15 minutes by car. If needed, we can stock up for you in advance — let us know a few days before arrival."
+      },
+      {
+        "title": "Is there a pharmacy and hospital nearby?",
+        "body": "There are pharmacies in the town of Montana. The nearest emergency care is at Dr. Stamen Iliev General Hospital — Montana. In an emergency, a member of our team can take you there by car."
+      },
+      {
+        "title": "What is there to see in the area?",
+        "body": "The region is rich in sights. The closest ones:\nChiprovtsi Monastery “St. John of Rila” — 8 km\nChiprovtsi (the town of hand-woven rugs) — 10 km\nAncient Roman fortress, Montana — 20 km\nKlisura Monastery — 35 km\nBelogradchik Rocks — 40 km\nMagura Cave — 50 km\nThe “Radetzky” steamship, Kozloduy — 55 km"
+      },
+      {
+        "title": "Is there a transfer or taxi?",
+        "body": "Local taxis operate from Montana. By prior request (2-3 days) we can arrange a transfer to/from Sofia Airport for a separate charge. Let us know if you need one."
+      },
+      {
+        "title": "Who will help me if I need something?",
+        "body": "During the day (9:00 am – 6:00 pm) a member of our team can be on site and at your disposal — for food, drinks, area recommendations, urgent requests. Outside those hours you'll get an on-call phone number to reach us if needed. We respond quickly."
       }
     ]
   }

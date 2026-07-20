@@ -23,23 +23,16 @@
   "villa": {
     "eyebrow": "the whole villa",
     "title": "The whole villa — just for you",
-    "lead": "Rent the entire villa and have it all to yourself — the bedrooms, the shared living room, the kitchen, the pool, the sauna and the garden, in complete calm and privacy for your group.",
-    "badge": "Exclusive",
-    "exclusivity": "The whole villa just for your group — complete privacy, with no shared spaces.",
-    "highlights": [
-      "The whole villa to yourselves",
-      "Complete privacy",
-      "Private pool and garden",
-      "Up to 9 guests in 4 bedrooms"
-    ],
+    "ratesTitle": "Rates and rental terms",
+    "ratesLead": "You can rent Villa Mandara for your family holiday or any other occasion. Here are our rate options:",
     "includesTitle": "What's included",
     "includes": {
       "pool": "Outdoor pool",
       "kitchen": "Fully equipped kitchen",
-      "living": "Shared living room with fireplace",
-      "bbq": "Barbecue area",
-      "garden": "Garden and terraces with a view",
-      "parking": "Parking and free Wi-Fi"
+      "diningLiving": "Large dining area with lounge",
+      "bbqFirepit": "Summer barbecue and fire pit",
+      "poolSlide": "Pool with waterfall and kids' slide",
+      "kidsCorner": "Kids' corner"
     }
   },
   "rooms": {
@@ -47,47 +40,53 @@
     "title": "The rooms of the villa",
     "lead": "Each bedroom bears the name of a moment of the day and its own herb — all part of the whole villa, made for restful sleep.",
     "featuresTitle": "Key features",
-    "beds_one": "{{count}} bed",
-    "beds_other": "{{count}} beds",
     "items": {
       "dawn": {
+        "beds": "Large double bed",
+        "bathroom": "Shared bathroom with the Sunset room",
         "features": [
-          "Large bed with linen sheets",
-          "East-facing view of the sunrise",
-          "A cosy corner for morning coffee",
-          "Tall windows and plenty of light"
-        ]
-      },
-      "noon": {
-        "features": [
-          "The most spacious room — 30 m²",
-          "Tall windows and cool stone",
-          "Shade from old trees",
-          "A breath of rosemary"
+          "Bed for two and a comfortable armchair by the window",
+          "View of the sunrise over the village",
+          "Warm, terracotta light",
+          "The scent of wood and tea"
         ]
       },
       "sunset": {
+        "beds": "Large double bed",
+        "bathroom": "Shared bathroom with the Sunrise room",
         "features": [
-          "Bed for two and a deep armchair",
-          "View of the sunset over the mountain",
+          "Bed for two and a comfortable armchair by the window",
+          "View of the sunset over the garden",
           "Warm, terracotta light",
-          "The scent of garden sage"
+          "The scent of wood and tea"
+        ]
+      },
+      "noon": {
+        "beds": "Large double bed",
+        "bathroom": "Private bathroom",
+        "features": [
+          "Bed for two and a comfortable armchair by the window",
+          "View of the sunset over the garden",
+          "Warm, terracotta light",
+          "The scent of wood and tea"
         ]
       },
       "night": {
+        "beds": "3 single beds",
+        "bathroom": "Suitable for a group of children",
         "features": [
-          "Heavy drapes for deep sleep",
-          "Warm textures and silence",
-          "A view of the stars",
-          "The scent of night herbs"
+          "Three single beds with comfortable mattresses",
+          "A cool room on level -1",
+          "Warm, terracotta light",
+          "The scent of wood and tea"
         ]
       }
     }
   },
   "pricing": {
-    "offSeasonLabel": "Off-season",
-    "inSeasonLabel": "In season",
-    "perNight": "/ night",
+    "weekdayLabel": "Monday to Thursday",
+    "weekendLabel": "Friday to Sunday",
+    "perNight": "per night",
     "from": "from"
   },
   "cta": {

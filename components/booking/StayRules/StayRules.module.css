@@ -92,6 +92,7 @@
   font-family: var(--f-ui);
   font-size: 0.85rem;
   line-height: 1.6;
+  white-space: pre-line;
   color: color-mix(in srgb, var(--espresso) 78%, var(--stone));
 }
 

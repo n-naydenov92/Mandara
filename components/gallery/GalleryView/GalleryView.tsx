@@ -62,7 +62,7 @@ export function GalleryView() {
         {visibleItems.length === 0 ? (
           <p className={styles.empty}>{t('empty')}</p>
         ) : (
-          <BentoGrid items={visibleItems} onOpen={handleOpen} />
+          <BentoGrid items={visibleItems} groupKey={activeCategory} onOpen={handleOpen} />
         )}
       </div>
     </>

@@ -1,57 +1,49 @@
 {
   "meta": {
     "title": "Experiences — Villa Mandara",
-    "description": "Bespoke experiences at Villa Mandara — gastronomy, wellness rituals, nature and moments to remember."
+    "description": "Private experiences and bespoke care at Villa Mandara — pre-arrival shopping, gym access, massage and kinesitherapy, a private chef or butler."
   },
   "hero": {
     "eyebrow": "bespoke",
     "title": "Experiences shaped entirely around you",
     "scroll": "Explore"
   },
-  "controls": {
-    "prev": "Previous image",
-    "next": "Next image"
-  },
-  "themes": {
-    "gastronomy": {
-      "eyebrow": "taste",
-      "title": "Gastronomy",
-      "intro": "Dining becomes a journey — from refined seasonal dinners to slow breakfasts on the pergola and tastings of local wines.",
-      "slides": {
-        "menu": "Seasonal menu",
-        "outdoor": "Dining outdoors",
-        "wine": "Wine tastings"
-      }
+  "items": {
+    "shopping": {
+      "title": "Pre-arrival shopping",
+      "description": "Tell us what you love and we'll make sure the fridge and the bar are stocked before you even step through the door. Request the products you'd like ahead of time or at any point during your stay, and we'll take care of them — so you have nothing to think about but your holiday.",
+      "features": [
+        "Requested before arrival",
+        "Shopping during your stay",
+        "Products of your choice"
+      ]
     },
-    "wellness": {
-      "eyebrow": "calm",
-      "title": "Wellness & rituals",
-      "intro": "A private space to restore — herbal spa rituals, yoga in silence and slow afternoons by the pool, guided by an attentive team.",
-      "slides": {
-        "spa": "Herbal spa ritual",
-        "yoga": "Yoga in silence",
-        "pool": "Afternoons by the pool"
-      }
+    "gym": {
+      "title": "Gym access",
+      "description": "As a guest of Mandara you enjoy entirely free access to the Naydenov fitness centre in Montana. Across 1,000 m² you'll find space, modern equipment and everything you need for a complete workout — whether you keep to your routine or simply want to move between the quiet days.",
+      "features": [
+        "Free access for guests",
+        "A 1,000 m² hall",
+        "Naydenov gym, Montana"
+      ]
     },
-    "nature": {
-      "eyebrow": "outdoors",
-      "title": "Nature & adventure",
-      "intro": "The mountain begins at your doorstep — Belasitsa trails, herb walks and quiet detours to the monastery, shaped around your pace.",
-      "slides": {
-        "trails": "Belasitsa trails",
-        "herbs": "Herb walks",
-        "monastery": "The monastery nearby"
-      }
+    "massage": {
+      "title": "Massage & kinesitherapy",
+      "description": "Let the body truly rest. Visit our kinesitherapist at the Naydenov fitness centre in Montana, or request a massage in the villa, so we can complete the calm of Mandara with care you can genuinely feel.",
+      "features": [
+        "Kinesitherapy at the centre",
+        "In-villa massage",
+        "On prior request"
+      ]
     },
-    "events": {
-      "eyebrow": "occasions",
-      "title": "Events & celebrations",
-      "intro": "Moments that last. From intimate gatherings to milestone celebrations — orchestrated elegantly and with discreet care.",
-      "slides": {
-        "intimate": "Intimate occasions",
-        "celebrations": "Celebrations",
-        "dinner": "A quiet dinner outdoors"
-      }
+    "chef": {
+      "title": "Chef / butler",
+      "description": "To make your stay entirely carefree, on prior request we arrange a private chef or a butler. Get in touch after booking and we'll prepare everything — you simply enjoy the taste, the attention and the free time.",
+      "features": [
+        "A private chef on request",
+        "A butler for your stay",
+        "Arranged after booking"
+      ]
     }
   }
 }

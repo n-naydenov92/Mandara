@@ -39,9 +39,10 @@ export async function AccommodationRooms({ lng }: AccommodationRoomsProps) {
         <div className={styles.list}>
           {ROOMS.map((room) => {
             const metaItems = [
-              t('rooms.beds', { count: room.specs.beds }),
+              t(`rooms.items.${room.slug}.beds`),
               tAbout(`rooms.detail.${room.slug}.view`),
               `${room.specs.area} ${areaUnit}`,
+              t(`rooms.items.${room.slug}.bathroom`),
             ]
             const features = t(`rooms.items.${room.slug}.features`, { returnObjects: true }) as unknown as string[]
 

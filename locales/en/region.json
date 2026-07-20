@@ -1,72 +1,57 @@
 {
   "meta": {
-    "title": "The Region — Gorna Kovachevitsa | Villa Mandara",
-    "description": "Gorna Kovachevitsa — an authentic Rhodope village of stone houses and pine forest, a step away from Villa Mandara."
+    "title": "The Region — Gorna Kovachitsa | Villa Mandara",
+    "description": "North-West Bulgaria around Gorna Kovachitsa — monasteries, waterfalls and natural landmarks within a drive of Villa Mandara."
   },
   "hero": {
     "eyebrow": "the region",
-    "title": "Gorna Kovachevitsa",
+    "title": "Gorna Kovachitsa",
     "scroll": "Explore"
   },
   "destinations": {
     "eyebrow": "what to explore",
     "title": "Nearby",
-    "lead": "Monasteries, waterfalls and natural landmarks within reach of the villa. Distances and times are by car — ordered from the closest to the further day trips.",
+    "lead": "Monasteries, waterfalls and natural landmarks within a drive of the villa. Distances and times are by car, ordered from the closest to the further day trips. Well worth the visit!",
     "units": {
       "km": "km",
       "min": "min",
       "hour": "h"
     },
     "items": {
-      "lopushanski": {
-        "eyebrow": "monastery",
-        "title": "Lopushanski Monastery",
-        "body": "The closest major landmark — a beautiful monastery renowned for its woodcarving and a peaceful courtyard set in greenery."
-      },
       "chiprovtsiMonastery": {
         "eyebrow": "monastery",
-        "title": "Chiprovtsi Monastery of St. John of Rila",
-        "body": "A working monastery with roots in the 10th century, tucked into the mountain slopes above Chiprovtsi."
+        "title": "Chiprovtsi Monastery",
+        "body": "One of the oldest monasteries in Bulgaria, with over ten centuries of history and a deep bond with the Chiprovtsi Uprising. Secluded in the mountains, it is the perfect start to a quiet walk through the past."
       },
-      "chiprovtsiMuseum": {
-        "eyebrow": "museum",
-        "title": "Chiprovtsi History Museum",
-        "body": "The famous Chiprovtsi carpets and the story of the Chiprovtsi Uprising, gathered under one roof."
+      "chiprovtsi": {
+        "eyebrow": "town · crafts",
+        "title": "Chiprovtsi",
+        "body": "This small mountain town is famous for its hand-woven Chiprovtsi carpets — a craft passed down through generations. Along the quiet streets you can still feel the spirit of the old masters and the authentic Revival atmosphere."
       },
-      "chiprovtsiWaterfall": {
-        "eyebrow": "waterfall",
-        "title": "Chiprovtsi Waterfall",
-        "body": "A marked, easy walking trail leads to the falls — a pleasant stroll through forest and river."
+      "montanensium": {
+        "eyebrow": "fortress",
+        "title": "Montanensium Fortress",
+        "body": "An archaeological monument from Roman times, raised above the town of Montana. A walk among the ruins takes you centuries back — to the life of a Roman province."
       },
-      "martinovoDam": {
-        "eyebrow": "reservoir",
-        "title": "Martinovo Reservoir",
-        "body": "A small roadside reservoir with quiet picnic spots and views toward the Balkan mountains."
-      },
-      "gushovski": {
+      "klisura": {
         "eyebrow": "monastery",
-        "title": "Gushovski Monastery (ruins)",
-        "body": "Ruins with a stunning panoramic view and a large cross — the reward for a short climb."
+        "title": "Klisura Monastery",
+        "body": "A working monastery nestled in a picturesque mountain setting among forests and streams. One of the calmest places in the region — for silence, clean air and a little rest for the soul."
       },
-      "durshinSkok": {
-        "eyebrow": "waterfall",
-        "title": "Durshin Skok Waterfall",
-        "body": "An accessible ten-metre waterfall — a short drive and an easy walk on foot to reach it."
-      },
-      "chernogorski": {
-        "eyebrow": "monastery",
-        "title": "Chernogorski Monastery of Sts. Cosmas and Damian",
-        "body": "A more distant but very beautiful monastery with an adjoining farm — perfect for a full-day trip."
+      "belogradchik": {
+        "eyebrow": "rocks · fortress",
+        "title": "Belogradchik Rocks",
+        "body": "A natural wonder of reddish rock formations, among the most beautiful landmarks in Bulgaria. The Kaleto fortress is built right into them — a sight that stays with you long after."
       },
       "magura": {
         "eyebrow": "cave",
         "title": "Magura Cave",
-        "body": "One of Bulgaria's most famous caves, with prehistoric wall paintings thousands of years old."
+        "body": "One of the largest caves in Bulgaria, famous for its unique prehistoric wall paintings. Sparkling wine even matures in its underground halls — a rare blend of history, nature and taste."
       },
-      "zemen": {
-        "eyebrow": "monastery",
-        "title": "Zemen Monastery of St. John the Theologian",
-        "body": "One of the country's oldest monasteries (11th century), with a unique cubic church and frescoes."
+      "radetzki": {
+        "eyebrow": "history",
+        "title": "The Radetzky Steamship",
+        "body": "A full-scale replica of the historic steamship on which Hristo Botev and his band crossed the Danube in 1876. Today a museum on the water — a living link to one of the most memorable moments in Bulgarian history."
       }
     }
   }

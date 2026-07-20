@@ -25,6 +25,7 @@ interface RoomDetailCardProps {
   name: string
   description: string
   specLabels: RoomSpecLabels
+  beds: string
   view: string
   herb: string
 }
@@ -37,20 +38,20 @@ const ROOM_HERB_ICON: Record<string, ComponentType<TablerIconProps>> = {
   night: IconSeeding,
 }
 
-function buildSpecs(room: Room, labels: RoomSpecLabels, view: string, herb: string) {
+function buildSpecs(room: Room, labels: RoomSpecLabels, beds: string, view: string, herb: string) {
   return [
-    { key: 'beds', label: labels.beds, value: String(room.specs.beds) },
+    { key: 'beds', label: labels.beds, value: beds },
     { key: 'area', label: labels.area, value: `${room.specs.area} ${labels.areaUnit}` },
     { key: 'view', label: labels.view, value: view },
     { key: 'herb', label: labels.herb, value: herb },
   ]
 }
 
-export function RoomDetailCard({ room, name, description, specLabels, view, herb }: RoomDetailCardProps) {
+export function RoomDetailCard({ room, name, description, specLabels, beds, view, herb }: RoomDetailCardProps) {
   const TimeIcon = ROOM_TIME_ICON[room.slug] ?? ROOM_TIME_ICON_FALLBACK
   const HerbIcon = ROOM_HERB_ICON[room.slug] ?? IconLeaf
   const cardStyle = { '--room-accent': room.accent } as CSSProperties
-  const specs = buildSpecs(room, specLabels, view, herb)
+  const specs = buildSpecs(room, specLabels, beds, view, herb)
 
   return (
     <article className={styles.card} style={cardStyle}>

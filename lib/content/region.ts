@@ -1,42 +1,39 @@
-export const REGION_HERO_IMAGE = '/images/about/villa.jpg'
+export const REGION_HERO_IMAGE = '/images/region/za-vilata-basein.webp'
 
 export const DESTINATION_KEYS = [
-  'lopushanski',
   'chiprovtsiMonastery',
-  'chiprovtsiMuseum',
-  'chiprovtsiWaterfall',
-  'martinovoDam',
-  'gushovski',
-  'durshinSkok',
-  'chernogorski',
+  'chiprovtsi',
+  'montanensium',
+  'klisura',
+  'belogradchik',
   'magura',
-  'zemen',
+  'radetzki',
 ] as const
 export type DestinationKey = (typeof DESTINATION_KEYS)[number]
 
-export type DestinationIconKey = 'monastery' | 'museum' | 'waterfall' | 'lake' | 'cave'
+export type DestinationIconKey = 'monastery' | 'town' | 'fortress' | 'cave' | 'ship'
 
 export interface Destination {
   key: DestinationKey
   iconKey: DestinationIconKey
   distanceKm: number // разстояние с автомобил от вила Мандара (Горна Ковачица)
   timeMin: number // време за път с автомобил в минути
-  src: string // placeholder — предстои реална фотосесия на всяка забележителност
+  src: string // реален кадър от дестинацията (споделен с началната страница)
   reversed: boolean // редува тона ivory/transparent и ъгъла на акцента
 }
 
-/* Топ 10 туристически дестинации, подредени от най-близка до най-далечна.
-   Разстоянията/времената са с автомобил по път. Текстовете живеят в
-   locales/<lng>/region.json под destinations.items.<key>. */
+const REGION_IMG_DIR = '/images/homepage'
+
+/* Забележителностите от началната страница, подредени от най-близката до
+   най-далечната (с автомобил по път). Снимките са споделени с RegionTeaser
+   на home. Текстовете живеят в locales/<lng>/region.json под
+   destinations.items.<key>. */
 export const DESTINATIONS = [
-  { key: 'lopushanski', iconKey: 'monastery', distanceKm: 6, timeMin: 10, src: '/images/gallery/g4.jpg', reversed: false },
-  { key: 'chiprovtsiMonastery', iconKey: 'monastery', distanceKm: 10, timeMin: 15, src: '/images/gallery/g5.jpg', reversed: true },
-  { key: 'chiprovtsiMuseum', iconKey: 'museum', distanceKm: 16, timeMin: 22, src: '/images/gallery/g2.jpg', reversed: false },
-  { key: 'chiprovtsiWaterfall', iconKey: 'waterfall', distanceKm: 17, timeMin: 28, src: '/images/gallery/g1.jpg', reversed: true },
-  { key: 'martinovoDam', iconKey: 'lake', distanceKm: 20, timeMin: 30, src: '/images/about/villa.jpg', reversed: false },
-  { key: 'gushovski', iconKey: 'monastery', distanceKm: 22, timeMin: 32, src: '/images/gallery/omai_zile_accommodation_106_deluxe_pavilion_05.png', reversed: true },
-  { key: 'durshinSkok', iconKey: 'waterfall', distanceKm: 28, timeMin: 40, src: '/images/gallery/omai_zile_accommodation_104_signature_pavilion_03.png', reversed: false },
-  { key: 'chernogorski', iconKey: 'monastery', distanceKm: 95, timeMin: 100, src: '/images/gallery/omai_zile_accommodation_101_master_pavilion_02.png', reversed: true },
-  { key: 'magura', iconKey: 'cave', distanceKm: 75, timeMin: 75, src: '/images/gallery/omai_zile_accommodation_106_deluxe_pavilion_07.png', reversed: false },
-  { key: 'zemen', iconKey: 'monastery', distanceKm: 130, timeMin: 120, src: '/images/gallery/omai_zile_accommodation_105_deluxe_pavilion_02.png', reversed: true },
+  { key: 'chiprovtsiMonastery', iconKey: 'monastery', distanceKm: 8, timeMin: 15, src: `${REGION_IMG_DIR}/chiprovski-manastir.webp`, reversed: false },
+  { key: 'chiprovtsi', iconKey: 'town', distanceKm: 10, timeMin: 15, src: `${REGION_IMG_DIR}/grad-chiprovtsi.webp`, reversed: true },
+  { key: 'montanensium', iconKey: 'fortress', distanceKm: 20, timeMin: 25, src: `${REGION_IMG_DIR}/antichna-krepost-montana.webp`, reversed: false },
+  { key: 'klisura', iconKey: 'monastery', distanceKm: 35, timeMin: 45, src: `${REGION_IMG_DIR}/klisurski-manastir.webp`, reversed: true },
+  { key: 'belogradchik', iconKey: 'fortress', distanceKm: 40, timeMin: 45, src: `${REGION_IMG_DIR}/belogradchishki-skali.webp`, reversed: false },
+  { key: 'magura', iconKey: 'cave', distanceKm: 50, timeMin: 60, src: `${REGION_IMG_DIR}/peshtera-magurata.webp`, reversed: true },
+  { key: 'radetzki', iconKey: 'ship', distanceKm: 55, timeMin: 60, src: `${REGION_IMG_DIR}/koraba-radecki.webp`, reversed: false },
 ] as const satisfies readonly Destination[]

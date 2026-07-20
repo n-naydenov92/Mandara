@@ -3,7 +3,10 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // Само WebP: AVIF енкодерът (sharp/libvips) увисва при определени снимки на
+    // конкретни размери (напр. w=640), което оставя плочки в галерията празни.
+    // WebP кодира бързо и надеждно и се поддържа от всички съвременни браузъри.
+    formats: ['image/webp'],
   },
 }
 

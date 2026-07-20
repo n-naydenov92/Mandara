@@ -1,6 +1,7 @@
+import Image from 'next/image'
 import {
-  IconLeaf,
   IconBrandInstagram,
+  IconBrandTiktok,
   IconBrandFacebook,
   IconMail,
   IconPhone,
@@ -27,10 +28,15 @@ export async function Footer({ lng }: FooterProps) {
     <FooterReveal>
       <div className={styles.top}>
         <div className={styles.brandCol}>
-          <span className={styles.brand}>
-            {t('brand')}
-            <Icon icon={IconLeaf} size={16} className={styles.brandHerb} />
-          </span>
+          <LocaleLink lng={lng} href="/" className={styles.logo} aria-label={t('brandFull')}>
+            <Image
+              src="/images/homepage/mandara-logo-white.webp"
+              alt={t('brandFull')}
+              width={3133}
+              height={745}
+              className={styles.logoImage}
+            />
+          </LocaleLink>
           <p className={styles.about}>{t('footer.about')}</p>
         </div>
 
@@ -82,6 +88,17 @@ export async function Footer({ lng }: FooterProps) {
               >
                 <Icon icon={IconBrandFacebook} size={16} />
                 Facebook
+              </a>
+            </li>
+            <li>
+              <a
+                className={styles.contact}
+                href={SITE.social.tiktokUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon icon={IconBrandTiktok} size={16} />
+                TikTok
               </a>
             </li>
           </ul>

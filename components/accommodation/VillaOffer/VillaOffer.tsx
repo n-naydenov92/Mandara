@@ -1,4 +1,4 @@
-import { IconArrowRight, IconSparkles } from '@tabler/icons-react'
+import { IconArrowRight, IconTag } from '@tabler/icons-react'
 import { getTranslation } from '@/lib/i18n/server'
 import { Button } from '@/components/ui/Button/Button'
 import { Icon } from '@/components/ui/Icon/Icon'
@@ -15,19 +15,18 @@ interface VillaOfferProps {
 export async function VillaOffer({ lng }: VillaOfferProps) {
   const { t } = await getTranslation(lng, 'accommodation')
   const rates = [
-    { label: t('pricing.offSeasonLabel'), value: formatPrice(PRICING.whole.offSeason) },
-    { label: t('pricing.inSeasonLabel'), value: formatPrice(PRICING.whole.inSeason) },
+    { label: t('pricing.weekdayLabel'), value: formatPrice(PRICING.villaNight.weekday) },
+    { label: t('pricing.weekendLabel'), value: formatPrice(PRICING.villaNight.weekend) },
   ]
-  const highlights = t('villa.highlights', { returnObjects: true }) as unknown as string[]
 
   return (
     <div className={styles.card}>
       <div className={styles.intro}>
         <span className={styles.badge}>
-          <Icon icon={IconSparkles} size={15} />
-          {t('villa.badge')}
+          <Icon icon={IconTag} size={15} />
+          {t('villa.ratesTitle')}
         </span>
-        <p className={styles.exclusivity}>{t('villa.exclusivity')}</p>
+        <p className={styles.ratesLead}>{t('villa.ratesLead')}</p>
       </div>
 
       <div className={styles.rates}>
@@ -55,13 +54,6 @@ export async function VillaOffer({ lng }: VillaOfferProps) {
       </ul>
 
       <div className={styles.footer}>
-        <ul className={styles.highlights}>
-          {highlights.map((highlight) => (
-            <li key={highlight} className={styles.highlight}>
-              {highlight}
-            </li>
-          ))}
-        </ul>
         <Button href="/reservations?subject=villa" lng={lng} variant="solid" className={styles.cta}>
           {t('cta.villa')}
           <Icon icon={IconArrowRight} size={18} />

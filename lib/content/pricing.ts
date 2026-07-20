@@ -6,10 +6,10 @@ export interface SeasonalRate {
   inSeason: number // €/нощувка в сезон
 }
 
-// Нощна тарифа на цялата вила по ден от седмицата (пт/сб срещу делник).
+// Нощна тарифа на цялата вила по ден от седмицата (пт–нд срещу делник).
 export interface VillaNightlyRate {
-  weekday: number // €/нощувка пн–чт + нд
-  weekend: number // €/нощувка пт + сб
+  weekday: number // €/нощувка пн–чт
+  weekend: number // €/нощувка пт–нд
 }
 
 export interface VillaPricing {
@@ -17,7 +17,7 @@ export interface VillaPricing {
   whole: SeasonalRate // наемане на цялата вила (маркетинг „от …")
   capacity: number // максимален брой гости
   bedrooms: number // брой спални
-  villaNight: VillaNightlyRate // делник / пт-сб (маркетинг „от …")
+  villaNight: VillaNightlyRate // делник / пт-нд (маркетинг „от …")
   deposit: number // депозит за потвърждение (фиксиран, съвпада със Stripe линка)
 }
 
