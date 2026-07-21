@@ -13,7 +13,7 @@
     "stats": {
       "rooms": { "label": "Rooms", "value": "4" },
       "capacity": { "label": "Guests", "value": "up to 9" },
-      "area": { "label": "Area", "value": "~400 m²" },
+      "area": { "label": "Area", "value": "~200 m²" },
       "location": { "label": "Location", "value": "Gorna Kovachitsa" }
     }
   },

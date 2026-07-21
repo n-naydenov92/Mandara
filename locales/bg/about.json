@@ -13,7 +13,7 @@
     "stats": {
       "rooms": { "label": "Стаи", "value": "4" },
       "capacity": { "label": "Гости", "value": "до 9" },
-      "area": { "label": "Площ", "value": "~400 м²" },
+      "area": { "label": "Площ", "value": "~200 м²" },
       "location": { "label": "Локация", "value": "Горна Ковачица" }
     }
   },
