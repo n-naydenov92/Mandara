@@ -1,45 +1,28 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: clamp(160px, 14vw, 240px);
+  grid-auto-rows: auto;
   grid-auto-flow: dense;
   gap: clamp(0.75rem, 1.2vw, 1.25rem);
 }
 
+/* Всички клетки са квадратни — редовете се оразмеряват от самите кадри (aspect-ratio),
+   а не от фиксирана височина, за да няма изрязване в правоъгълни клетки. */
 .cell {
   position: relative;
   grid-column: span 1;
   grid-row: span 1;
+  aspect-ratio: 1;
 }
 
-/* Ритъм на период 6 — преобладават квадратни и вертикални (портретни) кадри,
-   само една хоризонтална клетка „за разчупване", защото хоризонталните се снимат трудно. */
+/* Ритъм на период 6 — на всеки шести кадър един голям квадрат 2×2 за акцент. */
 .cell:nth-child(6n + 1) {
   grid-column: span 2;
   grid-row: span 2;
 }
 
-.cell:nth-child(6n + 3) {
-  grid-row: span 2;
-}
-
-.cell:nth-child(6n + 5) {
-  grid-column: span 2;
-}
-
 @media (max-width: 960px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* На 2 колони span 2 = цял ред — премахваме хоризонталната клетка. */
-  .cell:nth-child(6n + 5) {
-    grid-column: span 1;
-  }
-}
-
-@media (max-width: 560px) {
-  .grid {
-    grid-auto-rows: clamp(150px, 42vw, 220px);
   }
 }

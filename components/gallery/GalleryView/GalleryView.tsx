@@ -8,6 +8,7 @@ import { useLightbox, type LightboxItem } from '@/components/gallery/Lightbox/us
 import {
   GALLERY_CATEGORIES,
   GALLERY_IMAGES,
+  GALLERY_SHOWCASE_IMAGES,
   type GalleryCategory,
   type GalleryImage,
 } from '@/lib/content/gallery'
@@ -15,7 +16,7 @@ import styles from './GalleryView.module.css'
 
 function filterByCategory(category: GalleryCategory): readonly GalleryImage[] {
   if (category === 'all') {
-    return GALLERY_IMAGES
+    return GALLERY_SHOWCASE_IMAGES
   }
   return GALLERY_IMAGES.filter((image) => image.category === category)
 }

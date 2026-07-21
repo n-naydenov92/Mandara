@@ -20,18 +20,22 @@ export interface GalleryImage {
   height: number
 }
 
-// Всички кадри са в едно съотношение 2400×1792 (4:3); bento клетките кадрират.
+// Кадрите са 4:3 — почти всички хоризонтални; квадратните bento клетки ги кадрират.
+// Размерите са нужни на лайтбокса (PhotoSwipe), затова портретните се задават изрично.
 const IMG_DIR = '/images/gallery'
-const IMG_WIDTH = 2400
-const IMG_HEIGHT = 1792
+const LANDSCAPE = { width: 2400, height: 1792 } as const
+const PORTRAIT = { width: 1792, height: 2400 } as const
+
+type ImageSize = typeof LANDSCAPE | typeof PORTRAIT
 
 function img(
   id: string,
   category: ImageCategory,
   captionKey: string,
   file: string,
+  size: ImageSize = LANDSCAPE,
 ): GalleryImage {
-  return { id, category, captionKey, src: `${IMG_DIR}/${file}`, width: IMG_WIDTH, height: IMG_HEIGHT }
+  return { id, category, captionKey, src: `${IMG_DIR}/${file}`, ...size }
 }
 
 // Пълната колекция кадри на вилата. Bento ритъмът е период 6 (виж BentoGrid.module.css):
@@ -87,7 +91,7 @@ export const GALLERY_IMAGES: readonly GalleryImage[] = [
   img('pool-21', 'pool', 'poolView', 'hp-za-vilata.webp'),
   img('pool-22', 'pool', 'waterslide', 'hf_20260713_064529_1e6138ee-d445-41e4-877f-9b9bc3ac5595.webp'),
   img('pool-23', 'pool', 'relax', 'hf_20260712_204515_38769151-f0e9-4a1f-9d45-6ae5bd282b77.webp'),
-  img('pool-24', 'pool', 'relax', 'hf_20260712_204520_f437ab57-81bf-40bc-9b12-94e57e1c542f.webp'),
+  img('pool-24', 'pool', 'relax', 'hf_20260712_204520_f437ab57-81bf-40bc-9b12-94e57e1c542f.webp', PORTRAIT),
   img('pool-25', 'pool', 'relax', 'hp-izjivyavane1.webp'),
   img('pool-26', 'pool', 'poolsideAround', 'hf_20260712_205105_0c8e8b50-528e-4790-af5d-a25543688cf2.webp'),
   img('pool-27', 'pool', 'poolsideAround', 'hf_20260712_205112_f8c67ca3-b9dd-4f27-a6e4-8ccc8dff7474.webp'),
@@ -121,3 +125,28 @@ export const GALLERY_IMAGES: readonly GalleryImage[] = [
   img('amen-7', 'amenities', 'lounge', 'hf_20260712_210004_e713d2ca-a566-4db7-8645-bb2c5012d147.webp'),
   img('amen-8', 'amenities', 'livingRoom', 'hf_20260712_205934_c574716a-3cb6-4ec3-9078-54a082b84546.webp'),
 ] as const
+
+// Изгледът „всички" води с най-силните кадри: басейн → трапезария → хол → останалото.
+const LIVING_ROOM_CAPTIONS: readonly string[] = ['livingRoom', 'lounge']
+const RANK_POOL = 0
+const RANK_DINING = 1
+const RANK_LIVING_ROOM = 2
+const RANK_REST = 3
+
+function showcaseRank(image: GalleryImage): number {
+  if (image.category === 'pool') {
+    return RANK_POOL
+  }
+  if (image.category === 'dining') {
+    return RANK_DINING
+  }
+  if (LIVING_ROOM_CAPTIONS.includes(image.captionKey)) {
+    return RANK_LIVING_ROOM
+  }
+  return RANK_REST
+}
+
+// Array.prototype.sort е стабилен → редът вътре в група остава както е деклариран.
+export const GALLERY_SHOWCASE_IMAGES: readonly GalleryImage[] = [...GALLERY_IMAGES].sort(
+  (a, b) => showcaseRank(a) - showcaseRank(b),
+)
