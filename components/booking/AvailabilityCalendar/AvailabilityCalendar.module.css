@@ -54,10 +54,11 @@
   cursor: not-allowed;
 }
 
+/* minmax(0, 1fr) — иначе цената („700 €") налага min-content ширина и клетките изпъкват извън картата. */
 .weekdays,
 .week {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 0.25rem;
 }
 
@@ -92,7 +93,9 @@
   justify-content: center;
   gap: 0.05rem;
   aspect-ratio: 1;
+  min-width: 0;
   padding: 0;
+  overflow: hidden;
   font-family: var(--f-ui);
   color: var(--espresso);
   background: var(--cream);
@@ -126,12 +129,15 @@
 }
 
 .dayNum {
-  font-size: 1.05rem;
+  font-size: clamp(0.9rem, 2.6vw, 1.05rem);
+  line-height: 1.2;
 }
 
 .dayPrice {
-  font-size: 0.65rem;
+  font-size: clamp(0.55rem, 1.8vw, 0.65rem);
+  line-height: 1.2;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
   color: var(--stone);
 }
 
@@ -216,6 +222,24 @@
   font-size: var(--fs-h3);
   font-weight: 400;
   color: var(--clay);
+}
+
+@media (max-width: 560px) {
+  .weekdays,
+  .week,
+  .grid {
+    gap: 0.15rem;
+  }
+
+  .weekday {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  .legend {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

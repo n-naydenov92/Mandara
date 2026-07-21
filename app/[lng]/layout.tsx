@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fontDisplay, fontUi, fontScript } from '@/lib/fonts'
-import { LOCALES, NAMESPACES, isLocale, type Locale } from '@/lib/i18n/settings'
+import { DEFAULT_LOCALE, LOCALES, NAMESPACES, isLocale, type Locale } from '@/lib/i18n/settings'
 import { getResources, getTranslation } from '@/lib/i18n/server'
 import { TranslationsProvider } from '@/lib/i18n/TranslationsProvider'
 import { SmoothScroll } from '@/components/motion/SmoothScroll/SmoothScroll'
@@ -22,8 +22,33 @@ export function generateStaticParams() {
   return LOCALES.map((lng) => ({ lng }))
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  return { metadataBase: new URL(SITE.url) }
+// Кадърът от hero-а на началната страница, изрязан 1200×630 — размерът, който
+// Facebook/WhatsApp/LinkedIn очакват за голяма визия в предварителния преглед.
+const OG_IMAGE = {
+  url: '/images/og-image.jpg',
+  width: 1200,
+  height: 630,
+} as const
+
+export async function generateMetadata({ params }: Pick<LocaleLayoutProps, 'params'>): Promise<Metadata> {
+  const { lng } = await params
+  const locale = isLocale(lng) ? lng : DEFAULT_LOCALE
+  const { t } = await getTranslation(locale, 'common')
+  const brandFull = t('brandFull')
+
+  return {
+    metadataBase: new URL(SITE.url),
+    openGraph: {
+      type: 'website',
+      siteName: brandFull,
+      locale: locale === 'bg' ? 'bg_BG' : 'en_US',
+      images: [{ ...OG_IMAGE, alt: brandFull }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [OG_IMAGE.url],
+    },
+  }
 }
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
