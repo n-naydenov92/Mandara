@@ -42,6 +42,7 @@ export async function AboutSplit({ lng }: AboutSplitProps) {
             src="/images/homepage/hp-za-vilata.webp"
             alt={t('about.title')}
             sizes="(max-width: 900px) 100vw, 50vw"
+            reveal={false}
           />
         </Reveal>
       </Container>

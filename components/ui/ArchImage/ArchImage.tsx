@@ -7,9 +7,12 @@ interface ArchImageProps {
   sizes?: string
   priority?: boolean
   className?: string
+  // Изключва вътрешния clip reveal — задай false, когато родителят вече анимира
+  // entrance-а (напр. <Reveal>), защото трансформацията му чупи whileInView.
+  reveal?: boolean
 }
 
-export function ArchImage({ src, alt, sizes, priority, className }: ArchImageProps) {
+export function ArchImage({ src, alt, sizes, priority, className, reveal }: ArchImageProps) {
   const classNames = className ? `${styles.arch} ${className}` : styles.arch
   return (
     <ImageReveal
@@ -19,6 +22,7 @@ export function ArchImage({ src, alt, sizes, priority, className }: ArchImagePro
       priority={priority}
       hoverZoom
       kenburns={false}
+      reveal={reveal}
       className={classNames}
     />
   )

@@ -1,5 +1,5 @@
 // Кадър за hero-а на началната страница — вилата на здрач (басейн + топло осветена фасада).
-export const HOME_HERO_IMAGE = '/images/homepage/hero-banner.webp'
+export const HOME_HERO_IMAGE = '/images/homepage/hp-main-banner.webp'
 
 export interface ExperienceImage {
   src: string
