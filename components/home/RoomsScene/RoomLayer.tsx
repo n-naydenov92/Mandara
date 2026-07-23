@@ -7,6 +7,7 @@ import styles from './RoomsScene.module.css'
 
 interface RoomLayerProps {
   image: string
+  focal?: string // object-position за кадъра (мести портретния/мобилен crop)
   href: string // цел на CTA бутона
   lng: Locale
   name: string
@@ -29,6 +30,7 @@ function loadProps(isFirst: boolean) {
 
 export function RoomLayer({
   image,
+  focal,
   href,
   lng,
   name,
@@ -45,7 +47,15 @@ export function RoomLayer({
   return (
     <article className={slideClass} data-index={index}>
       <div className={styles.bg}>
-        <Image src={image} alt={name} fill sizes="100vw" className={styles.img} {...loadProps(isFirst)} />
+        <Image
+          src={image}
+          alt={name}
+          fill
+          sizes="100vw"
+          className={styles.img}
+          style={focal ? { objectPosition: focal } : undefined}
+          {...loadProps(isFirst)}
+        />
       </div>
       <div className={styles.scrim} aria-hidden="true" />
       <div className={styles.card}>

@@ -29,7 +29,7 @@ export interface SiteConfig {
 }
 
 export const SITE: SiteConfig = {
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vilamandara.bg',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.mandara.bg',
   contact: {
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'mandara.houses@gmail.com',
     phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '+359 889 966 694',

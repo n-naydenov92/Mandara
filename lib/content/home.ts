@@ -45,13 +45,17 @@ export const REGION_DESTINATIONS = {
 export interface VillaSpace {
   slug: string
   image: string // корица за slide-а (placeholder — потребителят ще смени с реален кадър)
+  // object-position за кадъра. При портретен (мобилен) crop това мести кадъра
+  // хоризонтално; на десктоп (широк crop) хоризонталната стойност е без ефект.
+  focal?: string
 }
 
 // Пространствата на вилата за pinned scroll-секцията на началната страница.
 // Отделно от ROOMS (стаите) — тук показваме цялата вила, не настаняването.
 export const VILLA_SPACES: readonly VillaSpace[] = [
   { slug: 'pool', image: '/images/homepage/hp-za-baseina.webp' },
-  { slug: 'dining', image: '/images/homepage/hp-trapezaria.webp' },
+  // На мобилно центърът хваща пердето — местим фокуса към лявата част на кадъра.
+  { slug: 'dining', image: '/images/homepage/hp-trapezaria.webp', focal: '10% center' },
   { slug: 'rooms', image: '/images/homepage/hp-staite.webp' },
   { slug: 'kitchen', image: '/images/homepage/hp-kuhnia.webp' },
   { slug: 'kids', image: '/images/homepage/hp-detski-kat.webp' },

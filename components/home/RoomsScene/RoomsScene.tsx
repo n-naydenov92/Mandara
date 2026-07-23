@@ -214,6 +214,7 @@ export function RoomsScene({ lng }: RoomsSceneProps) {
           <RoomLayer
             key={space.slug}
             image={space.image}
+            focal={space.focal}
             href="/about"
             lng={lng}
             name={tHome(`rooms.spaces.${space.slug}.name`)}
