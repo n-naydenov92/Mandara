@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import {
   IconPool,
+  IconBath,
   IconToolsKitchen2,
   IconArmchair,
   IconFlame,
@@ -18,6 +19,7 @@ interface TablerIconProps {
 // Икона за всяко удобство на цялата вила (ключове от VILLA_INCLUDES).
 export const VILLA_AMENITY_ICON: Record<string, ComponentType<TablerIconProps>> = {
   pool: IconPool,
+  bathrooms: IconBath,
   kitchen: IconToolsKitchen2,
   diningLiving: IconArmchair,
   bbqFirepit: IconFlame,

@@ -14,8 +14,8 @@
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
   margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
@@ -50,6 +50,19 @@
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--stone);
+}
+
+.hint {
+  font-family: var(--f-ui);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--stone);
+}
+
+@media (max-width: 1080px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 720px) {

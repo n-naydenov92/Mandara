@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { IconBed, IconUsers, IconRuler2, IconMapPin } from '@tabler/icons-react'
+import { IconBed, IconBath, IconUsers, IconRuler2, IconMapPin } from '@tabler/icons-react'
 import { getTranslation } from '@/lib/i18n/server'
 import { Section } from '@/components/ui/Section/Section'
 import { Container } from '@/components/ui/Container/Container'
@@ -21,12 +21,35 @@ interface TablerIconProps {
   className?: string
 }
 
+const NO_HINT = ''
+
 const STAT_ICON = {
   rooms: IconBed,
+  bathrooms: IconBath,
   capacity: IconUsers,
   area: IconRuler2,
   location: IconMapPin,
 } as const satisfies Record<VillaStatKey, ComponentType<TablerIconProps>>
+
+interface VillaStatCardProps {
+  icon: ComponentType<TablerIconProps>
+  value: string
+  label: string
+  hint: string
+}
+
+function VillaStatCard({ icon, value, label, hint }: VillaStatCardProps) {
+  return (
+    <div className={styles.stat}>
+      <span className={styles.icon}>
+        <Icon icon={icon} size={26} />
+      </span>
+      <span className={styles.value}>{value}</span>
+      <span className={styles.label}>{label}</span>
+      {hint !== NO_HINT && <span className={styles.hint}>{hint}</span>}
+    </div>
+  )
+}
 
 export async function AboutIntro({ lng }: AboutIntroProps) {
   const { t } = await getTranslation(lng, 'about')
@@ -42,13 +65,13 @@ export async function AboutIntro({ lng }: AboutIntroProps) {
 
         <RevealGroup className={styles.stats}>
           {VILLA_STATS.map((stat) => (
-            <div key={stat.key} className={styles.stat}>
-              <span className={styles.icon}>
-                <Icon icon={STAT_ICON[stat.key]} size={26} />
-              </span>
-              <span className={styles.value}>{t(`intro.stats.${stat.key}.value`)}</span>
-              <span className={styles.label}>{t(`intro.stats.${stat.key}.label`)}</span>
-            </div>
+            <VillaStatCard
+              key={stat.key}
+              icon={STAT_ICON[stat.key]}
+              value={t(`intro.stats.${stat.key}.value`)}
+              label={t(`intro.stats.${stat.key}.label`)}
+              hint={t(`intro.stats.${stat.key}.hint`, { defaultValue: NO_HINT })}
+            />
           ))}
         </RevealGroup>
       </Container>

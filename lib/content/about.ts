@@ -3,7 +3,7 @@
 
 export const ABOUT_HERO_IMAGE = '/images/about/za-vilata-banner.webp'
 
-export const VILLA_STAT_KEYS = ['rooms', 'capacity', 'area', 'location'] as const
+export const VILLA_STAT_KEYS = ['rooms', 'bathrooms', 'capacity', 'area', 'location'] as const
 export type VillaStatKey = (typeof VILLA_STAT_KEYS)[number]
 
 export interface VillaStat {
@@ -12,6 +12,7 @@ export interface VillaStat {
 
 export const VILLA_STATS = [
   { key: 'rooms' },
+  { key: 'bathrooms' },
   { key: 'capacity' },
   { key: 'area' },
   { key: 'location' },
@@ -42,7 +43,7 @@ export interface AmenityGroup {
 }
 
 export const AMENITY_GROUPS = [
-  { key: 'accommodation', items: ['rooms', 'livingRoom', 'kitchen', 'heating', 'wifi'] },
+  { key: 'accommodation', items: ['rooms', 'bathrooms', 'livingRoom', 'kitchen', 'heating', 'wifi'] },
   { key: 'wellness', items: ['pool', 'gardenFire', 'sauna', 'kids'] },
   { key: 'services', items: ['chef', 'shopping', 'massage', 'gym'] },
 ] as const satisfies readonly AmenityGroup[]

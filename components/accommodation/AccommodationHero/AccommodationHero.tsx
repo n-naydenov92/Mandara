@@ -16,6 +16,7 @@ export async function AccommodationHero({ lng }: AccommodationHeroProps) {
   const { t } = await getTranslation(lng, 'accommodation')
   const stats = [
     t('stats.bedrooms'),
+    t('stats.bathrooms'),
     t('stats.guests'),
     t('stats.sauna'),
     t('stats.pool'),

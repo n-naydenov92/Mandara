@@ -1,16 +1,17 @@
 {
   "meta": {
     "title": "Accommodation | Villa Mandara",
-    "description": "Rent the whole of Villa Mandara — 4 bedrooms, up to 9 guests, pool and sauna, in complete privacy. In-season and off-season rates."
+    "description": "Rent the whole of Villa Mandara — 4 bedrooms, 4 bathrooms (2 indoor and 2 outdoor), up to 9 guests, pool and sauna, in complete privacy. In-season and off-season rates."
   },
   "hero": {
     "eyebrow": "accommodation",
     "title": "Villa Mandara, entirely yours",
-    "lead": "The whole villa just for your group — 4 bedrooms, up to 9 guests, a pool, a sauna and common areas in complete privacy. The villa is rented as a whole, not by the room.",
+    "lead": "The whole villa just for your group — 4 bedrooms, 2 indoor and 2 outdoor bathrooms, up to 9 guests, a pool, a sauna and common areas in complete privacy. The villa is rented as a whole, not by the room.",
     "scroll": "Explore"
   },
   "stats": {
     "bedrooms": "4 bedrooms",
+    "bathrooms": "4 bathrooms",
     "guests": "up to 9 guests",
     "sauna": "sauna",
     "pool": "pool",
@@ -28,6 +29,7 @@
     "includesTitle": "What's included",
     "includes": {
       "pool": "Outdoor pool",
+      "bathrooms": "Two indoor and two outdoor bathrooms",
       "kitchen": "Fully equipped kitchen",
       "diningLiving": "Large dining area with lounge",
       "bbqFirepit": "Summer barbecue and fire pit",

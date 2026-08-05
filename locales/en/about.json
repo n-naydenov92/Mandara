@@ -9,9 +9,14 @@
     "scroll": "Explore"
   },
   "intro": {
-    "lead": "Villa Mandara was made for one home at a time. Four rooms, a shared living room, an outdoor pool and a herb garden — a place where every group stays alone, at its own pace, wrapped in the mountain silence.",
+    "lead": "Villa Mandara was made for one home at a time. Four rooms, two indoor and two outdoor bathrooms, a shared living room, an outdoor pool and a herb garden — a place where every group stays alone, at its own pace, wrapped in the mountain silence.",
     "stats": {
       "rooms": { "label": "Rooms", "value": "4" },
+      "bathrooms": {
+        "label": "Bathrooms",
+        "value": "2 + 2",
+        "hint": "2 indoor and 2 outdoor"
+      },
       "capacity": { "label": "Guests", "value": "up to 9" },
       "area": { "label": "Area", "value": "~200 m²" },
       "location": { "label": "Location", "value": "Gorna Kovachitsa" }
@@ -66,6 +71,7 @@
         "title": "Accommodation",
         "items": {
           "rooms": "Four rooms with their own character",
+          "bathrooms": "Two indoor and two outdoor bathrooms",
           "livingRoom": "Shared living room with fireplace",
           "kitchen": "Fully equipped kitchen",
           "heating": "Heating and air conditioning",

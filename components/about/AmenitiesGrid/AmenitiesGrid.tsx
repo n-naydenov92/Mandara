@@ -8,6 +8,7 @@ import {
   IconSwimming,
   IconLeaf,
   IconBath,
+  IconSteam,
   IconFlame,
   IconMoodKid,
   IconChefHat,
@@ -38,13 +39,14 @@ interface TablerIconProps {
 
 const AMENITY_ICON: Record<string, ComponentType<TablerIconProps>> = {
   rooms: IconBed,
+  bathrooms: IconBath,
   livingRoom: IconArmchair,
   kitchen: IconToolsKitchen2,
   heating: IconAirConditioning,
   wifi: IconWifi,
   pool: IconSwimming,
   gardenFire: IconFlame,
-  sauna: IconBath,
+  sauna: IconSteam,
   kids: IconMoodKid,
   chef: IconChefHat,
   shopping: IconShoppingBag,

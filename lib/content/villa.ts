@@ -10,6 +10,7 @@ export const VILLA_GALLERY: readonly string[] = [
 // Ключове на удобствата за „Какво включва" — текстът живее в accommodation namespace.
 export const VILLA_INCLUDES: readonly string[] = [
   'pool',
+  'bathrooms',
   'kitchen',
   'diningLiving',
   'bbqFirepit',
